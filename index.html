@@ -537,14 +537,14 @@
 	 }
 	 //console.log(event.data)
 	 window.iframeMessage = [event.data[1],event.data[2]]
-	 document.body.innerHTML = '<iframe id="workerIframe" src="'+event.data[0]+'" onload="self.window.postMessage(window.iframeMessage,\'*\')" width="100%" height="100%"></iframe>'
-	 //const iFrame = document.getElementById('workerIframe');
-	 //iFrame.postMessage[[event.data[1],event.data[2]], ''); //domain of event.data[0]
+	 document.body.innerHTML = '<iframe id="workerIframe" src="'+event.data[0]+'" onload="messageIframe()" width="100%" height="100%"></iframe>'
 	}
 
-	//function window.iframeMessage(message){
+	function window.messageIframe(){
+	 const iFrame = document.getElementById('workerIframe');
+	 iFrame.postMessage[window.iframeMessage, 'https:/'+'/storage.googleapis.com/'); //domain of event.data[0]
 
-	//}
+	}
 
 	</script>
 </head>
