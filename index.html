@@ -540,9 +540,9 @@
 	 document.body.innerHTML = '<iframe id="workerIframe" src="'+event.data[0]+'" onload="messageIframe()" width="100%" height="100%"></iframe>'
 	}
 
-	function window.messageIframe(){
+	function messageIframe(){
 	 const iFrame = document.getElementById('workerIframe');
-	 iFrame.postMessage[window.iframeMessage, 'https:/'+'/storage.googleapis.com/'); //domain of event.data[0]
+	 iFrame.contentWindow.postMessage[window.iframeMessage, 'https:/'+'/storage.googleapis.com/'); //domain of event.data[0]
 
 	}
 
