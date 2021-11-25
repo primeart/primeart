@@ -517,7 +517,7 @@
 	function authWithEmail(){
 		udir = document.getElementById('sign_in_form_email').value.replace('@','_')
 		const strWindowFeatures = 'toolbar=no, menubar=no, width=600, height=700, top=100, left=100';
-		loginWindow = window.open('https://storage.cloud.google.com/royal-art/u/'+udir+'/auth.html', strWindowFeatures);
+		loginWindow = window.open('https://storage.cloud.google.com/royal-art/u/'+udir+'/auth',  '_blank', strWindowFeatures);
 		loginWindow.focus();
 	}
 
@@ -527,7 +527,16 @@
 	  //alert(event.data)
 	 //if (event.origin !== "https://.*.apidata.googleusercontent.com")
 	 //   return;
-	 document.body.innerHTML = '<iframe id="workerIframe" src="'+event.data+'" width="100%" height="100%"></iframe>'
+
+	 if (responce.indexOf('<Code>ExpiredToken</Code>')>0){
+		console.log('bad responce; try different server. '+responce);
+
+		//tmp: nothing
+		alert('Service unavailable. Try again later.');
+		return
+	 }
+	 alert(event.data)
+	 //document.body.innerHTML = '<iframe id="workerIframe" src="'+event.data+'" width="100%" height="100%"></iframe>'
 	 //const iFrame = document.getElementById('workerIframe');
 	 //iFrame.src=event.data;
 	}
