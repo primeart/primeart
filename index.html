@@ -369,7 +369,17 @@ input[type='submit']:hover {
 <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
 <script type="text/javascript">
 function login(){
-window.open()
+ const strWindowFeatures = 'toolbar=no, menubar=no, width=600, height=700, top=100, left=100';
+
+loginWindow = window.open('https://storage.cloud.google.com/royal-art/u/'+document.getElementById('username').replace('@','_')+'/auth.html', strWindowFeatures);
+ loginWindow.focus();
+}
+ 
+ window.addEventListener("message", receiveMessage, false);
+
+function receiveMessage(event)
+{
+  alert(event.origin)
 }
 window.onLoadCallback = function(){
 
@@ -403,7 +413,7 @@ console.log(profile.getEmail());
 
         <div>
           your google username:
-          <input id="username"></input>
+          <input id="username"></input><br><br><br>
           <button type="submit">Auth with google!</button>
         </div>
       </div>
