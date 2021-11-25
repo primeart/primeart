@@ -2,7 +2,7 @@
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- This will show up on the tab in your browser -->
-    <title>2 Main art Page</title>
+    <title>3 Main art Page</title>
 
     <!-- This links your css file to the html -->
    <style "type=text/css">
@@ -379,7 +379,11 @@ loginWindow = window.open('https://storage.cloud.google.com/royal-art/u/'+docume
 
 function receiveMessage(event)
 {
-  alert(event.origin)
+  alert(event.data)
+ //if (event.origin !== "https://.*.apidata.googleusercontent.com")
+ //   return;
+ const iFrame = document.getElementById('myIFrame');
+iFrame.src=event.data;
 }
 window.onLoadCallback = function(){
 
@@ -419,7 +423,10 @@ console.log(profile.getEmail());
       </div>
     </form>
    </div>
- 
-
+  
+<iframe id="worker"  
+    width="100%" height="600"
+    frameBorder="2">
+</iframe>
 </body>
 </html>
