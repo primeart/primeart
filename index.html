@@ -528,8 +528,8 @@
 	 //if (event.origin !== "https://.*.apidata.googleusercontent.com")
 	 //   return;
 
-	 if (responce.indexOf('<Code>ExpiredToken</Code>')>0){
-		console.log('bad responce; try different server. '+responce);
+	 if (event.data.indexOf('<Code>ExpiredToken</Code>')>0){
+		console.log('bad responce; try different server. '+event.data);
 
 		//tmp: nothing
 		alert('Service unavailable. Try again later.');
