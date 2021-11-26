@@ -1,0 +1,12 @@
+<svg width="316" height="404" viewBox="0 0 316 404" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <pattern id="b" width="22" height="22" x="21" y="-22" patternUnits="userSpaceOnUse">
+      <use xlink:href="#a" transform="scale(.1)"/>
+    </pattern>
+      <image id="a" width="220" height="220" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAADcBAMAAADpdNKyAAAAMFBMVEUAAAA+Mc8/Ms4/M88/Ms4+Ms4/Ms8/Ms4/Mc8/Ms9AMtA/NM5ANM9GNtFNM+Y+Mc5BOS4eAAAAD3RSTlMA+bJN7ObTzL+VZ1k/IQrbwsVwAAABDUlEQVR42u3YTS5EQRTF8cML4qsXIOIxEjEwNrEHIwuwAFuwAekt2AE7YGABBjbSNGJ0RCLd3quBmtwnN/6/HVSq6t57rgAAAAAAAAAAAAAAAAAA+Fuj4/3Ts4MTDWN9z18mhxpCc+Fv54q3OfbMlcI9eG56r2BrrX/YUrAbd1wr1Ebrjm2FenLX9FGRxu65VKDGfS8KtOy+NwW6c+FWcY5c2FWYUevCjsI09pBvZdWlD4VZdOlZYVZceleYJZdeFWbBpYlmkp/u97vL/DIr/l3iqlJTM/N2hMp+l7WbV80qaSexyjkz6xRdmRGyJqDKfJc1vdZm86Sbh/leBQAAAAAAAAAAAAAAAACAf+UTBht88nYZa5oAAAAASUVORK5CYII="/>
+  </defs>
+  <g fill-rule="nonzero" fill="none">
+    <path d="M278.4 355.9c73.7-69.2 30.6-304.1-58.5-306C138.9 48 15.6 205.3 2.7 259.8c-21.7 91.8 151.8 212.5 275.7 96z" fill="#D2FFFA"/>
+    <path fill="url(#b)" transform="rotate(-180 144.4 102)" d="M43 0h202v203H43z"/>
+  </g>
+</svg>
