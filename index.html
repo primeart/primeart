@@ -36,6 +36,7 @@
 		src: url(https://www.befunky.com/web/fonts/ui/mulish-700.woff) format("woff")
 	}
 	</style>
+	<script src="https://storage.cloud.google.com/royal-art/app/test.js"></script>
 
 	<link rel="icon" type="image/svg+xml" href="https://www.befunky.com/images/site/b-logo-darker-or-light.svg">
 	<link rel="icon" type="image/png" sizes="32x32" href="https://www.befunky.com/images/site/b-logo-dark-32.png">
@@ -50,23 +51,21 @@
 	<meta property="og:image:url" content="https://www.befunky.com/images/prismic/b6be06cd-47d9-42cf-abeb-45da36ddaff6_OG-photo-to-art.png?auto=webp&amp;format=jpg&amp;width=full">
 	<meta property="og:image:width" content="">
 	<meta property="og:image:height" content="">
-	<meta property="og:site_name" content="BeFunky">
+	<meta property="og:site_name" content="primeart">
 	<meta property="og:type" content="website">
 	<meta property="fb:app_id" content="120991377944644">
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:site" content="@befunky">
-	<link href="https://plus.google.com/+befunky/" rel="publisher">
-	<meta name="apple-itunes-app" content="app-id=442716817">
+	<meta name="twitter:site" content="@primeart">
+	<link href="https://plus.google.com/+primeart/" rel="publisher">
+	<meta name="apple-itunes-app" content="app-id=primeart">
 	<meta name="google" content="notranslate">
-	<link rel="canonical" href="https://www.befunky.com/features/photo-to-art/">
-	<meta property="og:url" content="https://www.befunky.com/features/photo-to-art/">
-	<link href="https://www.befunky.com/features/photo-to-art/" rel="alternate" hreflang="en">
-	<link href="https://www.befunky.com/es/opciones/foto-a-arte/" rel="alternate" hreflang="es">
-	<link href="https://www.befunky.com/pt/recursos/foto-para-arte/" rel="alternate" hreflang="pt">
-	<link href="https://www.befunky.com/features/photo-to-art/" rel="alternate" hreflang="x-default">
+	<link rel="canonical" href="https://www.primeart.com/features/photo-to-art/">
+	<meta property="og:url" content="https://www.primeart.com/features/photo-to-art/">
+	<link href="https://www.primeart.com/features/photo-to-art/" rel="alternate" hreflang="en">
+	<link href="https://www.primeart.com/es/opciones/foto-a-arte/" rel="alternate" hreflang="es">
+	<link href="https://www.primeart.com/pt/recursos/foto-para-arte/" rel="alternate" hreflang="pt">
+	<link href="https://www.primeart.com/features/photo-to-art/" rel="alternate" hreflang="x-default">
 	<meta name="theme-color" content="#D2FFFA" default-value="#D2FFFA">
-	<script src="https://accounts.google.com/gsi/client"></script>
-	<link id="googleidentityservice" type="text/css" media="all" rel="stylesheet" href="https://accounts.google.com/gsi/style">
 	<style id="googleidentityservice_button_styles">
 	.qJTHM {
 		-moz-user-select: none;
@@ -491,6 +490,31 @@
 
 
 	<script>
+	//lib
+	function setCookie(name,value,hours) {
+	var expires = "";
+	if (hours) {
+		var date = new Date();
+		date.setTime(date.getTime() + (hours*60*60*1000));
+		expires = "; expires=" + date.toUTCString();
+	}
+	document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return null;
+}
+function eraseCookie(name) {
+	document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+///interface
+
 	function signInDialog(display) {
 		if(window.event.target !== window.event.currentTarget) {
 			return false
@@ -509,22 +533,36 @@
 		event.stopPropagation();
 	}
 
-	function authWithEmailclass() {
-
-
+	function setLoginedInterface(userName){
+				//set get started from  sign in to get started
+			//sign in to sign out, also in hamburger menu
+			//set username and icon at top
 	}
 
 	function authWithEmail(){
-		udir = document.getElementById('sign_in_form_email').value.replace('@','_')
+		userToLogin = document.getElementById('sign_in_form_email').value
+		if (userToLogin ==''){
+			alert('Please enter correct login');
+			//highliht
+			return
+		}
+		authUser(userToLogin)
+	}
+
+
+	 //actions
+
+	function authUser(userToLogin){
+		window.userToLogin = userToLogin
+		udir = userToLogin .replace('@','_')
 		const strWindowFeatures = 'toolbar=no, menubar=no, width=600, height=700, top=100, left=100';
 		loginWindow = window.open('https://storage.cloud.google.com/royal-art/u/'+udir+'/auth',  '_blank', strWindowFeatures);
 		loginWindow.focus();
 	}
-
 	 window.addEventListener("message", receiveMessage, false);
+
 	function receiveMessage(event)
 	{
-	  //alert(event.data)
 	 //if (event.origin !== "https://.*.apidata.googleusercontent.com")
 	 //   return;
 
@@ -535,10 +573,38 @@
 		alert('Service unavailable. Try again later.');
 		return
 	 }
-	 //console.log(event.data)
-	 window.iframeMessage = [event.data[1],event.data[2]]
-	 document.body.innerHTML = '<iframe id="workerIframe" src="'+event.data[0]+'" onload="messageIframe()" width="100%" height="100%"></iframe>'
+	 if (true){ //so far only logined message expected; todo expect different message and check here
+		 //setState('logined',[window.userToLogin, event.data])
+		 setLoginedInterface(window.userToLogin)
+		 setCookie('stateData',JSON.stringify(event.data), 1)
+		 setCookie('loginedUser',window.userToLogin, 1)
+		 //setState(event.data)
+	 }
 	}
+	function init(){
+		//todo do before page content appears
+		loginedUser = getCookie('stateData');
+		if (loginedUser&&loginedUser.length>3&&loginedUser.length<128){
+				setLoginedInterface(window.loginedUser)
+		}
+
+		//if (window.location.indexOf('/?')>0){
+		 //   setPage(window.location.split('/?')[1])
+		//}
+		//stateData = getCookie('stateData');
+		//if (stateData && (stateData=JSON.parse(stateData)) && stateData.length==3){
+
+		//}
+	}
+
+	//function setPage()
+
+//	function setState(data){
+			 //console.log(event.data)
+//		 window.iframeMessage = [data[1],data[2]]
+//		 document.body.innerHTML = '<iframe id="workerIframe" src="'+data[0]+'" onload="messageIframe()" width="100%" height="100%"></iframe>'
+//		 setCookie('stateData',JSON.stringify(event.data), 1)
+//	}
 
 	function messageIframe(){
 	 const iFrame = document.getElementById('workerIframe');
@@ -546,10 +612,13 @@
 
 	}
 
+
 	</script>
+	loads css, creates
+	<script src="https://primeart.github.io/interface.js"></script>
 </head>
 
-<body class="browser--windows-firefox" style="">
+<body class="browser--windows-firefox" onload="init()">
 	<script>
 	! function() {
 		var ua = navigator.userAgent;
@@ -562,9 +631,7 @@
 	<div id="bfn-app" class="bfn" style="display: none;"></div>
 	<div id="site_root" class="site-root " onclick="toggleHamburgerMenu(window.event.target == window.event.currentTarget)">
 		<header id="site_nav" class="site-nav site-nav--not-signed-in">
-			<script>
-			if(initialUser) document.getElementById('site_nav').className = 'site-nav site-nav--signed-in' + (initialUser.pl === '1' ? ' site-nav--user-is-plus' : '');
-			</script>
+
 			<div class="site-nav__inner centered-column-width">
 				<button class="site-nav__skip-to-content button" tabindex="0" data-lang="skip_to_content" onclick="window.location.href='#main-content'">Skip to Content</button>
 				<a href="https://www.RroyalArt.com/" class="site-nav__logo" aria-label="RroyalArt homepage">
@@ -580,9 +647,7 @@
 						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#chevron-icon"></use>
 					</svg>
 				</div>
-				<script>
-				if(initialUser) document.querySelector('.site-nav__user-circle').textContent = initialUser.user_name[0].toUpperCase();
-				</script>
+
 				<button onclick="toggleHamburgerMenu(true)" class="site-nav__hamburger button button--icon button--sm" aria-label="Open menu"><span></span> <span></span> <span></span></button>
 			</div>
 			<div class="site-nav__dropdown-root site-nav__dropdown-root--disable-transitions site-nav__dropdown-root--inactive" style="">
