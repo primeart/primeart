@@ -100,7 +100,7 @@ function spa_receiveMessage(event)
 		 //ui_setLoginedInterface(window.userToLogin)
 		 setCookie('requestUrl',event.data[0], event.data[1])
 		 setCookie('responceUrl',event.data[2], event.data[3])
-		 setCookie('loginedUser',window.userToLogin, 1)
+		 setCookie('loginedUser',window.userToLogin, event.data[1])
 		 if (window.spa_userAuthSuccessCallback){
 			 window.spa_userAuthSuccessCallback()
 		 }
