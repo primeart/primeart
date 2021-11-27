@@ -34,7 +34,7 @@ function spa_authUser(userToLogin){
 	if (window.spa_loginedUser && validateEmail(window.spa_loginedUser)){
 		return  //already logined; malicious call
 	}
-	//window.userToLogin = userToLogin
+	window.userToLogin = userToLogin
 	udir = userToLogin.replace(/[^a-zA-Z0-9-]/img,'_')
 	const strWindowFeatures = 'toolbar=no, menubar=no, width=600, height=700';
 	loginWindow = window.open('https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2Froyal-art%2Fu%2F'+udir+'%2Fauth&flowEntry=AccountChooser',  '_blank', strWindowFeatures);
