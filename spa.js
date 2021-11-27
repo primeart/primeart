@@ -80,6 +80,10 @@ function spa_checkLogined(){
 }
 
  window.addEventListener("message", spa_receiveMessage, false);
+document.addEventListener("DOMContentLoaded", function(){
+   spa_init()
+});
+
 window.spa_userAuthSuccessCallback = ''
 
 function spa_receiveMessage(event)
