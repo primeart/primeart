@@ -1,9 +1,9 @@
 //lib
-	function setCookie(name,value,hours) {
+	function setCookie(name,value,seconds) {
 	var expires = "";
 	if (hours) {
 		var date = new Date();
-		date.setTime(date.getTime() + (hours*60*60*1000));
+		date.setTime(date.getTime() + (seconds*1000));
 		expires = "; expires=" + date.toUTCString();
 	}
 	document.cookie = name + "=" + (value || "")  + expires + "; path=/";
@@ -97,12 +97,14 @@ function spa_receiveMessage(event)
 */
 	 if (true){ //so far only logined message expected; todo expect different message and check here
 		 //setState('logined',[window.userToLogin, event.data])
-		 ui_setLoginedInterface(window.userToLogin)
-		 setCookie('stateData',JSON.stringify(event.data), 1)
+		 //ui_setLoginedInterface(window.userToLogin)
+		 setCookie('requestUrl',event.data[0], event.data[1])
+		 setCookie('responceUrl',event.data[2], event.data[3])
 		 setCookie('loginedUser',window.userToLogin, 1)
 		 if (window.spa_userAuthSuccessCallback){
 			 window.spa_userAuthSuccessCallback()
 		 }
+		 spa_init()
 		 //setState(event.data)
 	 }
 }
@@ -118,9 +120,11 @@ function httpGet(theUrl)
 alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 */
 		//todo do before page content appears
-		window.spa_loginedUser = getCookie('loginedUser');
-		if (validateEmail(window.spa_loginedUser)){
+		userCandidate = getCookie('loginedUser');
+		if (validateEmail(userCandidate)){
+			window.spa_loginedUser = userCandidate;
 			window.spa_requestUrl = getCookie('requestUrl');
+			window.spa_responceUrl = getCookie('responceUrl');
 			if(window.spa_requestUrl){
 				ui_setLoginedInterface(window.spa_loginedUser)
 			}

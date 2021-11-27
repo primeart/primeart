@@ -5,7 +5,7 @@
 		signInDialog(show?'block':'none')
 	}
 	function signInDialog(display) {
-		if(window.event.target !== window.event.currentTarget) {
+		if(display=='none' && window.event && window.event.target !== window.event.currentTarget) {
 			return false
 		}
 		document.getElementById('signInBox').style.display = display
