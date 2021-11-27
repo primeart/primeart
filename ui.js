@@ -18,26 +18,40 @@
 		if(show) {
 			document.getElementById('site_root').className = 'site-root site-root--site-nav-popup-active';
 			document.getElementById('hamburgerNav').className = 'site-nav__popup-root site-nav__popup-root--active';
+			//document.getElementById('site-nav__dropdown-root').style.display = 'none'
+
 		} else {
 			document.getElementById('site_root').className = 'site-root';
 			document.getElementById('hamburgerNav').className = 'site-nav__popup-root';
-		}
+	}
+
 		event.stopPropagation();
 	}
 
 	function ui_setLoginedInterface(userName){
 		if (!userName){
 			//unlogined look
-			document.getElementById('signinButton').style.display = 'block'
-			document.getElementById('getStartedButton').style.display = 'block'
-			document.getElementById('signedInAccountButton').style.display = 'none'
+			document.getElementById('signinButton').innerHTML = 'Sign In'
+			document.getElementById('signInButtonHamburger').innerHTML = 'Sign In'
+			document.getElementById('getStartedButton').innerHTML = 'Get Started'
+			document.getElementById('getStartedButtonHamburger').innerHTML = 'Get Started'
+
+			//document.getElementById('signinButton').style.display = 'block'
+			//document.getElementById('getStartedButton').style.display = 'block'
+			//document.getElementById('signedInAccountButton').style.display = 'none'
 		}else{
 			ui_signInDialog(false)
-			document.getElementById('signinButton').style.display = 'none'
-			document.getElementById('getStartedButton').style.display = 'none'
-			document.getElementById('signedInAccountButton').style.display = 'block'
+			document.getElementById('signinButton').innerHTML = userName
+			document.getElementById('signInButtonHamburger').innerHTML = userName
+			//document.getElementById('signinButton').style.display = 'none'
+			//document.getElementById('getStartedButton').style.display = 'none'
+			document.getElementById('getStartedButton').innerHTML = '⚙'
+			document.getElementById('getStartedButtonHamburger').innerHTML = 'Account Settings'
+
+
+			//document.getElementById('signedInAccountButton').style.display = 'block'
 		}
-		 
+
 
 		//document.getElementById('signedInAccountButton').innerHTML = userName[0].toUpperCase()
 
@@ -71,6 +85,21 @@
 		spa_authUser(userToLogin)
 	}
 
-	function ui_signedInAccountButtonClicked(){
-		document.getElementById('site-nav__dropdown-container').style.display = 'block'
+	function ui_signInClicked()
+	{
+		if (spa_isLogined()){
+			spa_navigate('dashboard.html')
+		}else{
+			ui_signInDialog(true)
+
+		}
+	}
+	function ui_getStartedClicked()
+	{
+		if (spa_isLogined()){
+			spa_navigate('account.html')
+		}else{
+			ui_signInDialog(true)
+
+		}
 	}

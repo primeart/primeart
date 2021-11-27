@@ -14110,9 +14110,26 @@ body {
 	top: -1.5rem;
 	left: -1rem;
 
-	
 
-#signinButton, #getStartedButton, #signedInAccountButton{display:none}
+.site-nav__dropdown-root {
+	position: absolute;
+	left: 0;
+	top: var(--site-nav-height);
+	transform-origin: 50% -50px;
+	transition-property: transform,opacity;
+	transition-duration: .25s;
+	will-change: transform,opacity;
+}
+a, button, div, dl, html, label, ol, p, span, ul {
+	font-size: var(--text-font-size);
+	line-height: var(--text-line-height);
+	color: var(--text-color);
+}
+*, ::after, ::before {
+	box-sizing: inherit;
+}
+ 
+#signinButton, #getStartedButton, #signedInAccountButton, .site-nav__dropdown-root{display:none}
 /*# sourceMappingURL=screen.css.map */
 
 
