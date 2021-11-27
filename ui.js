@@ -49,7 +49,7 @@
 
 			//document.getElementById('signedInAccountButton').style.display = 'block'
 		}
-
+		document.getElementById('site_nav').style.display = 'block'
 
 		//document.getElementById('signedInAccountButton').innerHTML = userName[0].toUpperCase()
 
