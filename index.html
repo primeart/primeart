@@ -37,10 +37,10 @@
 
 
 	</style>
-	<link rel="preload" as="style" href="ui.css">
-	<link rel="stylesheet" href="ui.css" type="text/css">
-	<script src="spa.js"></script>
-	 <script src="ui.js"></script>
+	<link rel="preload" as="style" href="/ui.css">
+	<link rel="stylesheet" href="/ui.css" type="text/css">
+	<script src="/spa.js"></script>
+	 <script src="/ui.js"></script>
 	<link rel="icon" type="image/svg+xml" href="https://www.befunky.com/images/site/b-logo-darker-or-light.svg">
 	<link rel="icon" type="image/png" sizes="32x32" href="https://www.befunky.com/images/site/b-logo-dark-32.png">
 	<link rel="icon" type="image/png" sizes="48x48" href="https://www.befunky.com/images/site/b-logo-dark-48.png">
@@ -101,11 +101,9 @@
 				<div class="site-nav__item site-nav__item--desktop site-nav__item--has-dropdown button" data-dropdown="create" tabindex="0" data-bf="site-nav__create__dropdown" data-lang="create" aria-haspopup="true" aria-expanded="false">Create</div>
 				<div class="site-nav__item site-nav__item--desktop site-nav__item--has-dropdown button" data-dropdown="learn" tabindex="0" data-bf="site-nav__learn__dropdown" data-lang="learn" aria-haspopup="true" aria-expanded="false">Learn</div><a class="site-nav__item site-nav__item--desktop site-nav__link button" data-bf="site-nav__support__button" data-lang="support" href="https://support.RroyalArt.com/hc/en-us">Support</a>
 				<div class="site-nav__space"></div>
-				<button onclick="signInDialog('block')" class="site-nav__item site-nav__item--desktop site-nav__item--sign-in site-nav__link button" data-bf="nav__sign-in" data-lang="sign_in">Sign&nbsp;In</button> <a href="https://www.RroyalArt.com/create/photo-to-art/" data-route="" data-lang="get_started" class="site-nav__item site-nav__item--get-started site-nav__item--desktop site-nav__button button button--blue">Get Started</a>
-				<div class="site-nav__item site-nav__item--desktop site-nav__item--has-dropdown site-nav__item--account button" data-dropdown="account" tabindex="0" data-bf="site-nav__account-dropdown" aria-haspopup="true" aria-expanded="false"><span class="site-nav__user-circle"></span>
-					<svg class="icon icon--10">
-						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#chevron-icon"></use>
-					</svg>
+				<button id="signinButton" onclick="ui_signInDialog(true)" class="site-nav__item site-nav__item--desktop site-nav__item--sign-in site-nav__link button" data-bf="nav__sign-in" data-lang="sign_in">Sign&nbsp;In</button> <a href="https://www.RroyalArt.com/create/photo-to-art/" data-route="" data-lang="get_started" class="site-nav__item site-nav__item--get-started site-nav__item--desktop site-nav__button button button--blue">Get Started</a>
+				<div id="signedInAccountButton" class="site-nav__item site-nav__item--desktop site-nav__item--has-dropdown site-nav__item--account button" data-dropdown="account" tabindex="0" data-bf="site-nav__account-dropdown" aria-haspopup="true" aria-expanded="false"><span class="site-nav__user-circle"></span>
+
 				</div>
 
 				<button onclick="toggleHamburgerMenu(true)" class="site-nav__hamburger button button--icon button--sm" aria-label="Open menu"><span></span> <span></span> <span></span></button>
