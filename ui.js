@@ -31,6 +31,8 @@
 		document.getElementById('signedInAccountButton').style.display = 'block'
 		document.getElementById('signedInAccountButton').innerHTML = userName[0].toUpperCase()
 
+		//document.getElementById('site-nav__dropdown-root').style.display = 'block'
+
 				//set get started from  sign in to get started
 			//sign in to sign out, also in hamburger menu
 			//set username and icon at top
