@@ -14088,7 +14088,31 @@ body {
 	width: 1.5rem
 }
 
+.site-nav__item--has-dropdown::after {
+	width: calc(100% + 9rem);
+	left: -4.5rem;
+}
+.site-nav__item--has-dropdown::after {
+	content: "";
+	position: absolute;
+	height: calc(var(--site-nav-height) - 1.875rem);
+	top: 1.875rem;
+	width: calc(100% + 6rem);
+	left: -3rem;
+	display: none;
+}
+.site-nav__item--has-dropdown::before {
+	content: "";
+	display: block;
+	position: absolute;
+	width: calc(100% + 2rem);
+	height: calc(var(--site-nav-height) + 1.5rem);
+	top: -1.5rem;
+	left: -1rem;
 
+	
+
+#signinButton, #getStartedButton, #signedInAccountButton{display:none}
 /*# sourceMappingURL=screen.css.map */
 
 

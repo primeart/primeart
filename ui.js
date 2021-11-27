@@ -26,10 +26,19 @@
 	}
 
 	function ui_setLoginedInterface(userName){
-		 ui_signInDialog(false)
-		document.getElementById('signinButton').style.display = 'none'
-		document.getElementById('getStartedButton').style.display = 'none'
-		document.getElementById('signedInAccountButton').style.display = 'block'
+		if (!userName){
+			//unlogined look
+			document.getElementById('signinButton').style.display = 'block'
+			document.getElementById('getStartedButton').style.display = 'block'
+			document.getElementById('signedInAccountButton').style.display = 'none'
+		}else{
+			ui_signInDialog(false)
+			document.getElementById('signinButton').style.display = 'none'
+			document.getElementById('getStartedButton').style.display = 'none'
+			document.getElementById('signedInAccountButton').style.display = 'block'
+		}
+		 
+
 		//document.getElementById('signedInAccountButton').innerHTML = userName[0].toUpperCase()
 
 		//document.getElementById('site-nav__dropdown-root').style.display = 'block'
