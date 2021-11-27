@@ -6,11 +6,9 @@
 	<meta name="application-name" content="RroyalArt">
 	<meta name="keywords" content="RroyalArt, RroyalArt.com, RroyalArt photo effects, RroyalArt photo editor, effects, editor, photo, photograph, picture, free, edit, editing, adjust, crop, online, online photo sharing, facebook, camera, digital, image, fix, photoshop, gimp, Photo Sharing, Share with Facebook, Share with Twitter, Share with Pinterest, share, Instant, Cartoonizer, Sketch, photo to art, text editor, online frames, overlays, Photo Effects, Photo Editor, facebook covers, facebook cover, covers, covers for facebook, facebook profile covers, first covers, fb covers, fb cover">
 	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-	<link rel="preload" as="style" href="https://www.befunky.com/web/css/screen.1fcf65c91f.css">
 	<link rel="preload" as="font" type="font/woff" crossorigin="" href="https://www.primeart.com/web/fonts/ui/mulish-400.woff">
 	<link rel="preload" as="font" type="font/woff" crossorigin="" href="https://www.primeart.com/web/fonts/ui/mulish-600.woff">
-	<link rel="stylesheet" href="https://www.befunky.com/web/css/screen.1fcf65c91f.css" type="text/css">
-	<style id="inline-fonts">
+	 <style id="inline-fonts">
 	@font-face {
 		font-family: Mulish;
 		font-style: normal;
@@ -34,10 +32,15 @@
 		font-display: swap;
 		src: url(https://www.primeart.com/web/fonts/ui/mulish-700.woff) format("woff")
 	}
+
+
+
+
 	</style>
+	<link rel="preload" as="style" href="ui.css">
+	<link rel="stylesheet" href="ui.css" type="text/css">
 	<script src="spa.js"></script>
 	 <script src="ui.js"></script>
-
 	<link rel="icon" type="image/svg+xml" href="https://www.befunky.com/images/site/b-logo-darker-or-light.svg">
 	<link rel="icon" type="image/png" sizes="32x32" href="https://www.befunky.com/images/site/b-logo-dark-32.png">
 	<link rel="icon" type="image/png" sizes="48x48" href="https://www.befunky.com/images/site/b-logo-dark-48.png">
@@ -74,7 +77,7 @@
 
 
 
-<body onload="init()">
+<body onload="spa_init()">
 	<script>
 	! function() {
 		var ua = navigator.userAgent;
@@ -241,20 +244,18 @@
 
 
 
-
 		<div class="site-nav-placeholder"></div>
 
 		<main id="main-content">
 			<section id="go-from-photo-to-art-with-ease" class="section section--bg-turquoise section--first section--extend-height">
 
-				 <script>
-				//disabled:cookie will dissaper on expire time itself
-				//if not request put signed url
-				//    signOut()
-				if not userlogined
-				 signInBox()
-				 reload after sign in
-				</scirpt>
+				 <script type="text/javascript">
+
+				if (!window.spa_loginedUser){
+					ui_signInDialog(true)
+					window.spa_userAuthSuccessCallback = location.reload
+				}
+				</script>
 				<script src=gcs://royalart.cloud.google.com/app/proto2art.js></script>
 
 
@@ -452,7 +453,7 @@
 	</div>
 	<div id="dynamic-content-state" style="display: none;">
 		<div class="logo">
-			<a href="https://www.RroyalArt.com/"><img src="https://www.befunky.com/images/site/logo-dark1.svg" alt="RroyalArt.me"></a>
+			<a href="https://www.RroyalArt.com/"><img src="images/logo-darker.svg" alt="RroyalArt.me"></a>
 		</div>
 		<div class="message-box" style="display: none;"> <span>Please authorize RroyalArt to edit your photos stored at Google.</span>
 			<br> <a href="javascript:void(0)" class="btn googleDriveLoginBtn" style="display: block; ">Authorize</a> </div>
@@ -461,54 +462,11 @@
 	</div>
 	<a href="javascript:void(0);" style="display: none;" id="chrome-extension-button" data-url="" aria-label="Open image from Google Drive"></a>
 
-	<div id="g_id_onload" data-prompt_parent_id="g_id_onload" style="position: fixed; right: 420px; top: 68px; width: 0; height: 0; z-index: 9999;" data-client_id="303057181160-pvs0ajfctrvv15i4rmirjsve2plp8m92.apps.googleusercontent.com" data-callback="handleGoogleLoginPrompt"></div>
-	<div class="load-screen" id="load_screen_root">
-		<div class="load-screen__iris" style="position: relative; pointer-events: none; width: 48px; height: 48px; display: none;">
-			<div style="position: absolute; left: 24px; top: 24px;">
-				<div id="blade_holder_0" style="position: absolute; left: 24px; top: -16px;">
-					<div id="blade_0" style="position: absolute; transform: rotate(0deg);">
-						<div id="blade_graphic_0" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(225, 74, 67) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div>
-					</div>
-				</div>
-				<div id="blade_holder_2" style="position: absolute; left: 16px; top: 24px;">
-					<div id="blade_2" style="position: absolute; transform: rotate(90deg);">
-						<div id="blade_graphic_2" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(245, 233, 73) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div>
-					</div>
-				</div>
-				<div id="blade_holder_4" style="position: absolute; left: -24px; top: 16px;">
-					<div id="blade_4" style="position: absolute; transform: rotate(180deg);">
-						<div id="blade_graphic_4" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(103, 195, 105) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div>
-					</div>
-				</div>
-				<div id="blade_holder_6" style="position: absolute; left: -16px; top: -24px;">
-					<div id="blade_6" style="position: absolute; transform: rotate(270deg);">
-						<div id="blade_graphic_6" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(150, 109, 184) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div>
-					</div>
-				</div>
-				<div id="blade_holder_1" style="position: absolute; left: 28.2843px; top: 5.65685px;">
-					<div id="blade_1" style="position: absolute; transform: rotate(45deg);">
-						<div id="blade_graphic_1" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(251, 159, 57) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div>
-					</div>
-				</div>
-				<div id="blade_holder_3" style="position: absolute; left: -5.65685px; top: 28.2843px;">
-					<div id="blade_3" style="position: absolute; transform: rotate(135deg);">
-						<div id="blade_graphic_3" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(183, 217, 63) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div>
-					</div>
-				</div>
-				<div id="blade_holder_5" style="position: absolute; left: -28.2843px; top: -5.65685px;">
-					<div id="blade_5" style="position: absolute; transform: rotate(225deg);">
-						<div id="blade_graphic_5" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(106, 145, 205) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div>
-					</div>
-				</div>
-				<div id="blade_holder_7" style="position: absolute; left: 5.65685px; top: -28.2843px;">
-					<div id="blade_7" style="position: absolute; transform: rotate(315deg);">
-						<div id="blade_graphic_7" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(207, 99, 153) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="load-screen__message"></div>
-	</div>
+
+	<div class="load-screen load-screen--active" style="display:none" id="load_screen_root"><div class="load-screen__iris" style="position: relative; pointer-events: none; width: 48px; height: 48px; display: block;"><div style="position: absolute; left: 24px; top: 24px;" class="animate-iris-blade-container"><div id="blade_holder_0" style="position: absolute; left: 24px; top: -16px;" class="animate-iris-blade-holder"><div id="blade_0" style="position: absolute; transform: rotate(0deg);"><div id="blade_graphic_0" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(225, 74, 67) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div></div></div><div id="blade_holder_2" style="position: absolute; left: 16px; top: 24px;" class="animate-iris-blade-holder"><div id="blade_2" style="position: absolute; transform: rotate(90deg);"><div id="blade_graphic_2" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(245, 233, 73) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div></div></div><div id="blade_holder_4" style="position: absolute; left: -24px; top: 16px;" class="animate-iris-blade-holder"><div id="blade_4" style="position: absolute; transform: rotate(180deg);"><div id="blade_graphic_4" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(103, 195, 105) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div></div></div><div id="blade_holder_6" style="position: absolute; left: -16px; top: -24px;" class="animate-iris-blade-holder"><div id="blade_6" style="position: absolute; transform: rotate(270deg);"><div id="blade_graphic_6" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(150, 109, 184) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div></div></div><div id="blade_holder_1" style="position: absolute; left: 28.2843px; top: 5.65685px;" class="animate-iris-blade-holder"><div id="blade_1" style="position: absolute; transform: rotate(45deg);"><div id="blade_graphic_1" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(251, 159, 57) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div></div></div><div id="blade_holder_3" style="position: absolute; left: -5.65685px; top: 28.2843px;" class="animate-iris-blade-holder"><div id="blade_3" style="position: absolute; transform: rotate(135deg);"><div id="blade_graphic_3" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(183, 217, 63) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div></div></div><div id="blade_holder_5" style="position: absolute; left: -28.2843px; top: -5.65685px;" class="animate-iris-blade-holder"><div id="blade_5" style="position: absolute; transform: rotate(225deg);"><div id="blade_graphic_5" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(106, 145, 205) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div></div></div><div id="blade_holder_7" style="position: absolute; left: 5.65685px; top: -28.2843px;" class="animate-iris-blade-holder"><div id="blade_7" style="position: absolute; transform: rotate(315deg);"><div id="blade_graphic_7" style="position: absolute; background-color: rgba(0, 0, 0, 0); transform: rotate(-45deg); left: -16.9706px; bottom: -40.9706px; border-color: rgb(207, 99, 153) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 17.9706px; border-image: none 100% / 1 / 0 stretch; opacity: 0.8;"></div></div></div></div></div><div class="load-screen__message"></div></div>
+
+
+
 
 	<div id="signInBox" style="display:none" class="modal-root modal-root--is-active modal-root--is-dialog" id="modal_root">
 		<div onclick="signInDialog('none')" class="modal-root__outer light-theme modal-root__outer--is-bottommost modal-root__outer--is-topmost  " style="z-index: 1;">
@@ -519,41 +477,55 @@
 						<h2 data-lang="sign_in_modal_heading" class="centered-modal__heading centered-modal__heading--sm-margin h3">Welcome Back! Please Sign&nbsp;In</h2>
 						<div class="centered-modal__column">
 							<p class="centered-modal__sub-heading text-lg">
-								<string data-lang="sign_in_modal_sub_heading">New to RroyalArt?</string> <a id="sign_in_modal_create_account" data-lang="register_here" href="#">Register here</a> </p>
+								<string data-lang="sign_in_modal_sub_heading">New to RroyalArt?</string> <a id="sign_in_modal_create_account" data-lang="register_here" target="_blank" href="https://accounts.google.com/SignUp">Register here</a> </p>
 							<!--<p class="form-divider"><span data-lang="or_email">Or Email</span></p>-->
 							<form id="sign_in_form" action="javascript:;">
 								<div class="form-errors"></div>
 								<div class="form-field">
-									<label data-lang="email_label" class="form-field__label" for="sign_in_form_email">Email</label>
+									<label data-lang="email_label" class="form-field__label" for="sign_in_form_email">Your email as login:</label>
 									<input id="sign_in_form_email" class="form-field__input" type="text" required="" autocomplete="email">
-									<p data-lang="error_invalid_email" class="form-field__error">Please enter a valid email</p>
+									<p data-lang="error_invalid_email" style="margin-top: -20px;margin-bottom:10px;" id="loginErrorText" class="form-field__error">Please enter a valid email</p>
 								</div><!--
 								<div class="form-field">
 									<label data-lang="password" class="form-field__label" for="sign_in_form_password">Password</label>
 									<input id="sign_in_form_password" class="form-field__input" type="password" required="" autocomplete="current-password" maxlength="100">
 									<p data-lang="sign_in_modal_password_error" class="form-field__error">Please enter your password</p>
 								</div>-->
+
+								<div class="form-field">
+									<input style="display:inline; opacity:1; position:relative; width:20px; height:20px;z-index:1222" id="stay_signed_in" class="form-field__input" type="checkbox"  ></input>
+									<label style="display:inline;margin-left:10px; margin-bottom:10px" data-lang="stay" class="form-field__label" for="stay_signed_in">Stay signed in</label>
+								</div>
+
 							<div class="button-group button-group--wrap">
-								<button id="sign_in_modal_facebook" class="button button--lg button--white-outline" disabled="">
-									<svg class="icon icon--20" style="margin-right: 6px">
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook-social-icon"></use>
+								<button id="sign_in_modal_facebook"  style="height:50px;width:240px;margin-top:0px" class="button button--lg button--white-outline" disabled="">
+									<svg class="icon icon--20" style="margin-right: 16px">
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#facebook-social-icon">
+
+										<symbol id="facebook-social-icon" viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07" fill="#1877F2"></path></symbol>
+										</use>
 									</svg>
-									<string data-lang="use_facebook">Sign in with Facebook</string>
+									<string data-lang="use_facebook">Continue with Facebook</string>
 								</button>
-								<button id="sign_in_modal_google" onclick="authWithEmail()" class="button button--lg button--white-outline">
+								<div onclick="ui_authWithEmailClicked()" style="height:50px;width:240px;" class="abcRioButton abcRioButtonBlue"><div class="abcRioButtonContentWrapper"><div class="abcRioButtonIcon" style="padding:15px"><div style="width:18px;height:18px;" class="abcRioButtonSvgImageWithFallback abcRioButtonIconImage abcRioButtonIconImage18"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 48 48" class="abcRioButtonSvg"><g><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path><path fill="none" d="M0 0h48v48H0z"></path></g></svg></div></div><span style="font-size:16px;line-height:48px;" class="abcRioButtonContents"><span id="not_signed_indyfcpugwmefz">Continue with Google</span><span id="connecteddyfcpugwmefz" style="display:none">Signed in with Google</span></span></div></div>
+								<!--
+								<button id="sign_in_modal_google" class="button button--lg button--white-outline">
 									<svg class="icon icon--20" style="margin-right: 6px">
 										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#google-icon"></use>
 									</svg>
 									<string data-lang="use_google">Sign in with Google</string>
-								</button>
+								</button>-->
 							</div>
 								<!--<button data-lang="sign_in" type="submit" class="button button--fullwidth button--xl button--blue" data-bf="sign-in__submit" style="display: block">Sign&nbsp;In</button>-->
 							</form>
-							<p class="centered-modal__footer-text"> <a id="sign_in_modal_forgot_password" data-lang="sign_in_modal_forgot_password" href="#">Forgot your password?</a> </p>
+							<p class="centered-modal__footer-text"> <a id="sign_in_modal_forgot_password" data-lang="sign_in_modal_forgot_password" target="_blank" href="https://accounts.google.com/signin/recovery">Forgot your password?</a> </p>
 						</div>
 					</div>
 				</div>
-				<button class="button button--icon button--transparent button--sm modal-root__close-button" aria-label="Close">
-					<svg class="icon">
+				<button  onclick="signInDialog('none')"  class="button button--icon button--transparent button--sm modal-root__close-button" aria-label="Close"><svg class="icon">
+		<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-icon"><symbol id="cancel-icon" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.39 2.33a.75.75 0 00-1.06 1.06L6.93 8l-4.6 4.61a.75.75 0 001.06 1.06L8 9.06l4.61 4.61a.75.75 0 001.06-1.06L9.07 8l4.6-4.61a.75.75 0 10-1.06-1.06L8 6.93l-4.61-4.6z"></path></symbol></use>
+	</svg></button>
+
+
 </body>
 </html>

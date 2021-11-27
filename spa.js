@@ -80,6 +80,7 @@ function spa_checkLogined(){
 }
 
  window.addEventListener("message", spa_receiveMessage, false);
+window.spa_userAuthSuccessCallback = ''
 
 function spa_receiveMessage(event)
 {
@@ -99,6 +100,9 @@ function spa_receiveMessage(event)
 		 ui_setLoginedInterface(window.userToLogin)
 		 setCookie('stateData',JSON.stringify(event.data), 1)
 		 setCookie('loginedUser',window.userToLogin, 1)
+		 if (window.spa_userAuthSuccessCallback){
+			 window.spa_userAuthSuccessCallback()
+		 }
 		 //setState(event.data)
 	 }
 }

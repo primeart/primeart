@@ -1,8 +1,8 @@
 
 ///interface
 
-	function ui_signInDialog(display) {
-		signInDialog(display)
+	function ui_signInDialog(show) {
+		signInDialog(show?'block':'none')
 	}
 	function signInDialog(display) {
 		if(window.event.target !== window.event.currentTarget) {
