@@ -2,9 +2,7 @@
 ///interface
 
 	function ui_signInDialog(show) {
-		signInDialog(show?'block':'none')
-	}
-	function signInDialog(display) {
+		display = show?'block':'none'
 		if(display=='none' && window.event && window.event.target !== window.event.currentTarget) {
 			return false
 		}
@@ -35,7 +33,6 @@
 			document.getElementById('signInButtonHamburger').innerHTML = 'Sign In'
 			document.getElementById('getStartedButton').innerHTML = 'Get Started'
 			document.getElementById('getStartedButtonHamburger').innerHTML = 'Get Started'
-
 			//document.getElementById('signinButton').style.display = 'block'
 			//document.getElementById('getStartedButton').style.display = 'block'
 			//document.getElementById('signedInAccountButton').style.display = 'none'
@@ -47,6 +44,7 @@
 			//document.getElementById('getStartedButton').style.display = 'none'
 			document.getElementById('getStartedButton').innerHTML = '⚙'
 			document.getElementById('getStartedButtonHamburger').innerHTML = 'Account Settings'
+			ui_signInDialog(false)
 
 
 			//document.getElementById('signedInAccountButton').style.display = 'block'

@@ -106,15 +106,11 @@ function spa_receiveMessage(event)
 		 setCookie('responceUrl',event.data[2], event.data[3])
 		 setCookie('loginedUser',window.userToLogin, event.data[1])
 
-		 if (window.location.href.indexOf('dashboard.html')==-1){
-			spa_navigate('dashboard.html')
-		 }else{
-			ui_setLoginedInterface(window.spa_loginedUser)
-		 }
+
 		 //if (window.spa_userAuthSuccessCallback){
 		 //	 window.spa_userAuthSuccessCallback()
 		 //}
-		 //spa_init()
+		 spa_init()
 		 //setState(event.data)
 	 }
 }
@@ -134,6 +130,8 @@ function httpGet(theUrl)
 }
 alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 */
+dashboard = location.href.indexOf('dashboard.html')>-1
+
 		//todo do before page content appears
 		userCandidate = getCookie('loginedUser');
 		if (validateEmail(userCandidate)){
@@ -143,10 +141,17 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 			if(window.spa_requestUrl){
 				ui_setLoginedInterface(window.spa_loginedUser)
 			}
+
+			  if (!dashboard ){
+				spa_navigate('dashboard.html')
+			 }else{
+				ui_setLoginedInterface(window.spa_loginedUser)
+			 }
+
 		}else{
 			//tmp
-			authRequired = location.href.indexOf('/create/')>-1//document.getElementById('main-content').innerHTML.indexOf('Sign in required to access this page')>-1
-			if (authRequired){
+			//document.getElementById('main-content').innerHTML.indexOf('Sign in required to access this page')>-1
+			if (dashboard){
 				 ui_signInDialog(true)
 				 //window.spa_userAuthSuccessCallback = location.reload
 			}
