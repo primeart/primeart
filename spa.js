@@ -131,9 +131,10 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 		}else{
 			//tmp
 			authRequired = location.href.indexOf('/create/')>-1//document.getElementById('main-content').innerHTML.indexOf('Sign in required to access this page')>-1
-			if (authRequired)
+			if (authRequired){
 				 ui_signInDialog(true)
 				 window.spa_userAuthSuccessCallback = location.reload
+			}
 		}
 		//if (window.location.indexOf('/?')>0){
 		 //   setPage(window.location.split('/?')[1])
