@@ -27,6 +27,7 @@
 
 	function ui_setLoginedInterface(userName){
 		document.getElementById('signinButton').style.display = 'none'
+		document.getElementById('getStartedButton').style.display = 'none'
 		document.getElementById('signedInAccountButton').style.display = 'block'
 		document.getElementById('signedInAccountButton').innerHTML = userName[0].toUpperCase()
 
