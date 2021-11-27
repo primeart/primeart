@@ -26,10 +26,11 @@
 	}
 
 	function ui_setLoginedInterface(userName){
+		 ui_signInDialog(false)
 		document.getElementById('signinButton').style.display = 'none'
 		document.getElementById('getStartedButton').style.display = 'none'
 		document.getElementById('signedInAccountButton').style.display = 'block'
-		document.getElementById('signedInAccountButton').innerHTML = userName[0].toUpperCase()
+		//document.getElementById('signedInAccountButton').innerHTML = userName[0].toUpperCase()
 
 		//document.getElementById('site-nav__dropdown-root').style.display = 'block'
 
@@ -37,6 +38,7 @@
 			//sign in to sign out, also in hamburger menu
 			//set username and icon at top
 	}
+
 
 
 	function ui_waiter(show){
@@ -58,4 +60,8 @@
 		}
 		document.getElementById('loginErrorText').style.display='none'
 		spa_authUser(userToLogin)
+	}
+
+	function ui_signedInAccountButtonClicked(){
+		document.getElementById('site-nav__dropdown-container').style.display = 'block'
 	}
