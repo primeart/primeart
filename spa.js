@@ -45,6 +45,11 @@ function httpRequest(url, type, data, callback){
 		Http.send();
 	}
 }
+function timeNow(){
+	var d = new Date(2020, 4, 29, 22, 00, 00, 00);
+		return Math.floor( d / 1000 );
+	}
+
 /*
 xhr.onload = () => {
   const status = xhr.status;
@@ -70,32 +75,37 @@ xhr.onerror = () => {
 //}
 
 function spa_apiRequest(apiCommand, data, callback){
-	window.apiRequestCallback = callback
+	if (window.spa_requestId){
+		alert('Error #821088. Try again')
+		location.reload()
+		return false
+	}
+	window.spa_apiRequestCallback = callback
+	window.spa_requestId=timeNow()
+	window.spa_responceAwaitTries=0
 	//httpRequest(window.requesturl, data=data, callback=waitResponce)
 	//if (!data.type){
-		data = JSON.stringify({'apiCommand':apiCommand, 'data':data})
+		data = JSON.stringify({'apiCommand':apiCommand, 'requestId':window.spa_requestId, 'data':data})
 	//}
-	httpRequest(window.spa_requestUrl, 'PUT', data)
+	httpRequest(window.spa_requestUrl, 'PUT', data, waitApiResponceAndCallback)
 	//file = fileFromArray({'apiCommand':apiCommand,'data':data})
 	//spa_putFileRequest(window.requesturl, file, waitApiResponceAndCallback)
 	//httpRequest(data.imagePutUrl, 'PUT', data)
-	window.requestId='asdf'
-	window.responceAwaitTries=0
 	//waitApiResponceAndCallback()
 	ui_waiter(true)
 }
 
 function waitApiResponceAndCallback(){
 	httpRequest(window.spa_responceUrl, 'GET', {}, function(responce){
-		if (false && responce.requestId != window.requestId)
+		if (responce.requestId != window.requestId)
 		{
-			if (responceAwaitTries>600){
+			if (window.spa_responceAwaitTries>600){
 				alert('Failed to perform action. Login and try again.')
 				spa_signOut()
 				location.reload()
 			}
 			else{
-				setTimeout(waitApiResponceAndCallback, 500)
+				setTimeout(waitApiResponceAndCallback, 1500)
 			}
 		}else{
 			console.log('resoince:')
@@ -107,8 +117,8 @@ function waitApiResponceAndCallback(){
 			window.spa_requestUrl=responce.requestUrl
 			window.spa_responceUrl=responce.responceUrl
 			ui_waiter(false)
-			callback(window.apiRequestCallback(responce.commandResult))
-			window.apiRequestCallback=''
+			callback(window.spa_apiRequestCallback(responce.responceData))
+			window.spa_apiRequestCallback =''
 		}
 	})
 }
