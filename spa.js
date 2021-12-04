@@ -39,7 +39,7 @@ function httpRequest(url, type, data, callback){
 		}
 	}
 	if (data){
-		Http.setRequestHeader('Content-Type', data.type);
+		Http.setRequestHeader('Content-Type', data.type||'text/html');
 		Http.send(data);
 	}else{
 		Http.send();
@@ -68,21 +68,25 @@ xhr.onerror = () => {
 function spa_putFileRequest(url, data, callback){
 		httpRequest(data.imagePutUrl, 'PUT',data) //, callback=waitResponce
 }
+
+
 function spa_apiRequest(apiCommand, data, callback){
 	window.apiRequestCallback = callback
 	//httpRequest(window.requesturl, data=data, callback=waitResponce)
 	if (data && data.join){
 		data = JSON.stringify(data)
 	}
+	httpRequest(window.spa_requestUrl, 'PUT', data)
 	//file = fileFromArray({'apiCommand':apiCommand,'data':data})
 	//spa_putFileRequest(window.requesturl, file, waitApiResponceAndCallback)
-	httpRequest(data.imagePutUrl, 'PUT', data)
+	//httpRequest(data.imagePutUrl, 'PUT', data)
 	window.requestId='asdf'
 	window.responceAwaitTries=0
 	//waitApiResponceAndCallback()
 	ui_waiter(true)
 
 }
+ 
 
 function waitApiResponceAndCallback(){
 	httpRequest(window.responceturl, 'GET', function(responce){
