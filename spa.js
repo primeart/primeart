@@ -189,9 +189,11 @@ function spa_receiveMessage(event)
 	 if (true){ //so far only logined message expected; todo expect different message and check here
 		 //setState('logined',[window.userToLogin, event.data])
 		 //ui_setLoginedInterface(window.userToLogin)
-		 setCookie('requestUrl',event.data[0], event.data[1])
-		 setCookie('responceUrl',event.data[2], event.data[3])
-		 setCookie('loginedUser',window.userToLogin, event.data[1])
+		 timeout=event.data[1]
+		 timeout2=event.data[3]
+		 setCookie('requestUrl',event.data[0], timeout)
+		 setCookie('responceUrl',event.data[2],timeout2)
+		 setCookie('loginedUser',window.userToLogin, timeout)
 
 
 		 //if (window.spa_userAuthSuccessCallback){
