@@ -102,7 +102,7 @@ function spa_apiRequest(apiCommand, data, callback){
 
 function waitApiResponceAndCallback(){
 	httpRequest(window.spa_responceUrl, 'GET', {}, function(responce){
-		if (responce.requestId != window.requestId)
+		if (responce.requestId != window.spa_requestId)
 		{
 			if (window.spa_responceAwaitTries>600){
 				alert('Failed to perform action. Login and try again.')
@@ -122,8 +122,8 @@ function waitApiResponceAndCallback(){
 			window.spa_requestUrl=responce.requestUrl
 			window.spa_responceUrl=responce.responceUrl
 			ui_waiter(false)
-			callback(window.spa_apiRequestCallback(responce.responceData))
-			window.spa_apiRequestCallback =''
+			window.spa_apiRequestCallback(responce.responceData)
+			window.spa_apiRequestCallback = ''
 		}
 	})
 }
