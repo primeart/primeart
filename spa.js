@@ -65,16 +65,15 @@ xhr.onerror = () => {
 //	 iFrame.contentWindow.postMessage(window.iframeMessage, 'https:/'+'/storage.googleapis.com/'); //domain of event.data[0]
 //}
 
-function spa_putFileRequest(url, data, callback){
-		httpRequest(data.imagePutUrl, 'PUT',data) //, callback=waitResponce
-}
-
+//function spa_putFileRequest(url, data, callback){
+//		httpRequest(data.imagePutUrl, 'PUT',data) //, callback=waitResponce
+//}
 
 function spa_apiRequest(apiCommand, data, callback){
 	window.apiRequestCallback = callback
 	//httpRequest(window.requesturl, data=data, callback=waitResponce)
 	if (data && data.join){
-		data = JSON.stringify(data)
+		data = JSON.stringify({'apiCommand':apiCommand}+data)
 	}
 	httpRequest(window.spa_requestUrl, 'PUT', data)
 	//file = fileFromArray({'apiCommand':apiCommand,'data':data})
@@ -84,13 +83,11 @@ function spa_apiRequest(apiCommand, data, callback){
 	window.responceAwaitTries=0
 	//waitApiResponceAndCallback()
 	ui_waiter(true)
-
 }
- 
 
 function waitApiResponceAndCallback(){
 	httpRequest(window.responceturl, 'GET', function(responce){
-		if (responce.requestId != window.requestId)
+		if (false && responce.requestId != window.requestId)
 		{
 			if (responceAwaitTries>600){
 				alert('Failed to perform action. Login and try again.')
@@ -101,6 +98,8 @@ function waitApiResponceAndCallback(){
 				setTimeout(waitApiResponceAndCallback, 500)
 			}
 		}else{
+			console.log('resoince:')
+			console.log(responce)
 			//we got responce for what we asked
 			window.requestId=''
 			window.responceAwaitTries=0
