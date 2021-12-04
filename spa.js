@@ -116,8 +116,8 @@ function waitApiResponceAndCallback(){
 			console.log('resoince:')
 			console.log(responce)
 			//we got responce for what we asked
-			window.requestId=''
-			window.responceAwaitTries=0
+			window.spa_requestId=''
+			window.spa_responceAwaitTries=0
 			//window.imagePutUrl=responce.imagePutUrl
 			window.spa_requestUrl=responce.requestUrl
 			window.spa_responceUrl=responce.responceUrl
