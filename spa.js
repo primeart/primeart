@@ -129,13 +129,15 @@ function waitApiResponceAndCallback(){
 			//window.imagePutUrl=responce.imagePutUrl
 //			window.spa_requestUrl=responce.requestUrl
 //			window.spa_responceUrl=responce.responceUrl
-			ui_waiter(false)
+
 			if (callback=window.spa_apiRequestCallbacks[responce.requestId]){
 				delete window.spa_apiRequestCallbacks[responce.requestId]
 				callback(responce.responceData)// !== false && ()
 			}
 			if (Object.keys(window.spa_apiRequestCallbacks).length > 0){
 				setTimeout(waitApiResponceAndCallback, 1500)
+			}else{
+				ui_waiter(false)
 			}
 						//window.spa_apiRequestCallback = ''
 		//}
@@ -255,6 +257,8 @@ function spa_signOut(){
 
 
 function spa_init(){
+	//!todo check login cookies expire date and set timeout to periodically opdate them when idle
+
 /*
 function httpGet(theUrl)
 {
