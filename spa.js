@@ -80,6 +80,7 @@ xhr.onerror = () => {
 //}
 window.spa_apiRequestCallbacks={}
 function spa_apiRequest(apiCommand, data, callback){
+	console.log('spa_apiRequest :: apiCommand=',apiCommand)
 	if (window.spa_apiRequestCallbacks.length>0){
 		alert('Error #821088. Try again')
 		location.reload()
@@ -103,6 +104,8 @@ function spa_apiRequest(apiCommand, data, callback){
 }
 
 function waitApiResponceAndCallback(){
+	console.log('waitApiResponceAndCallback :: window.spa_apiRequestCallbacks=')
+	console.log(window.spa_apiRequestCallbacks)
 	httpRequest(window.spa_responceUrl, 'GET', {}, function(responce){
 		/*
 		if (responce.requestId != window.spa_requestId)
@@ -132,7 +135,7 @@ function waitApiResponceAndCallback(){
 				callback(responce.responceData)// !== false && ()
 			}
 			if (window.spa_apiRequestCallbacks.length>0){
-				(waitApiResponceAndCallback, 1500)
+				setTimeout(waitApiResponceAndCallback, 1500)
 			}
 						//window.spa_apiRequestCallback = ''
 		//}
