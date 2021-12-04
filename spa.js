@@ -134,7 +134,7 @@ function waitApiResponceAndCallback(){
 				delete window.spa_apiRequestCallbacks[responce.requestId]
 				callback(responce.responceData)// !== false && ()
 			}
-			if (window.spa_apiRequestCallbacks.length>0){
+			if (Object.keys(window.spa_apiRequestCallbacks).length > 0){
 				setTimeout(waitApiResponceAndCallback, 1500)
 			}
 						//window.spa_apiRequestCallback = ''
