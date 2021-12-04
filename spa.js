@@ -113,7 +113,7 @@ function waitApiResponceAndCallback(){
 				setTimeout(waitApiResponceAndCallback, 1500)
 			}
 		}else{
-			console.log('resoince:')
+			console.log('waitApiResponceAndCallback responce:')
 			console.log(responce)
 			//we got responce for what we asked
 			window.spa_requestId=''
@@ -123,7 +123,7 @@ function waitApiResponceAndCallback(){
 			window.spa_responceUrl=responce.responceUrl
 			ui_waiter(false)
 			window.spa_apiRequestCallback(responce.responceData)
-			window.spa_apiRequestCallback = ''
+			//window.spa_apiRequestCallback = ''
 		}
 	})
 }
