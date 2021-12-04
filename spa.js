@@ -51,8 +51,8 @@ function httpRequest(url, type, data, callback){
 	}
 }
 function timeNow(){
-	var d = new Date(2020, 4, 29, 22, 00, 00, 00);
-		return Math.floor( d / 1000 );
+	var d = new Date();
+		return Math.floor( d   );
 	}
 
 /*
