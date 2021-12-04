@@ -34,7 +34,12 @@ function httpRequest(url, type, data, callback){
 		Http.onreadystatechange = function() {
 			if (this.readyState==4 && this.status==200){
 				console.log(Http.responseText)
-				callback(JSON.parse(this.responseText))
+				try{
+					parsed = JSON.parse(this.responseText)
+				}catch(e){
+					parsed={}
+				}
+				callback(parsed)
 			}
 		}
 	}
