@@ -95,11 +95,23 @@
 	function ui_getStartedClicked()
 	{
 		if (spa_isLogined()){
-			spa_navigate('account.html')
+			//!tmp:
+			spa_signOut()
+			//!spa_navigate('account.html')
 		}else{
 			ui_signInDialog(true)
 
 		}
 	}
+	function ui_closeBtnClicked()
+	{
+		dashboard = location.href.indexOf('dashboard.html')>-1
+		if (dashboard ){
+			spa_navigate('index.html')
+		}else{
+			ui_signInDialog(false)
+		}
+	}
+
 
 	function registerLazyImageContainer(){}
