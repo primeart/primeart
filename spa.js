@@ -80,7 +80,7 @@ xhr.onerror = () => {
 //}
 window.spa_apiRequestCallbacks={}
 function spa_apiRequest(apiCommand, data, callback){
-	if (window.spa_requestId){
+	if (window.spa_apiRequestCallbacks.length>0){
 		alert('Error #821088. Try again')
 		location.reload()
 		return false
@@ -128,7 +128,8 @@ function waitApiResponceAndCallback(){
 			window.spa_responceUrl=responce.responceUrl
 			ui_waiter(false)
 			if (callback=window.spa_apiRequestCallbacks[responce.requestId]){
-				callback(responce.responceData) !== false && (delete window.spa_apiRequestCallbacks[responce.requestId])
+				delete window.spa_apiRequestCallbacks[responce.requestId]
+				callback(responce.responceData)// !== false && ()
 			}
 			if (window.spa_apiRequestCallbacks.length>0){
 				(waitApiResponceAndCallback, 1500)
