@@ -27,10 +27,9 @@ function validateEmail(email)
 		return re.test(email);
 	}
 
-function httpRequest(url, type, data,callback){
+function httpRequest(url, type, data, callback){
 	const Http = new XMLHttpRequest();
-	Http.open(type, url);
-	Http.send();
+	Http.open(type, url, true);
 	if (callback){
 		Http.onreadystatechange = function() {
 			if (this.readyState==4 && this.status==200){
@@ -39,8 +38,27 @@ function httpRequest(url, type, data,callback){
 			}
 		}
 	}
+	if (data){
+		Http.setRequestHeader('Content-Type', data.type);
+		Http.send(data);
+	}else{
+		Http.send();
+	}
 }
+/*
+xhr.onload = () => {
+  const status = xhr.status;
+  if (status === 200) {
+	alert("File is uploaded");
+  } else {
+	alert("Something went wrong!");
+  }
+};
 
+xhr.onerror = () => {
+  alert("Something went wrong");
+};
+*/
 
 //function messageIframe(){
 //	 const iFrame = document.getElementById('workerIframe');
@@ -53,8 +71,12 @@ function spa_putFileRequest(url, data, callback){
 function spa_apiRequest(apiCommand, data, callback){
 	window.apiRequestCallback = callback
 	//httpRequest(window.requesturl, data=data, callback=waitResponce)
-	file = fileFromArray({'apiCommand':apiCommand,'data':data})
-	spa_putFileRequest(window.requesturl, file, waitApiResponceAndCallback)
+	if (data && data.join){
+		data = JSON.stringify(data)
+	}
+	//file = fileFromArray({'apiCommand':apiCommand,'data':data})
+	//spa_putFileRequest(window.requesturl, file, waitApiResponceAndCallback)
+	httpRequest(data.imagePutUrl, 'PUT', data)
 	window.requestId='asdf'
 	window.responceAwaitTries=0
 	//waitApiResponceAndCallback()
