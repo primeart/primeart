@@ -78,19 +78,21 @@ xhr.onerror = () => {
 //function spa_putFileRequest(url, data, callback){
 //		httpRequest(data.imagePutUrl, 'PUT',data) //, callback=waitResponce
 //}
-
+window.spa_apiRequestCallbacks={}
 function spa_apiRequest(apiCommand, data, callback){
 	if (window.spa_requestId){
 		alert('Error #821088. Try again')
 		location.reload()
 		return false
 	}
-	window.spa_apiRequestCallback = callback
-	window.spa_requestId=timeNow()
+	spa_requestId = timeNow()
+	window.spa_apiRequestCallbacks[spa_requestId]=callback
+	//window.spa_apiRequestCallback = callback
+	//window.spa_requestId=timeNow()
 	window.spa_responceAwaitTries=0
 	//httpRequest(window.requesturl, data=data, callback=waitResponce)
 	//if (!data.type){
-		data = JSON.stringify({'apiCommand':apiCommand, 'requestId':window.spa_requestId, 'data':data})
+		data = JSON.stringify({'apiCommand':apiCommand, 'requestId':spa_requestId, 'data':data})
 	//}
 	httpRequest(window.spa_requestUrl, 'PUT', data, waitApiResponceAndCallback)
 	//file = fileFromArray({'apiCommand':apiCommand,'data':data})
@@ -102,29 +104,37 @@ function spa_apiRequest(apiCommand, data, callback){
 
 function waitApiResponceAndCallback(){
 	httpRequest(window.spa_responceUrl, 'GET', {}, function(responce){
+		/*
 		if (responce.requestId != window.spa_requestId)
 		{
-			if (window.spa_responceAwaitTries>600){
+			if (window.spa_responceAwaitTries++ > 600){
 				alert('Failed to perform action. Login and try again.')
 				spa_signOut()
 				location.reload()
 			}
 			else{
 				setTimeout(waitApiResponceAndCallback, 1500)
+
 			}
-		}else{
+		}else
+		*///{
 			console.log('waitApiResponceAndCallback responce:')
 			console.log(responce)
 			//we got responce for what we asked
-			window.spa_requestId=''
+//			window.spa_requestId=''
 			window.spa_responceAwaitTries=0
 			//window.imagePutUrl=responce.imagePutUrl
 			window.spa_requestUrl=responce.requestUrl
 			window.spa_responceUrl=responce.responceUrl
 			ui_waiter(false)
-			window.spa_apiRequestCallback(responce.responceData)
-			//window.spa_apiRequestCallback = ''
-		}
+			if (callback=window.spa_apiRequestCallbacks[responce.requestId]){
+				callback(responce.responceData) !== false && (delete window.spa_apiRequestCallbacks[responce.requestId])
+			}
+			if (window.spa_apiRequestCallbacks.length>0){
+				(waitApiResponceAndCallback, 1500)
+			}
+						//window.spa_apiRequestCallback = ''
+		//}
 	})
 }
 
