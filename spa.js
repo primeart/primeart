@@ -72,9 +72,9 @@ xhr.onerror = () => {
 function spa_apiRequest(apiCommand, data, callback){
 	window.apiRequestCallback = callback
 	//httpRequest(window.requesturl, data=data, callback=waitResponce)
-	if (data && data.join){
-		data = JSON.stringify({'apiCommand':apiCommand}+data)
-	}
+	//if (!data.type){
+		data = JSON.stringify({'apiCommand':apiCommand, 'data':data})
+	//}
 	httpRequest(window.spa_requestUrl, 'PUT', data)
 	//file = fileFromArray({'apiCommand':apiCommand,'data':data})
 	//spa_putFileRequest(window.requesturl, file, waitApiResponceAndCallback)
@@ -103,11 +103,11 @@ function waitApiResponceAndCallback(){
 			//we got responce for what we asked
 			window.requestId=''
 			window.responceAwaitTries=0
-			window.imagePutUrl=responce.imagePutUrl
-			window.requesturl=responce.requesturl
-			window.responceturl=responce.responceturl
+			//window.imagePutUrl=responce.imagePutUrl
+			window.spa_requestUrl=responce.requestUrl
+			window.spa_responceUrl=responce.responceUrl
 			ui_waiter(false)
-			calback(window.apiRequestCallback)
+			calback(window.apiRequestCallback(responce.commandResult))
 			window.apiRequestCallback=''
 		}
 	})
