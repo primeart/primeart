@@ -127,8 +127,8 @@ function waitApiResponceAndCallback(){
 //			window.spa_requestId=''
 			window.spa_responceAwaitTries=0
 			//window.imagePutUrl=responce.imagePutUrl
-			window.spa_requestUrl=responce.requestUrl
-			window.spa_responceUrl=responce.responceUrl
+//			window.spa_requestUrl=responce.requestUrl
+//			window.spa_responceUrl=responce.responceUrl
 			ui_waiter(false)
 			if (callback=window.spa_apiRequestCallbacks[responce.requestId]){
 				delete window.spa_apiRequestCallbacks[responce.requestId]
