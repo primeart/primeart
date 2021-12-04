@@ -86,7 +86,7 @@ function spa_apiRequest(apiCommand, data, callback){
 }
 
 function waitApiResponceAndCallback(){
-	httpRequest(window.responceturl, 'GET', function(responce){
+	httpRequest(window.spa_responceUrl, 'GET', {}, function(responce){
 		if (false && responce.requestId != window.requestId)
 		{
 			if (responceAwaitTries>600){
@@ -107,7 +107,7 @@ function waitApiResponceAndCallback(){
 			window.spa_requestUrl=responce.requestUrl
 			window.spa_responceUrl=responce.responceUrl
 			ui_waiter(false)
-			calback(window.apiRequestCallback(responce.commandResult))
+			callback(window.apiRequestCallback(responce.commandResult))
 			window.apiRequestCallback=''
 		}
 	})
