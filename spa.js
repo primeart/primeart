@@ -163,9 +163,10 @@ function spa_checkLogined(){
 }
 
  window.addEventListener("message", spa_receiveMessage, false);
-document.addEventListener("DOMContentLoaded", function(){
-   spa_init()
-});
+//document.addEventListener("DOMContentLoaded", function(){
+ //  spa_init()
+//});
+document.addEventListener("DOMContentLoaded", spa_init);
 
 window.spa_userAuthSuccessCallback = ''
 
