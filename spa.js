@@ -151,10 +151,11 @@ function spa_authUser(userToLogin){
 	if (window.spa_loginedUser && validateEmail(window.spa_loginedUser)){
 		return  //already logined; malicious call
 	}
+
 	window.userToLogin = userToLogin
-	udir = userToLogin.replace(/[^a-zA-Z0-9-]/img,'_')
+	udir = btoa(userToLogin) // userToLogin.replace(/[^a-zA-Z0-9-]/img,'_')
 	const strWindowFeatures = 'toolbar=no, menubar=no, width=600, height=700';
-	loginWindow = window.open('https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2Froyal-art%2Fu%2F'+udir+'%2Fauth&flowEntry=AccountChooser',  '_blank', strWindowFeatures);
+	loginWindow = window.open('https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2Froyal-art%2Frequests%2F'+udir+'%2Fauth&flowEntry=AccountChooser',  '_blank', strWindowFeatures);
 	//    ?pli=1&authuser=2
 	loginWindow.focus();
 
@@ -220,6 +221,8 @@ function spa_receiveMessage(event)
 	 if (true){ //so far only logined message expected; todo expect different message and check here
 		 //setState('logined',[window.userToLogin, event.data])
 		 //ui_setLoginedInterface(window.userToLogin)
+		 alert(event.data)
+		 
 		 timeout=event.data[1]
 		 timeout2=event.data[3]
 		 setCookie('requestUrl',event.data[0], timeout)
