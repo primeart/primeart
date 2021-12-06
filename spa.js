@@ -222,7 +222,7 @@ function spa_receiveMessage(event)
 		 //setState('logined',[window.userToLogin, event.data])
 		 //ui_setLoginedInterface(window.userToLogin)
 		 alert(event.data)
-		 
+
 		 timeout=event.data[1]
 		 timeout2=event.data[3]
 		 setCookie('requestUrl',event.data[0], timeout)
@@ -296,6 +296,8 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 		if (dashboard){
 			 ui_signInDialog(true)
 			 //window.spa_userAuthSuccessCallback = location.reload
+		}else{
+			ui_setLoginedInterface(false)
 		}
 	}
 	//if (window.location.indexOf('/?')>0){
