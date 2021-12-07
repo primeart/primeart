@@ -295,7 +295,7 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 			ui_setLoginedInterface(window.spa_loginedUser)
 		}
 
-		  if (!dashboard  || afterLogin){
+		  if (!dashboard  || afterLogin === true){
 			spa_navigate('dashboard.html')
 		 }else{
 			ui_setLoginedInterface(window.spa_loginedUser)
