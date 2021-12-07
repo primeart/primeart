@@ -34,7 +34,7 @@ function httpRequest(url, type, data, callback){
 	if (callback){
 		Http.onreadystatechange = function() {
 			if (this.readyState==4 ){ //&& this.status==200
-				console.log('httpRequest ready. Http.responseText:: ')
+				console.log('httpRequest ready. Http.responseText:: '+Http.responseURL)
 				console.log(Http.responseText)
 				try{
 					parsed = JSON.parse(this.responseText)
@@ -118,7 +118,7 @@ function spa_apiRequest(apiCommand, data, callback){
 }
 
 function waitApiResponceAndCallback(){
-	console.log('waitApiResponceAndCallback :: window.spa_apiRequestCallbacks=')
+	console.log('waitApiResponceAndCallback:: about to make get request, spa_apiRequestCallbacks:: ')
 	console.log(window.spa_apiRequestCallbacks)
 	httpRequest(window.spa_responceUrl, 'GET', {}, function(responce){
 		/*
@@ -135,7 +135,7 @@ function waitApiResponceAndCallback(){
 			}
 		}else
 		*///{
-			console.log('waitApiResponceAndCallback responce:')
+			console.log('waitApiResponceAndCallback"s callback got called with responce:')
 			console.log(responce)
 			//we got responce for what we asked
 //			window.spa_requestId=''
@@ -145,10 +145,12 @@ function waitApiResponceAndCallback(){
 //			window.spa_responceUrl=responce.responceUrl
 
 			if (callback=window.spa_apiRequestCallbacks[responce.requestId]){
+				console.log('ids match, calling callback! id: '+responce.requestId)
 				delete window.spa_apiRequestCallbacks[responce.requestId]
 				callback(responce.responceData)// !== false && ()
 			}
 			if (Object.keys(window.spa_apiRequestCallbacks).length > 0){
+				console.log('ids NOT match: no callback for recieved id, new timeout '+responce.requestId)
 				setTimeout(waitApiResponceAndCallback, 1500)
 			}else{
 				ui_waiter(false)
