@@ -99,13 +99,12 @@ function spa_apiRequest(apiCommand, data, callback){
 	//httpRequest(window.requesturl, data=data, callback=waitResponce)
 	//if (!data.type){
 	//    data = JSON.stringify({'apiCommand':apiCommand, 'requestId':spa_requestId, 'data':data})
-		data = JSON.stringify(window.spa_requestPolicy)
+		data = window.spa_requestPolicy
 	//}
 	//httpRequest(window.spa_requestUrl, 'PUT', data, waitApiResponceAndCallback)
 	httpRequest(window.spa_requestUrl, 'POST', data, waitApiResponceAndCallback)
 	ui_waiter(true)
-
-	console.log(window.spa_requestPolicy['policy'])
+ 
 }
 
 function waitApiResponceAndCallback(){
