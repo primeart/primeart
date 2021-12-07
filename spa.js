@@ -118,6 +118,11 @@ function spa_apiRequest(apiCommand, data, callback){
 }
 
 function waitApiResponceAndCallback(){
+	if (Object.keys(window.spa_apiRequestCallbacks).length <= 0){
+		console.log('waitApiResponceAndCallback:: no callbacks at start of function, spa_apiRequestCallbacks:: ')
+			console.log(window.spa_apiRequestCallbacks)
+			return
+	}
 	console.log('waitApiResponceAndCallback:: about to make get request, spa_apiRequestCallbacks:: ')
 	console.log(window.spa_apiRequestCallbacks)
 	httpRequest(window.spa_responceUrl, 'GET', {}, function(responce){
@@ -143,15 +148,16 @@ function waitApiResponceAndCallback(){
 			//window.imagePutUrl=responce.imagePutUrl
 //			window.spa_requestUrl=responce.requestUrl
 //			window.spa_responceUrl=responce.responceUrl
-
+			called=false
 			if (callback=window.spa_apiRequestCallbacks[responce.requestId]){
 				console.log('ids match, calling callback! id: '+responce.requestId)
+				called = true
 				delete window.spa_apiRequestCallbacks[responce.requestId]
 				callback(responce.responceData)// !== false && ()
 			}
-			if (Object.keys(window.spa_apiRequestCallbacks).length > 0){
-				console.log('ids NOT match: no callback for recieved id, new 15 timeout '+responce.requestId)
-				setTimeout(waitApiResponceAndCallback, 15000)
+			if (!called && Object.keys(window.spa_apiRequestCallbacks).length > 0){
+				console.log('ids NOT match: no callback for recieved id, new timeout '+responce.requestId)
+				setTimeout(waitApiResponceAndCallback, 1500)
 			}else{
 				ui_waiter(false)
 			}
