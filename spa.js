@@ -32,7 +32,8 @@ function httpRequest(url, type, data, callback){
 	Http.open(type, url, true);
 	if (callback){
 		Http.onreadystatechange = function() {
-			if (this.readyState==4 && this.status==200){
+			if (this.readyState==4 ){ //&& this.status==200
+				console.log('httpRequest ready. Http.responseText:: ')
 				console.log(Http.responseText)
 				try{
 					parsed = JSON.parse(this.responseText)
@@ -110,6 +111,7 @@ function spa_apiRequest(apiCommand, data, callback){
 	}else{
 		httpRequest(window.spa_requestUrl, 'PUT', data, waitApiResponceAndCallback)
 	}
+	console.log('spa_apiRequest :: success send put equest')
 	ui_waiter(true)
 
 }
@@ -201,7 +203,7 @@ function spa_authUser(userToLogin){
 
 	*/
 }
- 
+
  window.addEventListener("message", spa_receiveMessage, false);
 //document.addEventListener("DOMContentLoaded", function(){
  //  spa_init()
