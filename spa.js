@@ -1,4 +1,12 @@
 //lib
+//todo https://github.com/googlearchive/storage-getting-started-javascript
+//https://onesignal.com/pricing
+
+//ref https://googleapis.dev/python/storage/latest/blobs.html
+// https://vinta.ws/code/integrate-with-google-cloud-api-in-python.html
+//https://blog.koliseo.com/limit-the-size-of-uploaded-files-with-signed-urls-on-google-cloud-storage/
+
+
 	function setCookie(name,value,seconds) {
 	var expires = "";
 	if (seconds) {
@@ -217,6 +225,7 @@ function spa_authUser(userToLogin){
 //document.addEventListener("DOMContentLoaded", function(){
  //  spa_init()
 //});
+
 document.addEventListener("DOMContentLoaded", spa_init);
 
 window.spa_userAuthSuccessCallback = ''
@@ -278,6 +287,9 @@ function spa_signOut(){
 
 
 function spa_init(afterLogin){
+	if (location.indexOf('http')<0){
+		return
+	}
 	//!todo check login cookies expire date and set timeout to periodically opdate them when idle
 
 /*

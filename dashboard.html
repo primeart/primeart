@@ -42,6 +42,8 @@
 	<link href="https://www.primeart.com/pt/recursos/foto-para-arte/" rel="alternate" hreflang="pt">
 	<link href="https://www.primeart.com/features/photo-to-art/" rel="alternate" hreflang="x-default">
 	<meta name="theme-color" content="#D2FFFA" default-value="#D2FFFA">
+	<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 </head>
 
 
@@ -167,17 +169,141 @@
 
 
 
-		<div class="site-nav-placeholder"></div>
+<div class="site-nav-placeholder"></div>
 
-		<main id="main-content">
-				<p>Sign in required to access this page.</p>
-				<script src=https://storage.cloud.google.com/royal-art/app/photo-to-art.js></script>
-		</main>
+<main id="main-content">
+	<script src=https://storage.cloud.google.com/royal-art/app/photo-to-art.js></script>
+
+	<div class="section section--bg-offwhite section--first section--page-header">
+		<div class="section__no-grid">
+			<div class="dashboard__anonymous-message"  id="dashboard__anonymous-message" >
+				<h1 class="h3"  data-lang="welcome_to_befunky">Welcome to RoyalArt!</h1>
+				<p data-lang="please_sign_in">Please <a href="#" onclick="ui_signInDialog(true)">sign&nbsp;in</a> to your account.</p>
+			</div>
+
+
+			<div class="dashboard__free-message" id="dashboard__logined-message"  1style='display:none'>
+				<h1 class="h3" data-lang="welcome_back">Welcome Back!</h1>
+				<p data-lang="user_dashboard_free">You have <span id="ui_processingsLeft">X</span> processings left. Be prepared, </p>
+				<button data-lang="upgrade_now" class="button button--blue dashboard__upgrade-button" onclick="ui_addProcessings()('upgrade')" style="">Add processings now</button>
+			</div>
+		</div>
+	</div>
+
+	<section class="section section--bg-white"  id="dropZoneSection" style='display:none'>
+		<div class="section__grid section__grid--cards">
+			<div class="section__row-header">
+						   <h2 class="h5 section__heading" data-lang="get_started_heading">1. Drag Or Browse For Source Photo</h2>
+
+			</div>
+
+		   <form action="/file-upload"
+				  class="dropzone"
+				  id="my-awesome-dropzone">
+
+				  <p data-lang="user_dashboard_free"> </p>
+				  <input type="file" name="file" />
+				  <input type="checkbox" name="type" /> type
+				  <button type="submit" name="submit">Make art!</button>
+			   </form>
+
+		</div>
+
+	</section>
+
+
+	<section class="section section--bg-white"  id="optionsSection" style='display:none'>
+		<div class="section__grid section__grid--cards">
+			<div class="section__row-header">
+				 <h2 class="h5 section__heading" data-lang="get_started_heading">2. Choose What Kind Of Art To Create?</h2>
+
+			</div>
+
+			<a href="https://www.befunky.com/create/" data-route="" class="section__grid-item grid-item grid-item--4 grid-item--link dashboard__todo">
+				<figure class="grid-item__figure grid-item__figure--illustration"><img class="grid-item__image" src="https://www.befunky.com/images/illustrations/editor.svg"></figure>
+				<div class="grid-item__text grid-item__text--centered">
+					<h3 class="grid-item__heading" data-lang="edit_photo">Avatar/sticker</h3></div>
+			</a>
+			<a href="https://www.befunky.com/create/collage/" data-route="" class="section__grid-item grid-item grid-item--4 grid-item--link dashboard__todo">
+				<figure class="grid-item__figure grid-item__figure--illustration"><img class="grid-item__image" src="https://www.befunky.com/images/illustrations/collage.svg"></figure>
+				<div class="grid-item__text grid-item__text--centered">
+					<h3 class="grid-item__heading" data-lang="create_collage">Airbrush</h3></div>
+			</a>
+			<a href="https://www.befunky.com/create/blank-canvas/" data-route="" class="section__grid-item grid-item grid-item--4 grid-item--link dashboard__todo">
+				<figure class="grid-item__figure grid-item__figure--illustration"><img class="grid-item__image" src="https://www.befunky.com/images/illustrations/blank-canvas.svg"></figure>
+				<div class="grid-item__text grid-item__text--centered">
+					<h3 class="grid-item__heading" data-lang="start_blank_canvas">RoyalArt for web</h3></div>
+			</a>
+			<a href="https://www.befunky.com/create/editors-choice/" data-route="" class="section__grid-item grid-item grid-item--4 grid-item--link dashboard__todo">
+				<figure class="grid-item__figure grid-item__figure--illustration"><img class="grid-item__image" src="https://www.befunky.com/images/illustrations/template.svg"></figure>
+				<div class="grid-item__text grid-item__text--centered">
+					<h3 class="grid-item__heading" data-lang="start_with_template">Printable RoyalArt</h3></div>
+			</a>
+		</div>
+	</section>
+
+	<section class="section section--bg-white"  id="galleryContainer" style='display:none'>
+		<div class="section__grid section__grid--cards">
+			<div class="section__row-header">
+				<h2 class="h5 section__heading"  >Preview And Download Your Art</h2>
+			</div>
+
+			<div>row</div>
+			<div>row</div>
+			<div>row</div>
+		</div>
+	</section>
 
 
 
 
+	<section id="whats-new" class="section section--bg-white section--last">
+		<div class="section__grid section__grid--cards">
+			<div class="section__row-header">
+				<h2 class="h5 section__heading" data-lang="whats_new">What's New</h2>
+				<p>
+					<a href="https://www.befunky.com/learn/whats-new/" data-lang="view_all">View All</a>
+				</p>
+			</div>
+			<a href="https://www.befunky.com/learn/project-organization/" class="section__grid-item grid-item grid-item--3 grid-item--link">
+				<figure class="grid-item__figure">
+					<img alt="Project Organization header" class="grid-item__image" src="https://www.befunky.com/images/wp/wp-2021-10-file-management-hero.jpg?auto=webp&amp;width=360&amp;crop=16:9">
+				</figure>
+				<div class="grid-item__text">
+					<h3 class="grid-item__heading h6">Organizing Your Projects Is Easier Than Ever</h3>
+					<p></p>
+					<p>Finding your projects is easier than ever thanks to BeFunky’s ...</p>
+					<p></p>
+				</div>
+			</a>
+			<a href="https://www.befunky.com/learn/curved-text/" class="section__grid-item grid-item grid-item--3 grid-item--link">
+				<figure class="grid-item__figure">
+					<img alt="curved text hero" class="grid-item__image" src="https://www.befunky.com/images/wp/wp-2021-09-curved-text-hero.jpeg?auto=webp&amp;width=360&amp;crop=16:9">
+				</figure>
+				<div class="grid-item__text">
+					<h3 class="grid-item__heading h6">Say Hello to Curved Text</h3>
+					<p></p>
+					<p>Curved Text is here to help you create the perfect circles all day ...</p>
+					<p></p>
+				</div>
+			</a>
+			<a href="https://www.befunky.com/learn/copy-and-paste/" class="section__grid-item grid-item grid-item--3 grid-item--link">
+				<figure class="grid-item__figure">
+					<img alt="copy/paste hero image" class="grid-item__image" src="https://www.befunky.com/images/wp/wp-2021-08-copy-paste-hero.png?auto=webp&amp;width=360&amp;crop=16:9">
+				</figure>
+				<div class="grid-item__text">
+					<h3 class="grid-item__heading h6">Copy/Paste Text and Images Straight to Your Canvas With BeFunky</h3>
+					<p></p>
+					<p>We’re pleased to announce our newest feature –&nbsp;the ability to ...</p>
+					<p></p>
+				</div>
+			</a>
+		</div>
+	</section>
 
+
+
+</main>
 
 
 
