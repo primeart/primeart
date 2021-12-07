@@ -29,7 +29,7 @@ function validateEmail(email)
 
 function httpRequest(url, type, data, callback){
 	const Http = new XMLHttpRequest();
-	alert('new request+url)
+	alert('new request'+url)
 	Http.open(type, url, true);
 	if (callback){
 		Http.onreadystatechange = function() {
