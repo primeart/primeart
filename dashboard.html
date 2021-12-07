@@ -45,6 +45,13 @@
 
 
 	<link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+	<link
+	href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+	rel="stylesheet"/>
+<link
+	href="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.css"
+	rel="stylesheet"/>
+
 </head>
 
 
@@ -199,42 +206,42 @@
 			</div>
 
 
-<input type="file"
-	class="filepond"
-	name="filepond"
-	multiple
-	data-allow-reorder="true"
-	data-max-file-size="32MB"
-	data-max-files="3">
+			<input type="file"
+			class="filepond"
+			name="filepond"
+			multiple
+			data-allow-reorder="true"
+			data-max-file-size="32MB"
+			data-max-files="3">
 
 
-	 <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+			<script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-validate-size/dist/filepond-plugin-image-validate-size.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
+
+			<script type="text/javascript">
+			// We want to preview images, so we register
+			// the Image Preview plugin, We also register
+			// exif orientation (to correct mobile image
+			// orientation) and size validation, to prevent
+			// large files from being added
+			FilePond.registerPlugin(
+				FilePondPluginImagePreview,
+				FilePondPluginImageExifOrientation,
+				FilePondPluginFileValidateSize,
+				FilePondPluginImageEdit
+			);
+
+			// Get a reference to the file input element
+			const inputElement = document.querySelector('input[type="file"]');
+
+			// Create a FilePond instance
+			const pond = FilePond.create(inputElement);
 
 
-
-<script type="text/javascript">
-// We want to preview images, so we register
-// the Image Preview plugin, We also register
-// exif orientation (to correct mobile image
-// orientation) and size validation, to prevent
-// large files from being added
-FilePond.registerPlugin(
-  FilePondPluginImagePreview,
-  FilePondPluginImageExifOrientation,
-  FilePondPluginFileValidateSize,
-  FilePondPluginImageEdit
-);
-
-
-
-   // Get a reference to the file input element
-	const inputElement = document.querySelector('input[type="file"]');
-
-	// Create a FilePond instance
-	const pond = FilePond.create(inputElement);
-
-
-</script>
+			</script>
 
 
 
