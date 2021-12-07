@@ -215,47 +215,46 @@
 	<script>
 		const { XHRUpload } = Uppy
 		const { Webcam } = Uppy
-const { Dashboard } = Uppy
-const { DropTarget } = Uppy
+		const { Dashboard } = Uppy
+		const { DropTarget } = Uppy
 	  var uppy = new Uppy.Core()
 		.use(Dashboard, {
-  id: 'Dashboard',
-  target: 'body',
-  metaFields: [],
-  trigger: null,
-  inline: true,
-  width: 750,
-  height: 550,
-  thumbnailWidth: 700,
-  showLinkToFileUploadResult: false,
-  showProgressDetails: true,
-  hideUploadButton: false,
-  hideRetryButton: false,
-  hidePauseResumeButton: false,
-  hideCancelButton: true,
-  hideProgressAfterFinish: false,
-  doneButtonHandler: () => {
-	this.uppy.reset()
-	this.requestCloseModal()
-  },
-  note: null,
-  closeModalOnClickOutside: false,
-  closeAfterFinish: false,
-  disableStatusBar: false,
-  disableInformer: false,
-  disableThumbnailGenerator: false,
-  disablePageScrollWhenModalOpen: true,
-  animateOpenClose: true,
-  fileManagerSelectionType: 'files',
-  proudlyDisplayPoweredByUppy: false,
-  onRequestCloseModal: () => this.closeModal(),
-  showSelectedFiles: true,
-  showRemoveButtonAfterComplete: false,
-  browserBackButtonClose: false,
-  theme: 'light',
-  autoOpenFileEditor: true,
-  disableLocalFiles: false,
-})
+		  id: 'Dashboard',
+		  metaFields: [],
+		  trigger: null,
+		  inline: true,
+		  width: 1280,
+		  height: 480,
+		  thumbnailWidth: 1000,
+		  showLinkToFileUploadResult: false,
+		  showProgressDetails: true,
+		  hideUploadButton: true,
+		  hideRetryButton: false,
+		  hidePauseResumeButton: false,
+		  hideCancelButton: true,
+		  hideProgressAfterFinish: false,
+		  doneButtonHandler: () => {
+			this.uppy.reset()
+			this.requestCloseModal()
+		  },
+		  note: null,
+		  closeModalOnClickOutside: false,
+		  closeAfterFinish: false,
+		  disableStatusBar: true,
+		  disableInformer: false,
+		  disableThumbnailGenerator: false,
+		  disablePageScrollWhenModalOpen: true,
+		  animateOpenClose: true,
+		  fileManagerSelectionType: 'files',
+		  proudlyDisplayPoweredByUppy: false,
+		  onRequestCloseModal: () => this.closeModal(),
+		  showSelectedFiles: true,
+		  showRemoveButtonAfterComplete: false,
+		  browserBackButtonClose: false,
+		  theme: 'light',
+		  autoOpenFileEditor: true,
+		  disableLocalFiles: false,
+		})
 		.use(Webcam, {
 		  // Options
 		})
