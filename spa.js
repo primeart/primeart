@@ -43,13 +43,17 @@ function httpRequest(url, type, data, callback){
 			}
 		}
 	}
-	if (data){
-		Http.setRequestHeader('Content-Type', data.type||'text/html');
-		Http.send(data);
+	if (!data){
+		return Http.send();
+
+	if(type=='POST'){
+		Http.setRequestHeader('Content-Type', 'multipart/form-data');
 	}else{
-		Http.send();
+		Http.setRequestHeader('Content-Type', data.type||'text/html'); //put
 	}
+	Http.send(data);
 }
+
 function timeNow(){
 	var d = new Date();
 		return Math.floor( d   );
@@ -79,6 +83,7 @@ xhr.onerror = () => {
 //		httpRequest(data.imagePutUrl, 'PUT',data) //, callback=waitResponce
 //}
 window.spa_apiRequestCallbacks={}
+
 function spa_apiRequest(apiCommand, data, callback){
 	console.log('spa_apiRequest :: apiCommand=',apiCommand)
 	if (window.spa_apiRequestCallbacks.length>0){
@@ -93,14 +98,14 @@ function spa_apiRequest(apiCommand, data, callback){
 	window.spa_responceAwaitTries=0
 	//httpRequest(window.requesturl, data=data, callback=waitResponce)
 	//if (!data.type){
-		data = JSON.stringify({'apiCommand':apiCommand, 'requestId':spa_requestId, 'data':data})
+	//    data = JSON.stringify({'apiCommand':apiCommand, 'requestId':spa_requestId, 'data':data})
+		data = JSON.stringify(window.spa_requestPolicy)
 	//}
-	httpRequest(window.spa_requestUrl, 'PUT', data, waitApiResponceAndCallback)
-	//file = fileFromArray({'apiCommand':apiCommand,'data':data})
-	//spa_putFileRequest(window.requesturl, file, waitApiResponceAndCallback)
-	//httpRequest(data.imagePutUrl, 'PUT', data)
-	//waitApiResponceAndCallback()
+	//httpRequest(window.spa_requestUrl, 'PUT', data, waitApiResponceAndCallback)
+	httpRequest(window.spa_requestUrl, 'POST', data, waitApiResponceAndCallback)
 	ui_waiter(true)
+
+	console.log(window.spa_requestPolicy['policy'])
 }
 
 function waitApiResponceAndCallback(){
@@ -225,7 +230,8 @@ function spa_receiveMessage(event)
 
 		 timeout=event.data['timeout']
 		 //=event.data[3]
-		 setCookie('requestUrl',event.data['requestPolicy'], timeout)
+		 setCookie('requestUrl',event.data['requestUrl'], timeout)
+		 setCookie('requestPolicy',event.data['requestPolicy'], timeout)
 		 setCookie('responceUrl',event.data['responceUrl'],timeout)
 		 setCookie('loginedUser',window.userToLogin, timeout)
 
@@ -253,6 +259,7 @@ function spa_signOut(){
 		//spa_apiRequest('signOut', '')
 		window.spa_loginedUser = undefined;
 		eraseCookie('requestUrl')
+		eraseCookie('requestPolicy')
 		eraseCookie('responceUrl')
 		eraseCookie('loginedUser')
 	}
@@ -279,6 +286,7 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 	if (validateEmail(userCandidate)){
 		window.spa_loginedUser = userCandidate;
 		window.spa_requestUrl = getCookie('requestUrl');
+		window.spa_requestPolicy = getCookie('requestPolicy');
 		window.spa_responceUrl = getCookie('responceUrl');
 		if(window.spa_requestUrl){
 			ui_setLoginedInterface(window.spa_loginedUser)
