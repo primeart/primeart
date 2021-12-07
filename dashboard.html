@@ -42,8 +42,10 @@
 	<link href="https://www.primeart.com/pt/recursos/foto-para-arte/" rel="alternate" hreflang="pt">
 	<link href="https://www.primeart.com/features/photo-to-art/" rel="alternate" hreflang="x-default">
 	<meta name="theme-color" content="#D2FFFA" default-value="#D2FFFA">
-	<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-	<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
+	<script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+<link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 
@@ -182,7 +184,7 @@
 			</div>
 
 
-			<div class="dashboard__free-message" id="dashboard__logined-message"  1style='display:none'>
+			<div class="dashboard__free-message" id="dashboard__logined-message"  style='display:none'>
 				<h1 class="h3" data-lang="welcome_back">Welcome Back!</h1>
 				<p data-lang="user_dashboard_free">You have <span id="ui_processingsLeft">X</span> processings left. Be prepared, </p>
 				<button data-lang="upgrade_now" class="button button--blue dashboard__upgrade-button" onclick="ui_addProcessings()('upgrade')" style="">Add processings now</button>
@@ -196,7 +198,11 @@
 						   <h2 class="h5 section__heading" data-lang="get_started_heading">1. Drag Or Browse For Source Photo</h2>
 
 			</div>
-
+<form action="/file-upload"
+	  class="dropzone"
+	  id="my-awesome-dropzone"></form>
+	  
+	  <!--
 		   <form action="/file-upload"
 				  class="dropzone"
 				  id="my-awesome-dropzone">
@@ -206,7 +212,7 @@
 				  <input type="checkbox" name="type" /> type
 				  <button type="submit" name="submit">Make art!</button>
 			   </form>
-
+-->
 		</div>
 
 	</section>
