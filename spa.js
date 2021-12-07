@@ -45,7 +45,7 @@ function httpRequest(url, type, data, callback){
 	}
 	if (!data){
 		return Http.send();
-
+	}
 	if(type=='POST'){
 		Http.setRequestHeader('Content-Type', 'multipart/form-data');
 	}else{
