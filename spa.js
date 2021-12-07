@@ -85,6 +85,9 @@ xhr.onerror = () => {
 window.spa_apiRequestCallbacks={}
 
 function spa_apiRequest(apiCommand, data, callback){
+	if (!spa_isLogined()){
+		return  //already logined; malicious call
+	}
 	console.log('spa_apiRequest :: apiCommand=',apiCommand)
 	if (window.spa_apiRequestCallbacks.length>0){
 		alert('Error #821088. Try again')
@@ -156,7 +159,7 @@ function waitApiResponceAndCallback(){
  //actions
 
 function spa_authUser(userToLogin){
-	if (window.spa_loginedUser && validateEmail(window.spa_loginedUser)){
+	if (spa_isLogined()){
 		return  //already logined; malicious call
 	}
 
@@ -198,13 +201,7 @@ function spa_authUser(userToLogin){
 
 	*/
 }
-
-function spa_checkLogined(){
-	//create iframe with public gcs /auth2 url
-//    same file insida as in auth
-	//return recieved message
-}
-
+ 
  window.addEventListener("message", spa_receiveMessage, false);
 //document.addEventListener("DOMContentLoaded", function(){
  //  spa_init()
