@@ -287,7 +287,7 @@ function spa_signOut(){
 
 
 function spa_init(afterLogin){
-	if (location.indexOf('http')<0){
+	if (location.href.indexOf('http')<0){
 		return
 	}
 	//!todo check login cookies expire date and set timeout to periodically opdate them when idle
