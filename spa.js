@@ -50,7 +50,7 @@ function httpRequest(url, type, data, callback){
 	}
 	if(type=='POST'){
 		Http.setRequestHeader('Content-Type', 'multipart/form-data');
-	}else{
+	}else if(type=='PUT'){ //put, get
 		Http.setRequestHeader('Content-Type', data.type||'text/html'); //put
 	}
 	Http.send(data);
