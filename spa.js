@@ -29,7 +29,7 @@ function validateEmail(email)
 
 function httpRequest(url, type, data, callback){
 	const Http = new XMLHttpRequest();
-	alert('new request'+url)
+	//alert('new request'+url)
 	Http.open(type, url, true);
 	if (callback){
 		Http.onreadystatechange = function() {
@@ -242,7 +242,7 @@ function spa_receiveMessage(event)
 		 //if (window.spa_userAuthSuccessCallback){
 		 //     window.spa_userAuthSuccessCallback()
 		 //}
-		 spa_init()
+		 spa_init(true)
 		 //setState(event.data)
 	 }
 }
@@ -269,7 +269,7 @@ function spa_signOut(){
 }
 
 
-function spa_init(){
+function spa_init(afterLogin){
 	//!todo check login cookies expire date and set timeout to periodically opdate them when idle
 
 /*
@@ -295,7 +295,7 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 			ui_setLoginedInterface(window.spa_loginedUser)
 		}
 
-		  if (!dashboard ){
+		  if (!dashboard  || afterLogin){
 			spa_navigate('dashboard.html')
 		 }else{
 			ui_setLoginedInterface(window.spa_loginedUser)
