@@ -150,8 +150,8 @@ function waitApiResponceAndCallback(){
 				callback(responce.responceData)// !== false && ()
 			}
 			if (Object.keys(window.spa_apiRequestCallbacks).length > 0){
-				console.log('ids NOT match: no callback for recieved id, new timeout '+responce.requestId)
-				setTimeout(waitApiResponceAndCallback, 1500)
+				console.log('ids NOT match: no callback for recieved id, new 15 timeout '+responce.requestId)
+				setTimeout(waitApiResponceAndCallback, 15000)
 			}else{
 				ui_waiter(false)
 			}
