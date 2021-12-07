@@ -97,14 +97,18 @@ function spa_apiRequest(apiCommand, data, callback){
 	//window.spa_requestId=timeNow()
 	window.spa_responceAwaitTries=0
 	//httpRequest(window.requesturl, data=data, callback=waitResponce)
-	//if (!data.type){
-	//    data = JSON.stringify({'apiCommand':apiCommand, 'requestId':spa_requestId, 'data':data})
-		data = window.spa_requestPolicy
-	//}
-	//httpRequest(window.spa_requestUrl, 'PUT', data, waitApiResponceAndCallback)
-	httpRequest(window.spa_requestUrl, 'POST', data, waitApiResponceAndCallback)
+	if (!data.type){ //not a file
+		data = JSON.stringify({'apiCommand':apiCommand, 'requestId':spa_requestId, 'data':data})
+	}
+	usePolicyDocument=false //todo
+	if (usePolicyDocument){
+		data = window.spa_requestPolicy + convertToFormFileAsAttachment(data)
+		httpRequest(window.spa_requestUrl, 'POST', data, waitApiResponceAndCallback)
+	}else{
+		httpRequest(window.spa_requestUrl, 'PUT', data, waitApiResponceAndCallback)
+	}
 	ui_waiter(true)
- 
+
 }
 
 function waitApiResponceAndCallback(){
