@@ -214,6 +214,7 @@
 	<script src="https://releases.transloadit.com/uppy/v2.3.0/uppy.min.js"></script>
 	<script>
 		const { XHRUpload } = Uppy
+		const { Webcam } = Uppy
 
 	  var uppy = new Uppy.Core()
 		.use(Uppy.Dashboard, {
@@ -223,13 +224,12 @@
 		.use(Webcam, {
 		  // Options
 		})
-		.use(DropTarget, {
-		  target: document.body,
-		})
 		.use(XHRUpload, {
 		  endpoint: 'http://my-website.org/upload',
 		})
-
+		.use(DropTarget, {
+		  target: document.body,
+		})
 	  uppy.on('complete', (result) => {
 		console.log('Upload complete! We’ve uploaded these files:', result.successful)
 	  })
