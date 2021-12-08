@@ -56,6 +56,7 @@
 
 
 	<link href="https://releases.transloadit.com/uppy/v2.3.0/uppy.min.css" rel="stylesheet">
+	<link href=" https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css" rel="stylesheet">
 </head>
 
 
@@ -196,8 +197,8 @@
 
 			<div class="dashboard__free-message" id="dashboard__logined-message"  style='display:none'>
 				<h1 class="h3" data-lang="welcome_back">Welcome Back!</h1>
-				<p data-lang="user_dashboard_free">You have <span id="ui_processingsLeft">X</span> processings left. Be prepared, </p>
-				<button data-lang="upgrade_now" class="button button--blue dashboard__upgrade-button" onclick="ui_addProcessings()('upgrade')" style="">Add processings now</button>
+				<p data-lang="user_dashboard_free">You have <span id="ui_processingsLeft">X</span> processings left. </p>
+				<button data-lang="upgrade_now" class="button button--blue dashboard__upgrade-button" onclick="ui_addProcessings()('upgrade')" style="">Add processings</button>
 			</div>
 		</div>
 	</div>
@@ -240,7 +241,7 @@
 		  metaFields: [],
 		  trigger: null,
 		  inline: true,
-		  width: 100%,
+		  width: 600,
 		  height: 300,
 		  thumbnailWidth: 800,
 		  showLinkToFileUploadResult: false,
@@ -366,7 +367,14 @@
 			<a href="https://www.befunky.com/create/" data-route="" class="section__grid-item grid-item grid-item--4 grid-item--link dashboard__todo">
 				<figure class="grid-item__figure grid-item__figure--illustration"><img class="grid-item__image" src="https://www.befunky.com/images/illustrations/editor.svg"></figure>
 				<div class="grid-item__text grid-item__text--centered">
-					<h3 class="grid-item__heading" data-lang="edit_photo">Avatar/sticker</h3></div>
+					<h3 class="grid-item__heading" data-lang="edit_photo">
+	<div class="pretty p-default">
+		<input type="checkbox" />
+		<div class="state">
+			<label>Check</label>
+		</div>
+	</div>
+Avatar/sticker</h3></div>
 			</a>
 			<a href="https://www.befunky.com/create/collage/" data-route="" class="section__grid-item grid-item grid-item--4 grid-item--link dashboard__todo">
 				<figure class="grid-item__figure grid-item__figure--illustration"><img class="grid-item__image" src="https://www.befunky.com/images/illustrations/collage.svg"></figure>
