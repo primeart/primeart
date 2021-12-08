@@ -372,6 +372,90 @@
 			</div>
 		</div>
 
+		<br/>
+		<center>
+			<button data-type="emoji" onclick="pop(event)" class="button button--blue dashboard__upgrade-button toArtButton  emojiParticlesButton">I Want Art!</button>
+		</center>
+	</section>
+
+	 <section class="section section--bg-white"  id="galleryContainer" style='display:none'>
+		<div class="section__no-grid">
+			<div class="section__row-header">
+				<h2 class="h5 section__heading"  >Check Out And Download Your Art:</h2>
+			</div>
+					 <style>
+					 .itemRow {display:block; width:100%; border: 1px solid var(--secondary-300);
+border-radius: 8px;        overflow: hidden;transition: transform .15s ease, box-shadow .15s ease !important; }
+					.itemRow:hover {
+						transform: scale(1.01902);
+					}
+					 .itemRow button {float:right ;}
+					 .fileIcon{width:64px;height:64px; border:1px solid silver; }
+					 .rowActionButton{width:64px;height:64px; 1border:1px solid silver; }
+					 .fileIconIcon{width:24px;height:24px; position:relative;left:-24px }
+					 </style>
+					 <br /><br />
+						<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs          <button data-type="emoji" onclick="pop(event)" class="button button--blue dashboard__upgrade-button   rowActionButton">Buy</button></a>
+			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
+			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkddfsdfjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
+			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjsdfsf sad;f j dfs <button class="rowActionButton">Buy</button></a>
+			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjfsdfsf sad;f j dfs <button class="rowActionButton">Buy</button></a>
+			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkddfsdfjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
+			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
+			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdsdjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
+			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
+			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
+
+			</div>
+	</section>
+
+
+
+	<section id="whats-new" class="section section--bg-white section--last">
+		<div class="section__grid section__grid--cards">
+			<div class="section__row-header">
+				<h2 class="h5 section__heading" data-lang="whats_new">What's New</h2>
+				<p>
+					<a href="https://www.befunky.com/learn/whats-new/" data-lang="view_all">View All</a>
+				</p>
+			</div>
+			<a href="https://www.befunky.com/learn/project-organization/" class="section__grid-item grid-item grid-item--3 grid-item--link">
+				<figure class="grid-item__figure">
+					<img alt="Project Organization header" class="grid-item__image" src="https://www.befunky.com/images/wp/wp-2021-10-file-management-hero.jpg?auto=webp&amp;width=360&amp;crop=16:9">
+				</figure>
+				<div class="grid-item__text">
+					<h3 class="grid-item__heading h6">Organizing Your Projects Is Easier Than Ever</h3>
+					<p></p>
+					<p>Finding your projects is easier than ever thanks to BeFunky’s ...</p>
+					<p></p>
+				</div>
+			</a>
+			<a href="https://www.befunky.com/learn/curved-text/" class="section__grid-item grid-item grid-item--3 grid-item--link">
+				<figure class="grid-item__figure">
+					<img alt="curved text hero" class="grid-item__image" src="https://www.befunky.com/images/wp/wp-2021-09-curved-text-hero.jpeg?auto=webp&amp;width=360&amp;crop=16:9">
+				</figure>
+				<div class="grid-item__text">
+					<h3 class="grid-item__heading h6">Say Hello to Curved Text</h3>
+					<p></p>
+					<p>Curved Text is here to help you create the perfect circles all day ...</p>
+					<p></p>
+				</div>
+			</a>
+			<a href="https://www.befunky.com/learn/copy-and-paste/" class="section__grid-item grid-item grid-item--3 grid-item--link">
+				<figure class="grid-item__figure">
+					<img alt="copy/paste hero image" class="grid-item__image" src="https://www.befunky.com/images/wp/wp-2021-08-copy-paste-hero.png?auto=webp&amp;width=360&amp;crop=16:9">
+				</figure>
+				<div class="grid-item__text">
+					<h3 class="grid-item__heading h6">Copy/Paste Text and Images Straight to Your Canvas With BeFunky</h3>
+					<p></p>
+					<p>We’re pleased to announce our newest feature –&nbsp;the ability to ...</p>
+					<p></p>
+				</div>
+			</a>
+		</div>
+	</section>
+
+
 		<style>
 		particle {
 		  position: absolute;
@@ -383,11 +467,12 @@
 		  background-size: contain;
 		}
 
-		 .emojiParticlesButton {
+		 .toArtButton {
 		  padding: 20px;
 		  margin: 10px;
-		  width:33% ;
-		  height:150px ;
+		  width:30% ;
+		  min-width: 308px;
+		  height:135px ;
 		  align-self: center;
 		  font-size: 2rem;
 }
@@ -459,89 +544,6 @@
 		}
 
 		</script>
-		<br/>
-		<center>
-			<button data-type="emoji" onclick="pop(event)" class="button button--blue dashboard__upgrade-button emojiParticlesButton">I Want Art!</button>
-		</center>
-	</section>
-
-	 <section class="section section--bg-white"  id="galleryContainer" style='display:none'>
-		<div class="section__no-grid">
-			<div class="section__row-header">
-				<h2 class="h5 section__heading"  >Check Out And Download Your Art:</h2>
-			</div>
-					 <style>
-					 .itemRow {display:block; width:100%; border: 1px solid var(--secondary-300);
-border-radius: 8px;        overflow: hidden;transition: transform .15s ease, box-shadow .15s ease !important; }
-					.itemRow:hover {
-						transform: scale(1.01902);
-					}
-					 .itemRow button {float:right ;}
-					 .fileIcon{width:64px;height:64px; border:1px solid silver; }
-					 .rowActionButton{width:64px;height:64px; border:1px solid silver; }
-					 .fileIconIcon{width:24px;height:24px; position:relative;left:-24px }
-					 </style>
-						<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
-			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
-			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkddfsdfjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
-			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjsdfsf sad;f j dfs <button class="rowActionButton">Buy</button></a>
-			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjfsdfsf sad;f j dfs <button class="rowActionButton">Buy</button></a>
-			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkddfsdfjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
-			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
-			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdsdjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
-			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
-			<a class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></a>
-
-			</div>
-	</section>
-
-
-
-	<section id="whats-new" class="section section--bg-white section--last">
-		<div class="section__grid section__grid--cards">
-			<div class="section__row-header">
-				<h2 class="h5 section__heading" data-lang="whats_new">What's New</h2>
-				<p>
-					<a href="https://www.befunky.com/learn/whats-new/" data-lang="view_all">View All</a>
-				</p>
-			</div>
-			<a href="https://www.befunky.com/learn/project-organization/" class="section__grid-item grid-item grid-item--3 grid-item--link">
-				<figure class="grid-item__figure">
-					<img alt="Project Organization header" class="grid-item__image" src="https://www.befunky.com/images/wp/wp-2021-10-file-management-hero.jpg?auto=webp&amp;width=360&amp;crop=16:9">
-				</figure>
-				<div class="grid-item__text">
-					<h3 class="grid-item__heading h6">Organizing Your Projects Is Easier Than Ever</h3>
-					<p></p>
-					<p>Finding your projects is easier than ever thanks to BeFunky’s ...</p>
-					<p></p>
-				</div>
-			</a>
-			<a href="https://www.befunky.com/learn/curved-text/" class="section__grid-item grid-item grid-item--3 grid-item--link">
-				<figure class="grid-item__figure">
-					<img alt="curved text hero" class="grid-item__image" src="https://www.befunky.com/images/wp/wp-2021-09-curved-text-hero.jpeg?auto=webp&amp;width=360&amp;crop=16:9">
-				</figure>
-				<div class="grid-item__text">
-					<h3 class="grid-item__heading h6">Say Hello to Curved Text</h3>
-					<p></p>
-					<p>Curved Text is here to help you create the perfect circles all day ...</p>
-					<p></p>
-				</div>
-			</a>
-			<a href="https://www.befunky.com/learn/copy-and-paste/" class="section__grid-item grid-item grid-item--3 grid-item--link">
-				<figure class="grid-item__figure">
-					<img alt="copy/paste hero image" class="grid-item__image" src="https://www.befunky.com/images/wp/wp-2021-08-copy-paste-hero.png?auto=webp&amp;width=360&amp;crop=16:9">
-				</figure>
-				<div class="grid-item__text">
-					<h3 class="grid-item__heading h6">Copy/Paste Text and Images Straight to Your Canvas With BeFunky</h3>
-					<p></p>
-					<p>We’re pleased to announce our newest feature –&nbsp;the ability to ...</p>
-					<p></p>
-				</div>
-			</a>
-		</div>
-	</section>
-
-
 
 </main>
 
