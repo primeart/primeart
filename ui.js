@@ -115,12 +115,11 @@
 
 	function ui_checkboxContainerClicked(elem)
 	{
-		checked=true
-		elem2 = window.event.target
+		checked=!elem.getElementsByTagName('input')[0].checked
+
 		if (checked){
 			elem.style.outline = '0'
-			elem.style.boxShadow = '0 0 0 2px var(--focus-outline-color)'
-			elem.style['box-shadow'] = '0 0 0 2px var(--focus-outline-color)'
+			elem.style.boxShadow = '0 0 0 2px var(--focus-outline-color)'       
 		}else{
 
 		}
