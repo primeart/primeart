@@ -240,8 +240,8 @@
 		  note: null,
 		  closeModalOnClickOutside: false,
 		  closeAfterFinish: false,
-		  disableStatusBar: true,
-		  disableInformer: false,
+		  disableStatusBar: false,
+		  disableInformer: true,
 		  disableThumbnailGenerator: false,
 		  disablePageScrollWhenModalOpen: true,
 		  animateOpenClose: true,
@@ -261,9 +261,9 @@
 		.use(XHRUpload, {
 		  endpoint: 'http://my-website.org/upload',
 		})
-		.use(DropTarget, {
-		  target: document.body,
-		})
+		//.use(DropTarget, {
+		//  target: document.body,
+		//})
 	  uppy.on('complete', (result) => {
 		console.log('Upload complete! We’ve uploaded these files:', result.successful)
 	  })
