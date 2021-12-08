@@ -163,9 +163,11 @@ function waitApiResponceAndCallback(){
 				delete window.spa_apiRequestCallbacks[responce.requestId]
 				callback(responce.responceData)// !== false && ()
 			}
-			if (!called && Object.keys(window.spa_apiRequestCallbacks).length > 0){
-				console.log('ids NOT match: no callback for recieved id, new timeout '+responce.requestId)
-				setTimeout(waitApiResponceAndCallback, 1500)
+			if (Object.keys(window.spa_apiRequestCallbacks).length > 0){
+				if (!called){
+					console.log('ids NOT match: no callback for recieved id, new timeout '+responce.requestId)
+					setTimeout(waitApiResponceAndCallback, 1500)
+				}
 			}else{
 				ui_waiter(false)
 			}
