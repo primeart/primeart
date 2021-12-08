@@ -1552,7 +1552,7 @@ html {
 		margin-left: 8px
 	}
 }
-
+   /*
 input[type=checkbox],
 input[type=radio] {
 	position: absolute;
@@ -1657,7 +1657,7 @@ label {
 	--text-line-height: 20px;
 	--heading-line-height: 20px
 }
-
+	 */
 .input,
 .textarea {
 	display: block;
