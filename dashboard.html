@@ -211,12 +211,8 @@
 
 
 
-<div class="grid">
-  <div class="column-full">
-	<div class="drag-drop-area"></div>
+	<div id="drag-drop-area"></div>
 	<div class="UppyInput-Progress"></div>
-  </div>
-</div>
 
 
 	<script src="https://releases.transloadit.com/uppy/v2.3.0/uppy.min.js"></script>
@@ -239,7 +235,7 @@
 		})
 		.use(Dashboard, {
 		  id: 'Dashboard',
-		   target: '.drag-drop-area',
+		   target: '#drag-drop-area',
 		   note: 'Images only, up to 20 MB',
 		  metaFields: [],
 		  trigger: null,
@@ -288,7 +284,7 @@
 		.use(StatusBar, {
 			target: '.UppyInput-Progress',
 			hideUploadButton: true,
-			hideAfterFinish: false
+			hideAfterFinish: true
 		  })
 	  uppy.on('complete', (result) => {
 		console.log('Upload complete! We’ve uploaded these files:', result.successful)
