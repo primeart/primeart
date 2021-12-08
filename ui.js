@@ -116,6 +116,7 @@
 	function ui_checkboxContainerClicked(elem)
 	{
 		checked=true
+		elem2 = window.event.target
 		if (checked){
 			elem.style.outline = '0'
 			elem.style.boxShadow = '0 0 0 2px var(--focus-outline-color)'
