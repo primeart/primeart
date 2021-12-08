@@ -1,4 +1,41 @@
+								   .itemRow {display:block; width:100%; border: 1px solid var(--secondary-300);
+border-radius: 8px;        overflow: hidden;transition: transform .15s ease, box-shadow .15s ease !important;position:relative }
+					.itemRow:hover {
+						transform: scale(1.01902);     color:blue;
+					}
+					 .itemRow button {float:right ;}
+					 .fileIcon{width:64px;height:64px; margin-right:0rem; border:1px solid silver; }
+					 .rowActionButton{width:64px;height:64px;  border-radius:7px; position: absolute;
+right: 0px;
+top: 0px;
+					 }
+					 .rowActionButton img {width:32px;height:32px;   }
+					 .fileIconIcon{    width: 32px;
+	height: 32px;
+	position: relative;
+	left: -23px;
+	border: 1px solid silver;
+	z-index: 1;
+	vertical-align: bottom;
+	background-color: white;
+	border-radius: 16px;
+	padding: 2px;
+	top: -2px;
+}
+					 .delete-button { background-color:coral}
+					 .1delete-button:hover { background-color:#4a6}
+					 .1delete-button:focus{ background-color:#274}
+					 .cart-button { }
+					 .download-button {background-color:cornflowerblue }
 
+
+
+
+
+
+
+
+					 
 .form-control {
   --form-control-color: rebeccapurple;
 
