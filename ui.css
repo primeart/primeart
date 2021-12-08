@@ -4313,12 +4313,6 @@ input:disabled+.button--toggle {
 	padding: var(--top-bottom-padding, 3rem) 0
 }
 
-@supports (margin:MAX(0px)) {
-	.section--top-single-heading {
-		padding: MAX(3rem, var(--top-bottom-padding, 3rem)) 0
-	}
-}
-
 .section--top-single-heading h1 {
 	margin-bottom: .5rem
 }
@@ -14135,5 +14129,11 @@ a, button, div, dl, html, label, ol, p, span, ul {
 	.section__grid--figure-align-overflow-right .section__figure .section__image {
 		height: 100%;
 		width: auto
+	}
+}
+
+@supports (margin:MAX(0px)) {
+	.section--top-single-heading {
+		padding: MAX(3rem, var(--top-bottom-padding, 3rem)) 0
 	}
 }
