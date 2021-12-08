@@ -14096,16 +14096,6 @@ a, button, div, dl, html, label, ol, p, span, ul {
 	}
 }
 
-.section__grid--figure-align-center .section__figure,
-.section__grid--figure-align-left .section__figure,
-.section__grid--figure-align-overflow-left .section__figure,
-.section__grid--figure-align-overflow-right .section__figure,
-.section__grid--figure-align-right .section__figure {
-	width: auto;
-	margin-left: -1rem;
-	margin-right: -1rem
-}
-
 @media (min-width:361px) {
 	.section__grid--figure-align-center .section__figure,
 	.section__grid--figure-align-left .section__figure,
