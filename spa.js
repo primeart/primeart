@@ -104,11 +104,12 @@ function spa_apiRequest(apiCommand, data, callback){
 		location.reload()
 		return false
 	}
+	ui_waiter(true)
 	spa_requestId = timeNow()
 	window.spa_apiRequestCallbacks[spa_requestId]=callback
+	window.spa_responceAwaitTries=0
 	//window.spa_apiRequestCallback = callback
 	//window.spa_requestId=timeNow()
-	window.spa_responceAwaitTries=0
 	//httpRequest(window.requesturl, data=data, callback=waitResponce)
 	if (!data.type){ //not a file
 		data = JSON.stringify({'apiCommand':apiCommand, 'requestId':spa_requestId, 'data':data})
@@ -121,7 +122,6 @@ function spa_apiRequest(apiCommand, data, callback){
 		httpRequest(window.spa_requestUrl, 'PUT', data, waitApiResponceAndCallback)
 	}
 	console.log('spa_apiRequest :: success send put equest')
-	ui_waiter(true)
 
 }
 
