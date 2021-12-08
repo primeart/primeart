@@ -80,18 +80,19 @@ top: 0px;
   transform: scale(1);
 }
 
-
+.uppy-Dashboard-AddFiles       {border:2px dashed #a8a8a8 !important}
 
 .uppy-DashboardContent-bar{
 	display:none !important
 }
+
 .uppy-Dashboard-inner {
  width: 100% !important;
-
+  background-color:#c8dadf !important;
 margin-top: 22px !important;
 
 }
-.uppy-DashboardTab-name{color:#ffffff !important}
+.2uppy-DashboardTab-name{color:#ffffff !important}
 
 	.abcRioButton {
  border-radius:1px;

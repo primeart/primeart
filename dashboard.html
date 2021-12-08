@@ -216,6 +216,7 @@
 		const { DropTarget } = Uppy
 		  const { StatusBar } = Uppy
 		  const { Core } = Uppy
+			const { Url } = Uppy
 	  var uppy = new Uppy.Core({
 
 		  autoProceed: false,
@@ -279,6 +280,9 @@
 			hideUploadButton: true,
 			hideAfterFinish: true
 		  })
+		  .use(Url, {
+		  // Options
+		})
 	  uppy.on('complete', (result) => {
 		console.log('Upload complete! We’ve uploaded these files:', result.successful)
 	  })
