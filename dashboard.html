@@ -209,7 +209,15 @@
 
 			</div>
 
-<div id="drag-drop-area"></div>
+
+
+<div class="grid">
+  <div class="column-full">
+	<div class="drag-drop-area"></div>
+	<div class="UppyInput-Progress"></div>
+  </div>
+</div>
+
 
 	<script src="https://releases.transloadit.com/uppy/v2.3.0/uppy.min.js"></script>
 	<script>
@@ -217,15 +225,27 @@
 		const { Webcam } = Uppy
 		const { Dashboard } = Uppy
 		const { DropTarget } = Uppy
-	  var uppy = new Uppy.Core()
+		  const { StatusBar } = Uppy
+	  var uppy = new Uppy({
+
+		  autoProceed: false,
+		  restrictions: {
+			maxFileSize: 20000000,
+			maxNumberOfFiles: 1,
+			minNumberOfFiles: 1,
+			allowedFileTypes: ['image/*'],
+		  }
+		})
 		.use(Dashboard, {
 		  id: 'Dashboard',
+		   target: '.drag-drop-area',
+		   note: 'Images only, up to 20 MB',
 		  metaFields: [],
 		  trigger: null,
 		  inline: true,
-		  width: 1280,
+		  width: 1000,
 		  height: 480,
-		  thumbnailWidth: 1000,
+		  thumbnailWidth: 800,
 		  showLinkToFileUploadResult: false,
 		  showProgressDetails: true,
 		  hideUploadButton: true,
@@ -241,7 +261,7 @@
 		  closeModalOnClickOutside: false,
 		  closeAfterFinish: false,
 		  disableStatusBar: false,
-		  disableInformer: true,
+		  disableInformer: false,
 		  disableThumbnailGenerator: false,
 		  disablePageScrollWhenModalOpen: true,
 		  animateOpenClose: true,
@@ -256,17 +276,32 @@
 		  disableLocalFiles: false,
 		})
 		.use(Webcam, {
-		  // Options
+		   target: Dashboard
 		})
 		.use(XHRUpload, {
 		  endpoint: 'http://my-website.org/upload',
 		})
-		//.use(DropTarget, {
-		//  target: document.body,
-		//})
+		.use(DropTarget, {
+		  target: document.body,
+		})
+		.use(StatusBar, {
+			target: '.UppyInput-Progress',
+			hideUploadButton: true,
+			hideAfterFinish: false
+		  })
 	  uppy.on('complete', (result) => {
 		console.log('Upload complete! We’ve uploaded these files:', result.successful)
 	  })
+
+		/*uppy.on('upload-success', function (file, response) {
+			var url = response.uploadURL
+			var fileName = file.name
+
+			document.querySelector('.uploaded-files ol').innerHTML +=
+			  '<li><a href="' + url + '" target="_blank">' + fileName + '</a></li>'
+		  });
+		  */
+
 	</script>
 
 
