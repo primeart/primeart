@@ -113,9 +113,18 @@
 		}
 	}
 
-	function ui_checkboxContainerClicked()
+	function ui_checkboxContainerClicked(elem)
 	{
-		   
+		checked=true
+		if (checked){
+			elem.style.outline = '0'
+			elem.style.boxShadow = '0 0 0 2px var(--focus-outline-color)'
+			elem.style['box-shadow'] = '0 0 0 2px var(--focus-outline-color)'
+		}else{
+
+		}
+		elem.getElementsByTagName('input')[0].checked=checked
+
 	}
 
 
