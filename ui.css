@@ -142,7 +142,7 @@ html {
 	--width-large: 960px;
 	--height-large: 671px;
 	--tablet-home-bar-safe-area: 0;
-	--tablet-home-bar-safe-area: env(safe-area-inset-bottom, 0);
+	--tablet-home-bar-safe-area1: env(safe-area-inset-bottom, 0);
 	--site-nav-height: 3rem;
 	--static-green: #24c4ad;
 	--static-white: #fff;
@@ -8739,7 +8739,7 @@ input:disabled+.button--toggle {
 .accordion__section {
 	overflow: hidden;
 	will-change: height;
-	width: calc(4px + var(--scrollable-content-width, 1));
+	width: calc(4px + var(--scrollable-content-width));
 	margin: -2px;
 	padding: 2px
 }
@@ -13997,7 +13997,7 @@ body {
 	height: calc(var(--site-nav-height) + 1.5rem);
 	top: -1.5rem;
 	left: -1rem;
-
+}
 
 .site-nav__dropdown-root {
 	position: absolute;
