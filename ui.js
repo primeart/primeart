@@ -119,8 +119,13 @@
 
 		if (checked){
 			elem.style.outline = '0'
-			elem.style.boxShadow = '0 0 0 2px var(--focus-outline-color)'       
+			elem.style.boxShadow = '0 0 0 2px var(--focus-outline-color)'
+			elem.style.backgroundColor= '#f0f0ff'
+
 		}else{
+			   elem.style.outline = '1px'
+			elem.style.boxShadow = 'none'
+			   elem.style.backgroundColor= 'none'
 
 		}
 		elem.getElementsByTagName('input')[0].checked=checked
