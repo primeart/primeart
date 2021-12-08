@@ -125,7 +125,7 @@
 		}else{
 			   elem.style.outline = '1px'
 			elem.style.boxShadow = 'none'
-			   elem.style.backgroundColor= 'none'
+			   elem.style.backgroundColor= 'transparent'
 
 		}
 		elem.getElementsByTagName('input')[0].checked=checked
