@@ -103,7 +103,7 @@
 
 		}
 	}
-	function ui_closeBtnClicked()
+		   function ui_closeBtnClicked()
 	{
 		dashboard = location.href.indexOf('dashboard.html')>-1
 		if (dashboard ){
@@ -112,6 +112,13 @@
 			ui_signInDialog(false)
 		}
 	}
+
+	function ui_checkboxContainerClicked()
+	{
+		   
+	}
+
+
 
 
 	function registerLazyImageContainer(){}
