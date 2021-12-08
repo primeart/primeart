@@ -397,12 +397,7 @@
 		<script>
 		function pop (e) {
 		  let amount = 30;
-		  switch (e.target.dataset.type) {
-			case 'shadow':
-			case 'line':
-			  amount = 60;
-			  break;
-		  }
+
 		  // Quick check if user clicked the button using a keyboard
 		  if (e.clientX === 0 && e.clientY === 0) {
 			const bbox = e.target.getBoundingClientRect();
@@ -451,7 +446,7 @@
 			  opacity: 0
 			}
 		  ], {
-			duration: Math.random() * 1000 + 5000,
+			duration: Math.random() * 1000 + 500000,
 			easing: 'cubic-bezier(0, .9, .57, 1)',
 			delay: delay
 		  });
@@ -473,16 +468,17 @@
 				<h2 class="h5 section__heading"  >Check Out And Download Your Art:</h2>
 			</div>
 					 <style>
+					 .itemRow {display:block}
 					 .fileIcon{width:64px;height:64px; border:1px solid silver; }
 					 .rowActionButton{width:64px;height:64px; border:1px solid silver; }
 					 .fileIcon{width:24px;height:24px; position:relative;left:-24px }
 					 </style>
-			<div><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
-			<div><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj aldfssdfskdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
-			<div><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj sdsdffsfalkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
-			<div><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj addfsdffsdflsdfsdkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
-			<div><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
-			<div><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alfskdjsdf sadfsdf;f j dfs <button class="rowActionButton">Buy</button></div>
+			<div class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
+			<div class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
+			<div class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
+			<div class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
+			<div class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
+			<div class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
 
 			</div>
 	</section>
