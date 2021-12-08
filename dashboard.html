@@ -363,20 +363,8 @@
 		</div>
 	</section>
 
-	<section class="section section--bg-white"  id="galleryContainer" style='display:none'>
-		<div class="section__grid section__grid--cards">
-			<div class="section__row-header">
-				<h2 class="h5 section__heading"  >Preview And Download Your Art</h2>
-			</div>
 
-			<div>row</div>
-			<div>row</div>
-			<div>row</div>
-		</div>
-	</section>
-
-
-	<section class="section section--bg-white"  id="dropZoneSection" style='display:none'>
+	<section class="section section--bg-white"  id="particleButtonSection" style='display:none'>
 		<div class="section__no-grid">
 			<div class="section__row-header">
 						   <h2 class="h5 section__heading" data-lang="get_started_heading">Step 3: Click The Button!</h2>
@@ -384,8 +372,119 @@
 			</div>
 		</div>
 
-				 <button>asdf</button>
+		<style>
+		particle {
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  opacity: 0;
+		  pointer-events: none;
+		  background-repeat: no-repeat;
+		  background-size: contain;
+		}
 
+		 .emojiParticlesButton {
+		  padding: 20px;
+		  margin: 10px;
+		  width:33% ;
+		  height:200px ;
+		  align-self: center;
+
+		}
+
+		</style>
+
+		<script>
+		function pop (e) {
+		  let amount = 30;
+		  switch (e.target.dataset.type) {
+			case 'shadow':
+			case 'line':
+			  amount = 60;
+			  break;
+		  }
+		  // Quick check if user clicked the button using a keyboard
+		  if (e.clientX === 0 && e.clientY === 0) {
+			const bbox = e.target.getBoundingClientRect();
+			const x = bbox.left + bbox.width / 2;
+			const y = bbox.top + bbox.height / 2;
+			for (let i = 0; i < 30; i++) {
+			  // We call the function createParticle 30 times
+			  // We pass the coordinates of the button for x & y values
+			  createParticle(x, y, e.target.dataset.type);
+			}
+		  } else {
+			for (let i = 0; i < amount; i++) {
+			  createParticle(e.clientX, e.clientY + window.scrollY, e.target.dataset.type);
+			}
+		  }
+		}
+		function createParticle (x, y, type) {
+		  const particle = document.createElement('particle');
+		  document.body.appendChild(particle);
+		  let width = Math.floor(Math.random() * 30 + 8);
+		  let height = width;
+		  let destinationX = (Math.random() - 0.5) * 300;
+		  let destinationY = (Math.random() - 0.5) * 300;
+		  let rotation = Math.random() * 520;
+		  let delay = Math.random() * 200;
+
+		  switch (type) {
+			case 'emoji':
+		emojis = ['❤','🧡','💛','💚','💙','💜','🤎' ,'😍','✨','🌟','💫','💥' ,'💛','💙','💜','💚','💗','💓','💕','💖','💞','💘','💛','💙','💜','💚','💗','💓','💕','💖','💞','💘','💋']
+		 particle.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+			particle.style.fontSize = `${Math.random() * 24 + 10}px`;
+			  width = height = 'auto';
+			  break;
+
+		  }
+
+		  particle.style.width = `${width}px`;
+		  particle.style.height = `${height}px`;
+		  const animation = particle.animate([
+			{
+			  transform: `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(0deg)`,
+			  opacity: 1
+			},
+			{
+			  transform: `translate(-50%, -50%) translate(${x + destinationX}px, ${y + destinationY}px) rotate(${rotation}deg)`,
+			  opacity: 0
+			}
+		  ], {
+			duration: Math.random() * 1000 + 5000,
+			easing: 'cubic-bezier(0, .9, .57, 1)',
+			delay: delay
+		  });
+		  animation.onfinish = removeParticle;
+		}
+		function removeParticle (e) {
+		  e.srcElement.effect.target.remove();
+		}
+
+		</script>
+		<br/>
+		<button data-type="emoji" onclick="pop(event)" class='emojiParticlesButton'>I Want Art!</button>
+
+	</section>
+
+	 <section class="section section--bg-white"  id="galleryContainer" style='display:none'>
+		<div class="section__grid section__grid--cards">
+			<div class="section__row-header">
+				<h2 class="h5 section__heading"  >Check Out And Download Your Art:</h2>
+			</div>
+					 <style>
+					 .fileIcon{width:64px;height:64px; border:1px solid silver; }
+					 .rowActionButton{width:64px;height:64px; border:1px solid silver; }
+					 .fileIcon{width:24px;height:24px; position:relative;left:-24px }
+					 </style>
+			<div><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
+			<div><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj aldfssdfskdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
+			<div><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj sdsdffsfalkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
+			<div><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj addfsdffsdflsdfsdkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
+			<div><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
+			<div><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alfskdjsdf sadfsdf;f j dfs <button class="rowActionButton">Buy</button></div>
+
+			</div>
 	</section>
 
 
