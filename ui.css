@@ -14128,7 +14128,17 @@ a, button, div, dl, html, label, ol, p, span, ul {
 *, ::after, ::before {
 	box-sizing: inherit;
 }
- 
+
+
+.uppy-DashboardContent-bar{
+	display:none !important
+}
+.uppy-Dashboard-inner {
+ width: 1000% !important;
+height: 300px !important;
+margin-top: 30px !important;
+
+}
 /*# sourceMappingURL=screen.css.map */
 
 
