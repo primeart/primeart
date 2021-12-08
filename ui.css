@@ -5,7 +5,7 @@ border-radius: 8px;        overflow: hidden;transition: transform .15s ease, box
 					}
 					 .itemRow button {float:right ;}
 					 .fileIcon{width:64px;height:64px; margin-right:0rem; border:1px solid silver; }
-					 .rowActionButton{width:64px;height:64px;  border-radius:7px; position: absolute;
+					 .rowActionButton{width:64px !important;height:64px !important;  border-radius:7px; position: absolute;
 right: 0px;
 top: 0px;
 					 }
@@ -22,11 +22,11 @@ top: 0px;
 	padding: 2px;
 	top: -2px;
 }
-					 .delete-button { background-color:coral}
-					 .1delete-button:hover { background-color:#4a6}
-					 .1delete-button:focus{ background-color:#274}
+					 .delete-button { background-color:coral !important;}
+					 .1delete-button:hover { background-color:#4a6 !important;}
+					 .1delete-button:focus{ background-color:#274 !important;}
 					 .cart-button { }
-					 .download-button {background-color:cornflowerblue }
+					 .download-button {background-color:cornflowerblue  !important;}
 
 
 
@@ -35,7 +35,7 @@ top: 0px;
 
 
 
-					 
+
 .form-control {
   --form-control-color: rebeccapurple;
 
