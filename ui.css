@@ -1,4 +1,13 @@
 
+.uppy-DashboardContent-bar{
+	display:none !important
+}
+.uppy-Dashboard-inner {
+ width: 100% !important;
+
+margin-top: 30px !important;
+
+}
 
 	.abcRioButton {
  border-radius:1px;
@@ -123,11 +132,7 @@
 .abcRioButtonWorkingState .abcRioButtonContentWrapper {
  display:none
 }
-.-webkit-keyframes abcRioButtonWorkingIconPathSpinKeyframes {
- 0% {
-  -webkit-transform: rotate(0deg)
- }
-}
+
 
 
 
@@ -14130,15 +14135,6 @@ a, button, div, dl, html, label, ol, p, span, ul {
 }
 
 
-.uppy-DashboardContent-bar{
-	display:none !important
-}
-.uppy-Dashboard-inner {
- width: 1000% !important;
-	
-margin-top: 30px !important;
-
-}
 /*# sourceMappingURL=screen.css.map */
 
 
