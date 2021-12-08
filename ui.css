@@ -14170,6 +14170,6 @@ a, button, div, dl, html, label, ol, p, span, ul {
 
 @supports (margin:0px) {
 	.section--top-single-heading {
-		padding: MAX(3rem, var(--top-bottom-padding)) 0
+		padding: var(--top-bottom-padding)
 	}
 }

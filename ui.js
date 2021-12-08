@@ -119,16 +119,16 @@
 		otherChecks = elem.parentNode.getElementsByTagName('a')
 
 		function check(element){
-			elem.style.outline = '0'
-			elem.style.boxShadow = '0 0 0 2px var(--focus-outline-color)'
-			elem.style.backgroundColor= '#f0f0ff'
-			elem.getElementsByTagName('input')[0].checked=true
+			element.style.outline = '0'
+			element.style.boxShadow = '0 0 0 2px var(--focus-outline-color)'
+			element.style.backgroundColor= '#f0f0ff'
+			element.getElementsByTagName('input')[0].checked=true
 		}
 		function uncheck(element){
-			elem.style.outline = '1px'
-			elem.style.boxShadow = 'none'
-			elem.style.backgroundColor= 'transparent'
-		   elem.getElementsByTagName('input')[0].checked=false
+			element.style.outline = '1px'
+			element.style.boxShadow = 'none'
+			element.style.backgroundColor= 'transparent'
+		   element.getElementsByTagName('input')[0].checked=false
 		}
 
 		for (let otherCheck  of otherChecks) {
