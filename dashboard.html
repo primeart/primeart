@@ -374,7 +374,7 @@
 
 		<style>
 		particle {
-		  position: fixed;
+		  position: absolute;
 		  top: 0;
 		  left: 0;
 		  opacity: 0;
@@ -389,6 +389,8 @@
 		  width:33% ;
 		  height:200px ;
 		  align-self: center;
+		  font-size: 2rem;
+}
 
 		}
 
@@ -458,20 +460,21 @@
 
 		</script>
 		<br/>
-		<button data-type="emoji" onclick="pop(event)" class='emojiParticlesButton'>I Want Art!</button>
-
+		<center>
+			<button data-type="emoji" onclick="pop(event)" class="button button--blue dashboard__upgrade-button emojiParticlesButton">I Want Art!</button>
+		</center>
 	</section>
 
 	 <section class="section section--bg-white"  id="galleryContainer" style='display:none'>
-		<div class="section__grid section__grid--cards">
+		<div class="section__no-grid">
 			<div class="section__row-header">
 				<h2 class="h5 section__heading"  >Check Out And Download Your Art:</h2>
 			</div>
 					 <style>
-					 .itemRow {display:block}
+					 .itemRow {display:block; width:80% }
 					 .fileIcon{width:64px;height:64px; border:1px solid silver; }
 					 .rowActionButton{width:64px;height:64px; border:1px solid silver; }
-					 .fileIcon{width:24px;height:24px; position:relative;left:-24px }
+					 .fileIconIcon{width:24px;height:24px; position:relative;left:-24px }
 					 </style>
 			<div class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
 			<div class='itemRow'><img src="" class="fileIcon"><img src="" class="fileIconIcon"> AFdkfj alkdjf sad;f j dfs <button class="rowActionButton">Buy</button></div>
