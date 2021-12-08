@@ -348,7 +348,18 @@
 
 	</section>
 
+			 <style>
+			 .form-control {
+  font-family: system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
 
+</style>
 	<section class="section section--bg-white"  id="optionsSection" style='display:none'>
 		<div class="section__grid section__grid--cards">
 			<div class="section__row-header">
@@ -359,10 +370,11 @@
 			<a href="javascript:" onclick="ui_checkboxContainerClicked(this)" class="section__grid-item grid-item grid-item--4 grid-item--link dashboard__todo">
 				<figure class="grid-item__figure grid-item__figure--illustration"><img class="grid-item__image" src="https://www.befunky.com/images/illustrations/editor.svg"></figure>
 				<div class="grid-item__text grid-item__text--centered">
-						<label class="form-control">
-	<input type="checkbox" id="check" />
-	Checkbox
-  </label>       <br />
+
+	  <label class="form-control">
+  <input type="checkbox" name="checkbox" />
+  Checkbox
+</label>
 	<h3 class="grid-item__heading" data-lang="edit_photo">
 											 d
 </h3></div>
