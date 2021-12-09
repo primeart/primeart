@@ -21,7 +21,7 @@
 		} else {
 			document.getElementById('site_root').className = 'site-root';
 			document.getElementById('hamburgerNav').className = 'site-nav__popup-root';
-	}
+		}
 
 		event.stopPropagation();
 	}
@@ -76,7 +76,7 @@
 					delete window.waiters[id]
 				}catch(e){}
 			}
-			setTimeout("if (Object.keys(waiters).length === 0) { document.getElementById('load_screen_root').style.display='none' }",10)
+			setTimeout("if (Object.keys(waiters).length === 0) { document.getElementById('load_screen_root').style.display='none'; }",10)
 		}
 
 	}
@@ -106,7 +106,7 @@
 	{
 		if (spa_isLogined()){
 			//!tmp:
-			spa_signOut()                                 -
+			spa_signOut()
 			//!spa_navigate('account.html')
 		}else{
 			ui_signInDialog(true)
