@@ -61,12 +61,22 @@
 	}
 
 
-
-	function ui_waiter(show){
+	window.waiters={}
+	function ui_waiter(show, id){
 		if (show){
+			if(id){
+				console.log('set waiter '+id)
+				window.waiters[id]=true
+			}
 			document.getElementById('load_screen_root').style.display='flex'
 		}else{
-		 document.getElementById('load_screen_root').style.display='none'
+			if (id){
+				try{
+					console.log('remove waiter '+id)
+					delete window.waiters[id]
+				}catch(e){}
+			}
+			setTimeout("if (Object.keys(waiters).length === 0) { document.getElementById('load_screen_root').style.display='none' }",10)
 		}
 
 	}
@@ -96,7 +106,7 @@
 	{
 		if (spa_isLogined()){
 			//!tmp:
-			spa_signOut()
+			spa_signOut()                                 -
 			//!spa_navigate('account.html')
 		}else{
 			ui_signInDialog(true)

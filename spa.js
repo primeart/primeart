@@ -110,7 +110,7 @@ function spa_apiRequest(commandName, data, callback){
 		//location.reload()
 		return false
 	}
-	ui_waiter(true)
+	//ui_waiter(true)
 	spa_requestId = timeNow()
 	window.spa_apiRequestCallbacks[spa_requestId]=callback
 	window.spa_responceAwaitTries=0
@@ -181,7 +181,7 @@ function waitApiResponceAndCallback(){
 					console.log('calling next request in queue')
 					spa_apiRequest(args[0],args[1],args[2])
 				}else{
-					ui_waiter(false)
+					//ui_waiter(false)
 				}
 			}
 						//window.spa_apiRequestCallback = ''
