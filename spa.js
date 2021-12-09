@@ -42,14 +42,18 @@ function httpRequest(url, type, data, callback){
 	if (callback){
 		Http.onreadystatechange = function() {
 			if (this.readyState==4 ){ //&& this.status==200
-				console.log('httpRequest ready. Http.responseText:: '+Http.responseURL)
-				console.log(Http.responseText)
-				try{
-					parsed = JSON.parse(this.responseText)
-				}catch(e){
-					parsed={}
+					if (this.status==200){
+					console.log('httpRequest ready. this.responseText:: '+this.responseURL)
+					console.log(this.responseText)
+					try{
+						parsed = JSON.parse(this.responseText)
+					}catch(e){
+						parsed={}
+					}
+					callback(parsed)
+				}else{
+					callback({'error':this.status})
 				}
-				callback(parsed)
 			}
 		}
 	}
