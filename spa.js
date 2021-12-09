@@ -73,20 +73,7 @@ function timeNow(){
 		return Math.floor( d   );
 	}
 
-/*
-xhr.onload = () => {
-  const status = xhr.status;
-  if (status === 200) {
-	alert("File is uploaded");
-  } else {
-	alert("Something went wrong!");
-  }
-};
 
-xhr.onerror = () => {
-  alert("Something went wrong");
-};
-*/
 
 //function messageIframe(){
 //	 const iFrame = document.getElementById('workerIframe');
@@ -114,9 +101,6 @@ function spa_apiRequest(commandName, data, callback){
 	spa_requestId = timeNow()
 	window.spa_apiRequestCallbacks[spa_requestId]=callback
 	window.spa_responceAwaitTries=0
-	//window.spa_apiRequestCallback = callback
-	//window.spa_requestId=timeNow()
-	//httpRequest(window.requesturl, data=data, callback=waitResponce)
 	if (!data.type){ //not a file
 		data = JSON.stringify({'commandName':commandName, 'requestId':spa_requestId, 'data':data})
 	}
@@ -140,20 +124,6 @@ function waitApiResponceAndCallback(){
 	console.log('waitApiResponceAndCallback:: about to make get request, spa_apiRequestCallbacks:: ')
 	console.log(window.spa_apiRequestCallbacks)
 	httpRequest(window.spa_responceUrl, 'GET', {}, function(responce){
-		/*
-		if (responce.requestId != window.spa_requestId)
-		{
-			if (window.spa_responceAwaitTries++ > 600){
-				alert('Failed to perform action. Login and try again.')
-				spa_signOut()
-				location.reload()
-			}
-			else{
-				setTimeout(waitApiResponceAndCallback, 1500)
-
-			}
-		}else
-		*///{
 			console.log('waitApiResponceAndCallback"s callback got called with responce:')
 			console.log(responce)
 			//we got responce for what we asked
@@ -184,8 +154,7 @@ function waitApiResponceAndCallback(){
 					//ui_waiter(false)
 				}
 			}
-						//window.spa_apiRequestCallback = ''
-		//}
+
 	})
 }
 
@@ -270,12 +239,7 @@ function spa_receiveMessage(event)
 		 setCookie('responceUrl',event.data['responceUrl'],timeout)
 		 setCookie('loginedUser',window.userToLogin, timeout)
 
-
-		 //if (window.spa_userAuthSuccessCallback){
-		 //     window.spa_userAuthSuccessCallback()
-		 //}
 		 spa_init(true)
-		 //setState(event.data)
 	 }
 }
 
@@ -291,7 +255,6 @@ function spa_signOut(){
 	if (window.prompt('Sign out?'))
 	{
 		spa_apiRequest('signOut',{}) //to set monitoring rate from frequent to normal
-		//spa_apiRequest('signOut', '')
 		window.spa_loginedUser = undefined;
 		eraseCookie('requestUrl')
 		eraseCookie('requestPolicy')
@@ -346,21 +309,3 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 			ui_setLoginedInterface(false)
 		}
 	}
-	//if (window.location.indexOf('/?')>0){
-	 //   setPage(window.location.split('/?')[1])
-	//}
-	//stateData = getCookie('stateData');
-	//if (stateData && (stateData=JSON.parse(stateData)) && stateData.length==3){
-
-	//}
-}
-
-	//function setPage()
-
-//    function setState(data){
-			 //console.log(event.data)
-//         window.iframeMessage = [data[1],data[2]]
-//         document.body.innerHTML = '<iframe id="workerIframe" src="'+data[0]+'" onload="messageIframe()" width="100%" height="100%"></iframe>'
-//         setCookie('stateData',JSON.stringify(event.data), 1)
-//    }
-
