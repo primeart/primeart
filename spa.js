@@ -309,3 +309,4 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 			ui_setLoginedInterface(false)
 		}
 	}
+}
