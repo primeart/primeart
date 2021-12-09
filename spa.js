@@ -93,15 +93,17 @@ xhr.onerror = () => {
 //		httpRequest(data.imagePutUrl, 'PUT',data) //, callback=waitResponce
 //}
 window.spa_apiRequestCallbacks={}
+window.spa_apiRequestQueue=[]
 
-function spa_apiRequest(apiCommand, data, callback){
+function spa_apiRequest(commandName, data, callback){
 	if (!spa_isLogined()){
 		return  //already logined; malicious call
 	}
-	console.log('spa_apiRequest :: apiCommand=',apiCommand)
+	console.log('spa_apiRequest :: apiCommand=',commandName)
 	if (window.spa_apiRequestCallbacks.length>0){
-		alert('Error #821088. Try again')
-		location.reload()
+		window.spa_apiRequestQueue.push([commandName, data, callback])
+		//alert('Error #821088. Try again')
+		//location.reload()
 		return false
 	}
 	ui_waiter(true)
@@ -112,7 +114,7 @@ function spa_apiRequest(apiCommand, data, callback){
 	//window.spa_requestId=timeNow()
 	//httpRequest(window.requesturl, data=data, callback=waitResponce)
 	if (!data.type){ //not a file
-		data = JSON.stringify({'apiCommand':apiCommand, 'requestId':spa_requestId, 'data':data})
+		data = JSON.stringify({'commandName':commandName, 'requestId':spa_requestId, 'data':data})
 	}
 	usePolicyDocument=false //todo
 	if (usePolicyDocument){
@@ -169,7 +171,14 @@ function waitApiResponceAndCallback(){
 					setTimeout(waitApiResponceAndCallback, 1500)
 				}
 			}else{
-				ui_waiter(false)
+				if (window.spa_apiRequestQueue.length>0){
+					args = window.spa_apiRequestQueue[0]
+					delete window.spa_apiRequestQueue[0]
+					console.log('calling next request in queue')
+					spa_apiRequest(args[0],args[1],args[2])
+				}else{
+					ui_waiter(false)
+				}
 			}
 						//window.spa_apiRequestCallback = ''
 		//}
