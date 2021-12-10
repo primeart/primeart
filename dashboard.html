@@ -50,7 +50,7 @@
 	<link href="https://releases.transloadit.com/uppy/v2.3.0/uppy.min.css" rel="stylesheet">
 	<link href="https://cdn.jsdelivr1.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="material-photo-gallery.css">
-	<script src="material-photo-gallery.min.js"></script>
+	<script src="material-photo-gallery.js"></script>
 </head>
 
 
@@ -387,12 +387,14 @@
 	</section>
 
 	 <section class="section section--bg-white"  id="galleryContainer" style='display:none'>
-		<div class="section__no-grid"  class='m-p-g' data-google-image-layout>
+		<div class="section__no-grid"   data-google-image-layout>
 			<div class="section__row-header">
 				<h2 class="h5 section__heading" style="text-align: center; width: 100%; " ><small>Check Out And Download Results:</small></h2>
 			</div>
 
 					 <br />
+
+				<div  class='m-p-g'  >
 				<div id="userGallery" class='m-p-g__thumbs'>
 					<a href="javascript:" class='itemRow'><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII="  class="fileIcon"> <img class="fileIconIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII=">⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ <button data-type="emoji"   class="button button--blue dummy-button   rowActionButton">⚪</button></a>
 					<a href="javascript:" class='itemRow'><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII="  class="fileIcon"> <img class="fileIconIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII=">⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪⚪ <button data-type="emoji"   class="button button--blue dummy-button   rowActionButton">⚪</button></a>
@@ -402,7 +404,9 @@
 
 				  </div>
 				  <div class="m-p-g__fullscreen"></div>
-				  <script type="text/javascript">
+				  </div>
+			 </div>
+							   <script type="text/javascript">
 				  var elem = document.querySelector('.m-p-g');
 
 				document.addEventListener('DOMContentLoaded', function() {
@@ -415,7 +419,7 @@
 						<a href="javascript:" onclick="" class='itemRow'><img src="https://storage.cloud.google.com/royal-art/in/ZGRtaXRydXNoa2luQHdhdGNobXlzaG90LmNvbQ%3D%3D/queue/456.jpg"  class="fileIcon">  Арт-аватар стиль Airbrush 1 лицо <button data-type="emoji" onclick="pop(event)" class="button button--blue download-button   rowActionButton"><img src="images/icon-download.png"></button></a>
 
 				 <iframe class=" " src="https://storage.cloud.google.com/royal-art/app/be.html"></iframe>
-			</div>
+
 	</section>
 
 
