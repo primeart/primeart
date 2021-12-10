@@ -22,6 +22,9 @@ top: 0px;
 	padding: 2px;
 	top: -2px;
 }
+   .fileIconIcon-hidden{opacity:0 !important}
+	
+
 					 .delete-button { background-color:coral !important;}
 					 .1delete-button:hover { background-color:#4a6 !important;}
 					 .1delete-button:focus{ background-color:#274 !important;}
