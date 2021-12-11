@@ -91,6 +91,8 @@ function spa_apiRequest(commandName, data, callback){
 		return  //already logined; malicious call
 	}
 	console.log('spa_apiRequest :: apiCommand=',commandName)
+	document.getElementById('load_screen_root').innerHTML += '<br /><br />spa_apiRequest:: apiCommand='+commandName
+
 	if (window.spa_apiRequestCallbacks.length>0){
 		window.spa_apiRequestQueue.push([commandName, data, callback])
 		//alert('Error #821088. Try again')
@@ -135,6 +137,8 @@ function waitApiResponceAndCallback(){
 			called=false
 			if (callback=window.spa_apiRequestCallbacks[responce.requestId]){
 				console.log('ids match, calling callback! id: '+responce.requestId)
+				document.getElementById('load_screen_root').innerHTML += '<br />spa_apiRequest:: cbk with responce='+responce.responceData
+
 				called = true
 				delete window.spa_apiRequestCallbacks[responce.requestId]
 				callback(responce.responceData)// !== false && ()
