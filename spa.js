@@ -234,7 +234,9 @@ function spa_receiveMessage(event)
 	 if (true){ //so far only logined message expected; todo expect different message and check here
 		 //setState('logined',[window.userToLogin, event.data])
 		 //ui_setLoginedInterface(window.userToLogin)
-		 console.log(event.data)
+		  console.log(event.data)
+		console.log(event.data['authedUrl'])
+		console.log(event.data['authedUrl'].split('?')[-1])
 
 		 timeout=event.data['timeout']
 		 //=event.data[3]
