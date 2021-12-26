@@ -137,7 +137,7 @@ function waitApiResponceAndCallback(){
 			called=false
 			if (callback=window.spa_apiRequestCallbacks[responce.requestId]){
 				console.log('ids match, calling callback! id: '+responce.requestId)
-				document.getElementById('load_screen_root').innerHTML += '<br />spa_apiRequest:: cbk with responce='+responce.responceData
+				document.getElementById('load_screen_root').innerHTML += '<br />spa_apiRequest:: cbk with responce='+ JSON.stringify(responce)
 
 				called = true
 				delete window.spa_apiRequestCallbacks[responce.requestId]
@@ -235,8 +235,8 @@ function spa_receiveMessage(event)
 		 //setState('logined',[window.userToLogin, event.data])
 		 //ui_setLoginedInterface(window.userToLogin)
 		  console.log(event.data)
-		console.log(event.data['authedUrl'])
-		console.log(event.data['authedUrl'].split('?')[-1])
+		//console.log(event.data['authedUrl'])
+		//console.log(event.data['authedUrl'].split('?')[-1])
 
 		 timeout=event.data['timeout']
 		 //=event.data[3]
