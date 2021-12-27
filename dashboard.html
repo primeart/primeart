@@ -75,8 +75,9 @@
 	}();
 	</script>
 	<div id="bfn-app" class="bfn" style="display: none;"></div>
-	<div id="site_root" class="site-root" onclick="toggleHamburgerMenu(window.event.target == window.event.currentTarget)">
-
+		<div id="site_root" class="site-root" >
+<!--<div id="site_root" class="site-root" onclick="toggleHamburgerMenu(window.event.target == window.event.currentTarget)">
+	-->
 		<header id="site_nav" style="display: none;" class="site-nav site-nav--not-signed-in">
 
 			<div class="site-nav__inner centered-column-width">
@@ -218,6 +219,7 @@
 
 	<script src="https://releases.transloadit.com/uppy/v2.3.0/uppy.min.js"></script>
 	<script>
+/*
 		const { XHRUpload } = Uppy
 		const { Webcam } = Uppy
 		const { Dashboard } = Uppy
@@ -292,7 +294,7 @@
 	  uppy.on('complete', (result) => {
 		console.log('Upload complete! We’ve uploaded these files:', result.successful)
 	  })
-
+			*/
 		/*uppy.on('upload-success', function (file, response) {
 			var url = response.uploadURL
 			var fileName = file.name
@@ -409,7 +411,7 @@
 				   data-subtext="Descrition 2"
 				   data-alt="Alt 2"
 				   data-disabled="true">
-			  <img src="3.jpg" 
+			  <img src="3.jpg"
 				   alt="image3"
 				   data-subtext="Descrition 3"
 				   data-alt="Alt 3">
