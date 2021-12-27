@@ -1237,7 +1237,7 @@ window.MaterialPhotoGallery = MaterialPhotoGallery
 		}
 	  })
 
-	  alertBoxMessage.innerHTML = 'Failed to load:' + ' ' + brokenImages
+	  //alertBoxMessage.innerHTML = 'Failed to load:' + ' ' + brokenImages
 	})
 
 	window.onresize = debounce(function() {
