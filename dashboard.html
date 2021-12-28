@@ -216,7 +216,7 @@
 
 	<script src="https://releases.transloadit.com/uppy/v2.3.0/uppy.min.js"></script>
 	<script>
-/*
+
 		const { XHRUpload } = Uppy
 		const { Webcam } = Uppy
 		const { Dashboard } = Uppy
@@ -291,7 +291,7 @@
 	  uppy.on('complete', (result) => {
 		console.log('Upload complete! We’ve uploaded these files:', result.successful)
 	  })
-			*/
+
 		/*uppy.on('upload-success', function (file, response) {
 			var url = response.uploadURL
 			var fileName = file.name
@@ -406,9 +406,7 @@
 					<a href="javascript:" class='itemRow'><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII="  class="fileIcon"> <img class="fileIconIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII=">⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ <button data-type="emoji"   class="button button--blue dummy-button   rowActionButton">⚪</button></a>
 					<a href="javascript:" class='itemRow'><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII="  class="fileIcon"> <img class="fileIconIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII=">⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪  <button data-type="emoji"   class="button button--blue dummy-button   rowActionButton">⚪</button></a>
 					<a href="javascript:" class='itemRow'><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII="  class="fileIcon"> <img class="fileIconIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII=">⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ <button data-type="emoji"   class="button button--blue dummy-button   rowActionButton">⚪</button></a>
-
-<a href="javascript:" onclick="this.firstElementChild.click()" class="itemRow"><img src="https://storage.cloud.google.com/royal-art/out/ZGRtaXRydXNoa2luQHdhdGNobXlzaG90LmNvbQ==/photoToArt/preview/thumb-8e42c24232019ed5ac4cedb2f840d6ff8668e12a659548793b2f3b0d15c986d130c25405c1c72b4c3de1.png?authuser=0" data-full="https://storage.cloud.google.com/royal-art/out/ZGRtaXRydXNoa2luQHdhdGNobXlzaG90LmNvbQ==/photoToArt/preview/8e42c24232019ed5ac4cedb2f840d6ff8668e12a659548793b2f3b0d15c986d130c25405c1c72b4c3de1.png?authuser=0" class="fileIcon m-p-g__thumbs-img" data-width="64" data-height="64"><img class="fileIconIcon fileIconIcon-lock" src="images/lock.png" data-width="32" data-height="32">tesvttes…vt: Printable Art - 2 faces processed, 6 creations<button data-type="emoji" onclick="photoToArt_ui_rowActionClicked('cart',this)" class="button button--blue cart-button rowActionButton"><img src="images/icon-cart.png" data-width="32" data-height="32"></button></a>
-				  </div>
+					  </div>
 				  <div class="m-p-g__fullscreen"></div>
 				  </div>
 			 </div>
@@ -460,11 +458,12 @@
 						<a href="javascript:" onclick="" class='itemRow'><img src="https://914015.smushcdn.com/2259040/wp-content/uploads/2020/10/art-that-style-pop-art.jpg?lossy=1&strip=1&webp=1"  class="fileIcon"> <img class="fileIconIcon" src="images/lock.png">   Арт-аватар стиль Airbrush 1 лицо <button data-type="emoji" onclick="pop(event)" class="button button--blue cart-button   rowActionButton"><img src="images/icon-cart.png"></button></a>
 						<a href="javascript:" onclick="" class='itemRow'><img src="https://storage.cloud.google.com/royal-art/in/ZGRtaXRydXNoa2luQHdhdGNobXlzaG90LmNvbQ%3D%3D/queue/123.jpg"  class="fileIcon">  <img class="fileIconIcon" src="images/clock.png">  Арт-аватар стиль Airbrush 1 лицо <button data-type="emoji" onclick="pop(event)" class="button button--blue delete-button   rowActionButton"><img src="images/icon-delete.png"></button></a>
 						<a href="javascript:" onclick="" class='itemRow'><img src="https://storage.cloud.google.com/royal-art/in/ZGRtaXRydXNoa2luQHdhdGNobXlzaG90LmNvbQ%3D%3D/queue/456.jpg"  class="fileIcon">  Арт-аватар стиль Airbrush 1 лицо <button data-type="emoji" onclick="pop(event)" class="button button--blue download-button   rowActionButton"><img src="images/icon-download.png"></button></a>
-							-->
-
-	</section>
 
 		 <iframe class=" " src="https://storage.cloud.google.com/royal-art/app/be.html"></iframe>
+
+	-->
+
+	</section>
 
 	<section id="whats-new" class="section section--bg-white section--last">
 		<div class="section__grid section__grid--cards">
