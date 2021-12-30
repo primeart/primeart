@@ -97,7 +97,7 @@ function spa_apiRequest(commandName, data, callback){
 		window.spa_apiRequestQueue.push([commandName, data, callback])
 		//alert('Error #821088. Try again')
 		//location.reload()
-		return false
+		return True
 	}
 	//ui_waiter(true)
 	spa_requestId = timeNow()
@@ -146,7 +146,7 @@ function waitApiResponceAndCallback(){
 			if (Object.keys(window.spa_apiRequestCallbacks).length > 0){
 				if (!called){
 					console.log('ids NOT match: no callback for recieved id, new timeout '+responce.requestId)
-					setTimeout(waitApiResponceAndCallback, 1500)
+					setTimeout(waitApiResponceAndCallback, 15000)
 				}
 			}else{
 				if (window.spa_apiRequestQueue.length>0){
@@ -165,7 +165,7 @@ function waitApiResponceAndCallback(){
 
  //actions
 
-function spa_authUser(userToLogin){
+function spa_authUserZ(userToLogin){
 	if (spa_isLogined()){
 		return  //already logined; malicious call
 	}
