@@ -165,7 +165,7 @@ function waitApiResponceAndCallback(){
 
  //actions
 
-function spa_authUserZ(userToLogin){
+function spa_authUser(userToLogin){
 	if (spa_isLogined()){
 		return  //already logined; malicious call
 	}
