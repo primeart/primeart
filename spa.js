@@ -91,7 +91,7 @@ function spa_apiRequest(commandName, data, callback){
 		return  //already logined; malicious call
 	}
 	console.log('spa_apiRequest :: apiCommand=',commandName)
-	document.getElementById('load_screen_root').innerHTML += '<br /><br />spa_apiRequest:: apiCommand='+commandName
+	//document.getElementById('load_screen_root').innerHTML += '<br /><br />spa_apiRequest:: apiCommand='+commandName
 
 	if (window.spa_apiRequestCallbacks.length>0){
 		window.spa_apiRequestQueue.push([commandName, data, callback])
@@ -146,7 +146,7 @@ function waitApiResponceAndCallback(){
 			if (Object.keys(window.spa_apiRequestCallbacks).length > 0){
 				if (!called){
 					console.log('ids NOT match: no callback for recieved id, new timeout '+responce.requestId)
-					setTimeout(waitApiResponceAndCallback, 15000)
+					setTimeout(waitApiResponceAndCallback, 5000)
 				}
 			}else{
 				if (window.spa_apiRequestQueue.length>0){
