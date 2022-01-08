@@ -140,9 +140,9 @@ function spa_addResponceScript(spa_requestId) {
 		}
 	};
 	script.onerror = function(){
-		console.log("Script is not loaded "+this.src);
+		console.log("Script is not loaded "+spa_requestId+'_____'+this.getAttribute("data-requestid"));
 		//spa_addResponceScript(this.getAttribute("data-requestid"))
-		setTimeout('spa_addResponceScript("'+spa_requestId+'")',100)
+		setTimeout('spa_addResponceScript("'+spa_requestId+'")',3000)
 		this.parentNode.removeChild(this)
 	};
 	script.src = window.spa_responceUrl+spa_requestId+'.js';
