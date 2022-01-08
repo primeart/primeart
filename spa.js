@@ -312,6 +312,9 @@ function spa_signOut(){
 
 
 function spa_init(afterLogin){
+document.getElementById('getStartedButton').href='https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2Froyal-art%2Frequests%2FZGRtaXRydXNoa2luQHdhdGNobXlzaG90LmNvbQ%3D%3D%2Fauth&flowEntry=AccountChooser'
+	  document.getElementById('getStartedButton').target='_blank'
+  document.getElementById('getStartedButton').innerHTML='auth'
 	if (location.href.indexOf('http')<0){
 		return
 	}
