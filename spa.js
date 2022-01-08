@@ -120,6 +120,8 @@ function spa_apiRequest(commandName, data, callback, blocking){
 	console.log('spa_apiRequest :: success send put equest')
 }
 
+spa_responces ={}
+
 function spa_addResponceScript(src, spa_requestId) {
 	var script = document.createElement("script")
 	script.type = "text/javascript";
@@ -128,7 +130,7 @@ function spa_addResponceScript(src, spa_requestId) {
 		//spa_requestId = this
 		if (callback=window.spa_apiRequestCallbacks[spa_requestId]){
 				console.log("callback found, calling");
-				callback(spa_responces[spa_requestId])// !== false && ()
+				callback(spa_responces[spa_requestId].responceData)// !== false && ()
 		}
 		if (window.spa_apiRequestQueue.length>0){
 			args = window.spa_apiRequestQueue[0]
@@ -139,7 +141,7 @@ function spa_addResponceScript(src, spa_requestId) {
 	};
 	script.onerror = function(){
 		console.log("Script is not loaded "+this.src);
-		//!spa_addResponceScript(this.src)
+		spa_addResponceScript(this.src)
 		this.parentNode.removeChild(this)
 	};
 	script.src = src;
