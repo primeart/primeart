@@ -116,13 +116,13 @@ function spa_apiRequest(commandName, data, callback, blocking){
 	}else{
 		method='PUT'
 	}
-	httpRequest(window.spa_requestUrl, method, data, function(){spa_addResponceScript(window.spa_responceUrl+spa_requestId+'.js',spa_requestId)})
+	httpRequest(window.spa_requestUrl, method, data, function(){setTimeout('spa_addResponceScript("'+spa_requestId+'")',100)})
 	console.log('spa_apiRequest :: success send put equest')
 }
 
 spa_responces ={}
 
-function spa_addResponceScript(src, spa_requestId) {
+function spa_addResponceScript(spa_requestId) {
 	var script = document.createElement("script")
 	script.type = "text/javascript";
 	script.onload = function(){
@@ -141,10 +141,11 @@ function spa_addResponceScript(src, spa_requestId) {
 	};
 	script.onerror = function(){
 		console.log("Script is not loaded "+this.src);
-		spa_addResponceScript(this.src)
+		//spa_addResponceScript(this.getAttribute("data-requestid"))
+		setTimeout('spa_addResponceScript("'+spa_requestId+'")',100)
 		this.parentNode.removeChild(this)
 	};
-	script.src = src;
+	script.src = window.spa_responceUrl+spa_requestId+'.js';
 	script.async = true;
 	script.setAttribute("data-requestid", spa_requestId);
 	document.getElementsByTagName("head")[0].appendChild(script);
