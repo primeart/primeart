@@ -300,12 +300,13 @@ function spa_navigate(page){
 function spa_signOut(){
 	if (window.prompt('Sign out?'))
 	{
-		spa_apiRequest('signOut',{},location.reload,true) //to set monitoring rate from frequent to normal
 		window.spa_loginedUser = undefined;
 		eraseCookie('requestUrl')
 		eraseCookie('requestPolicy')
 		eraseCookie('responceUrl')
 		eraseCookie('loginedUser')
+		spa_apiRequest('signOut',{},location.reload,true) //to set monitoring rate from frequent to normal
+
 	}
 }
 
