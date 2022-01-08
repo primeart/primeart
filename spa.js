@@ -145,7 +145,7 @@ function spa_addResponceScript(spa_requestId) {
 		setTimeout('spa_addResponceScript("'+spa_requestId+'")',3000)
 		this.parentNode.removeChild(this)
 	};
-	script.src = window.spa_responceUrl+spa_requestId+'.js';
+	script.src = window.spa_responceUrl+spa_requestId+'.js'+'?authuser='+window.authuser    ;
 	script.async = true;
 	script.setAttribute("data-requestid", spa_requestId);
 	document.getElementsByTagName("head")[0].appendChild(script);
@@ -210,7 +210,7 @@ function spa_authUser(userToLogin){
 		return  //already logined; malicious call
 	}
 
-	window.userToLogin = userToLogin
+	window.userToLogin = userToLogin.toLowerCase().trim()
 	udir = btoa(userToLogin) // userToLogin.replace(/[^a-zA-Z0-9-]/img,'_')
 	const strWindowFeatures = 'toolbar=no, menubar=no, width=600, height=700';
 	loginWindow = window.open('https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2Froyal-art%2Frequests%2F'+udir+'%2Fauth&flowEntry=AccountChooser',  '_blank', strWindowFeatures);
@@ -300,7 +300,7 @@ function spa_navigate(page){
 function spa_signOut(){
 	if (window.prompt('Sign out?'))
 	{
-		spa_apiRequest('signOut',{}) //to set monitoring rate from frequent to normal
+		spa_apiRequest('signOut',{},location.reload,true) //to set monitoring rate from frequent to normal
 		window.spa_loginedUser = undefined;
 		eraseCookie('requestUrl')
 		eraseCookie('requestPolicy')
