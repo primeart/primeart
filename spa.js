@@ -86,38 +86,71 @@ function timeNow(){
 window.spa_apiRequestCallbacks={}
 window.spa_apiRequestQueue=[]
 
-function spa_apiRequest(commandName, data, callback){
+function spa_apiRequest(commandName, data, callback, blocking){
 	if (!spa_isLogined()){
 		return  //already logined; malicious call
 	}
-	console.log('spa_apiRequest :: apiCommand=',commandName)
+	console.log('spa_apiRequest :: apiCommand=', commandName)
 	//document.getElementById('load_screen_root').innerHTML += '<br /><br />spa_apiRequest:: apiCommand='+commandName
-
-	if (window.spa_apiRequestCallbacks.length>0){
-		window.spa_apiRequestQueue.push([commandName, data, callback])
-		//alert('Error #821088. Try again')
-		//location.reload()
-		return True
-	}
 	//ui_waiter(true)
+
+	for(var i=0;i < spa_apiRequestQueue.length;i++) {
+		if (spa_apiRequestQueue[i][3] == true){ //is blocking
+			window.spa_apiRequestQueue.push([commandName, data, callback, blocking])
+			return true
+		}
+	}
+
 	spa_requestId = timeNow()
+
 	window.spa_apiRequestCallbacks[spa_requestId]=callback
 	window.spa_responceAwaitTries=0
+
 	if (!data.type){ //not a file
 		data = JSON.stringify({'commandName':commandName, 'requestId':spa_requestId, 'data':data})
 	}
 	usePolicyDocument=false //todo
 	if (usePolicyDocument){
 		data = window.spa_requestPolicy + convertToFormFileAsAttachment(data)
-		httpRequest(window.spa_requestUrl, 'POST', data, waitApiResponceAndCallback)
+		method='POST'
 	}else{
-		httpRequest(window.spa_requestUrl, 'PUT', data, waitApiResponceAndCallback)
+		method='PUT'
 	}
+	httpRequest(window.spa_requestUrl, method, data, function(){spa_addResponceScript(window.spa_responceUrl+spa_requestId+'.js',spa_requestId)})
 	console.log('spa_apiRequest :: success send put equest')
+}
 
+function spa_addResponceScript(src, spa_requestId) {
+	var script = document.createElement("script")
+	script.type = "text/javascript";
+	script.onload = function(){
+		console.log("Script is loaded");
+		//spa_requestId = this
+		if (callback=window.spa_apiRequestCallbacks[spa_requestId]){
+				console.log("callback found, calling");
+				callback(spa_responces[spa_requestId])// !== false && ()
+		}
+		if (window.spa_apiRequestQueue.length>0){
+			args = window.spa_apiRequestQueue[0]
+			delete window.spa_apiRequestQueue[0]
+			console.log('calling next request in queue')
+			spa_apiRequest(args[0],args[1],args[2])
+		}
+	};
+	script.onerror = function(){
+		console.log("Script is not loaded "+this.src);
+		//!spa_addResponceScript(this.src)
+		this.parentNode.removeChild(this)
+	};
+	script.src = src;
+	script.async = true;
+	script.setAttribute("data-requestid", spa_requestId);
+	document.getElementsByTagName("head")[0].appendChild(script);
 }
 
 function waitApiResponceAndCallback(){
+	console.log('waitApiResponceAndCallback should not be called')
+	return
 	if (Object.keys(window.spa_apiRequestCallbacks).length <= 0){
 		console.log('waitApiResponceAndCallback:: no callbacks at start of function, spa_apiRequestCallbacks:: ')
 			console.log(window.spa_apiRequestCallbacks)
@@ -125,6 +158,9 @@ function waitApiResponceAndCallback(){
 	}
 	console.log('waitApiResponceAndCallback:: about to make get request, spa_apiRequestCallbacks:: ')
 	console.log(window.spa_apiRequestCallbacks)
+
+
+	/*
 	httpRequest(window.spa_responceUrl, 'GET', {}, function(responce){
 			console.log('waitApiResponceAndCallback"s callback got called with responce:')
 			console.log(responce)
@@ -137,7 +173,7 @@ function waitApiResponceAndCallback(){
 			called=false
 			if (callback=window.spa_apiRequestCallbacks[responce.requestId]){
 				console.log('ids match, calling callback! id: '+responce.requestId)
-				document.getElementById('load_screen_root').innerHTML += '<br />spa_apiRequest:: cbk with responce='+ JSON.stringify(responce)
+				//document.getElementById('load_screen_root').innerHTML += '<br />spa_apiRequest:: cbk with responce='+ JSON.stringify(responce)
 
 				called = true
 				delete window.spa_apiRequestCallbacks[responce.requestId]
@@ -160,6 +196,7 @@ function waitApiResponceAndCallback(){
 			}
 
 	})
+	*/
 }
 
 
