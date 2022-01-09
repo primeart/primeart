@@ -63,7 +63,7 @@
 
 	window.waiters={}
 	function ui_waiter(show, id){
-show=false
+
 		if (show){
 			if(id){
 				console.log('set waiter '+id)
