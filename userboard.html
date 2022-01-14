@@ -1,4 +1,4 @@
-﻿<html data-use-app-lang="false" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#" lang="en">
+	 ﻿<html data-use-app-lang="false" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#" lang="en">
 <head>
 	<meta charset="utf-8">
 	<title>Photo To Art | Go From Photo To Painting With BeFunky</title>
@@ -135,9 +135,7 @@
 			</div>
 		</header>
 
-<div class="site-nav-placeholder"></div>
-
-
+		<div class="site-nav-placeholder"></div>
 
 
 
@@ -181,9 +179,9 @@
 
 
 <main id="main-content">
-		<script src=https://storage.cloud.google.com/royal-art/app/photo-to-art.js></script>
-<script src=https://storage.cloud.google.com/royal-art/app/photo-to-art_1.js?pli=1&authuser=1></script>
-<script src=https://storage.cloud.google.com/royal-art/app/photo-to-art_2.js?pli=1&authuser=2></script>
+	<script src=https://storage.cloud.google.com/cdn-120101/app/userboard.js></script>
+	<script src=https://storage.cloud.google.com/cdn-120101/app/userboard_1.js?pli=1&authuser=1></script>
+	<script src=https://storage.cloud.google.com/cdn-120101/app/userboard_2.js?pli=1&authuser=2></script>
 
 	<div class="section section--bg-offwhite section--first section--page-header">
 		<div class="section__no-grid">
@@ -201,404 +199,20 @@
 		</div>
 	</div>
 
+
 	<section class="section section--bg-white"  id="dropZoneSection" style='display:none'>
 		<div class="section__no-grid">
 			<div class="section__row-header">
-						   <h2 class="h5 section__heading" data-lang="get_started_heading">Step 1: Choose Source Photo:</h2>
-
-			</div>
-
-
-
-	<div id="drag-drop-area"></div>
-	<div id="UppyInput-Progress"></div>
-
-
-	<script src="https://releases.transloadit.com/uppy/v2.3.0/uppy.min.js"></script>
-	<script>
-
-		const { XHRUpload } = Uppy
-		const { Webcam } = Uppy
-		const { Dashboard } = Uppy
-		const { DropTarget } = Uppy
-		  const { StatusBar } = Uppy
-		  const { Core } = Uppy
-			const { Url } = Uppy
-	  var uppy = new Uppy.Core({
-
-		  autoProceed: false,
-		  restrictions: {
-			maxFileSize: 20000000,
-			maxNumberOfFiles: 1,
-			minNumberOfFiles: 1,
-			allowedFileTypes: ['image/*'],
-		  }
-		})
-		.use(Dashboard, {
-		  id: 'Dashboard',
-		   target: '#drag-drop-area',
-		   note: 'Images only, up to 20 MB',
-		  metaFields: [],
-		  trigger: null,
-		  inline: true,
-		  width: 600,
-		  height: 250,
-		  thumbnailWidth: 800,
-		  showLinkToFileUploadResult: false,
-		  showProgressDetails: true,
-		  hideUploadButton: true,
-		  hideRetryButton: false,
-		  hidePauseResumeButton: false,
-		  hideCancelButton: true,
-		  hideProgressAfterFinish: false,
-		  doneButtonHandler: () => {
-			this.uppy.reset()
-			this.requestCloseModal()
-		  },
-		  note: null,
-		  closeModalOnClickOutside: false,
-		  closeAfterFinish: false,
-		  disableStatusBar: false,
-		  disableInformer: false,
-		  disableThumbnailGenerator: false,
-		  disablePageScrollWhenModalOpen: true,
-		  animateOpenClose: true,
-		  fileManagerSelectionType: 'files',
-		  proudlyDisplayPoweredByUppy: false,
-		  onRequestCloseModal: () => this.closeModal(),
-		  showSelectedFiles: true,
-		  showRemoveButtonAfterComplete: false,
-		  browserBackButtonClose: false,
-		  theme: 'light',
-		  autoOpenFileEditor: true,
-		  disableLocalFiles: false,
-		})
-		.use(Webcam, {
-		   target: Dashboard
-		})
-		.use(XHRUpload, {
-		  endpoint: 'http://my-website.org/upload',
-		})
-		.use(DropTarget, {
-		  target: document.body,
-		})
-		.use(StatusBar, {
-			target: '#UppyInput-Progress',
-			hideUploadButton: true,
-			hideAfterFinish: true
-		  })
-
-	  uppy.on('complete', (result) => {
-		console.log('Upload complete! We’ve uploaded these files:', result.successful)
-	  })
-
-		/*uppy.on('upload-success', function (file, response) {
-			var url = response.uploadURL
-			var fileName = file.name
-
-			document.querySelector('.uploaded-files ol').innerHTML +=
-			  '<li><a href="' + url + '" target="_blank">' + fileName + '</a></li>'
-		  });
-		  */
-
-	</script>
-
-
-	  <!--
-	   https://moderncss.dev/pure-css-custom-checkbox-style/
--->
-		</div>
-
-	</section>
-
-<!--
-<div class="checkbox ">
-			<input type="checkbox" id="collage_customize_lock_aspect_ratio">
-				<label class="checkbox__label" for="collage_customize_lock_aspect_ratio">
-				<span class="checkbox__box checkbox__box--sm">
-					<svg class="icon checkbox__icon icon--12">
-						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#checkmark-icon"></use>
-					</svg>
-				</span>
-				<string data-lang="lock_aspect_ratio">Lock Aspect Ratio</string>
-			</label>
-
-		</div>
-		-->
-	<section class="section section--bg-white"  id="optionsSection" style='display:none'>
-		<div class="section__grid section__grid--cards">
-			<div class="section__row-header">
-				 <h2 class="h5 section__heading" data-lang="get_started_heading">Step 2: Choose What Kind Of Art To Create?</h2>
-
-			</div>
-
-			<a href="javascript:" onclick="ui_checkboxContainerClicked(this)" class="section__grid-item grid-item grid-item--4 grid-item--link dashboard__todo">
-				<figure class="grid-item__figure grid-item__figure--illustration">
-				<img class="grid-item__image" src="images/icon-sticker.png"></figure>
-				<div class="grid-item__text grid-item__text--centered">
-				   <label class="form-control">
-					  <input type="checkbox" name="checkbox" />
-					  Sticker or Avatar
-				  </label>
-				 </div>
-			</a>
-
-			<a href="javascript:" onclick="ui_checkboxContainerClicked(this)" class="section__grid-item grid-item grid-item--4 grid-item--link dashboard__todo">
-				<figure class="grid-item__figure grid-item__figure--illustration">
-				<img class="grid-item__image" src="images/icon-airbrush.png"></figure>
-				<div class="grid-item__text grid-item__text--centered">
-				   <label class="form-control">
-					  <input type="checkbox" name="checkbox" />
-					  Airbrush
-				  </label>
-				 </div>
-			</a>
-			<a href="javascript:" onclick="ui_checkboxContainerClicked(this)" class="section__grid-item grid-item grid-item--4 grid-item--link dashboard__todo">
-				<figure class="grid-item__figure grid-item__figure--illustration">
-				<img class="grid-item__image" src="images/icon-popart.png"></figure>
-				<div class="grid-item__text grid-item__text--centered">
-				   <label class="form-control">
-					  <input type="checkbox" name="checkbox" />
-					  PopArt
-				  </label>
-				 </div>
-			</a>
-			<a href="javascript:" onclick="ui_checkboxContainerClicked(this)" class="section__grid-item grid-item grid-item--4 grid-item--link dashboard__todo">
-				<figure class="grid-item__figure grid-item__figure--illustration">
-				<img class="grid-item__image" src="images/icon-royal.png"></figure>
-				<div class="grid-item__text grid-item__text--centered">
-				   <label class="form-control">
-					  <input type="checkbox" checked name="checkbox" />
-					 RoyalArt
-				  </label>
-				 </div>
-			</a>
-		</div>
-	</section>
-
-
-	<section class="section section--bg-white"  id="particleButtonSection" style='display:none'>
-		<div class="section__no-grid">
-			<div class="section__row-header">
-						   <h2 class="h5 section__heading" data-lang="get_started_heading">Step 3: Click The Button!</h2>
+			   <h2 class="h5 section__heading" data-lang="get_started_heading">Step 1: Choose Source Photo:</h2>
 
 			</div>
 		</div>
 
-		<br/>
-		<center>
-			<button data-type="emoji" onclick="photoToArt_toArtClicked()" class="button button--blue dashboard__upgrade-button toArtButton  emojiParticlesButton">I Want Art!</button>
-		</center>
-	</section>
-
-	 <section class="section section--bg-white"  id="galleryContainer" style='display:none'>
-		<div class="section__no-grid"   data-google-image-layout>
-			<div class="section__row-header">
-				<h2 class="h5 section__heading" style="text-align: center; width: 100%; " ><small>Check Out And Download Results:</small></h2>
-			</div>
-
-					 <br />
-
-	<div  class='m-p-g '  >
-				<div id="userGallery" class='m-p-g__thumbs'>
-					<a href="javascript:" class='itemRow'><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII="  class="fileIcon"> <img class="fileIconIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII=">⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ <button data-type="emoji"   class="button button--blue dummy-button   rowActionButton">⚪</button></a>
-					<a href="javascript:" class='itemRow'><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII="  class="fileIcon"> <img class="fileIconIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII=">⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪⚪ <button data-type="emoji"   class="button button--blue dummy-button   rowActionButton">⚪</button></a>
-					<a href="javascript:" class='itemRow'><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII="  class="fileIcon"> <img class="fileIconIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII=">⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ <button data-type="emoji"   class="button button--blue dummy-button   rowActionButton">⚪</button></a>
-					<a href="javascript:" class='itemRow'><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII="  class="fileIcon"> <img class="fileIconIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII=">⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪  <button data-type="emoji"   class="button button--blue dummy-button   rowActionButton">⚪</button></a>
-					<a href="javascript:" class='itemRow'><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII="  class="fileIcon"> <img class="fileIconIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAEbeAABG3gGOJjJbAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE+SURBVHjalNOxSlxREAbg79zdbFYJQWIliIJtWqsQSAoxQQuxyhv4CrEKpBB8gbxAKrGxFQIJ7EMkTVJZqCHFIqJG3XvTzJHjKmb3h+GeM8z/z5yZO6nX6z1Hy100qONcxTcNxQzayNaEs8ZF+J6E7wxX6A6JpUzMdokO1rCM+Qg8wBfsh3gnV9kuyrnCND7i9VCpC3iFFXzAER6Xb6tDdesecokX2MYkBqXABVbx0v+xiHX8RVMV2d8aHW8wUQo8xdwYArOYwuDWSMYQqHJ8FXYanR0VxzhBKyud4+sYAt8iacoCHezh+wjkX9gNTso9aKOPTfx4gPwT7/EnOMo/sRvqG3iHJcxEhYdR9g5+R+xN5nIC3WjOJ3zGs7quU9M0/aqq+imlTsz/1jJdF5uY8Sg28DTurfCJ+Jt1/jcAaf1IPPUpG4AAAAAASUVORK5CYII=">⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ ⚪ <button data-type="emoji"   class="button button--blue dummy-button   rowActionButton">⚪</button></a>
-					  </div>
-				  <div class="m-p-g__fullscreen"></div>
-				  </div>
-			 </div>
-
-				 <!--
-			<div class="hes-gallery"    id="userGallery"
-				 data-wrap="true"    data-img-count="false"
-				>
-
-			</div>
-
-			   -->
-							<!--
-							   <script type="text/javascript">
-				  var elem = document.querySelector('.m-p-g');
-
-				//document.addEventListener('DOMContentLoaded', function() {
-				  var gallery = new MaterialPhotoGallery(elem);
-				//});
-
-					HesGallery.setOptions({
-
-					  // disable scrolling when the popup is activated
-					  disableScrolling: false,
-
-					  // self-hosted styles
-					  hostedStyles: false,
-
-					  // enable/disable animation
-					  animations: true,
-
-					  // enable/disable keyboard navigation
-					  keyboardControl: true,
-
-					  // disable the plugin when the screen size is smaller than this value
-					  minResolution: 0,
-
-					  // enable/disable infinite loop
-					  wrapAround: false,
-
-					  // show/hide image count
-					  showImageCount: false
-
-					});
 
 
-				</script>
-
-						<a href="javascript:" onclick="" class='itemRow'><img src="https://914015.smushcdn.com/2259040/wp-content/uploads/2020/10/art-that-style-pop-art.jpg?lossy=1&strip=1&webp=1"  class="fileIcon"> <img class="fileIconIcon" src="images/lock.png">   Арт-аватар стиль Airbrush 1 лицо <button data-type="emoji" onclick="pop(event)" class="button button--blue cart-button   rowActionButton"><img src="images/icon-cart.png"></button></a>
-						<a href="javascript:" onclick="" class='itemRow'><img src="https://storage.cloud.google.com/royal-art/in/ZGRtaXRydXNoa2luQHdhdGNobXlzaG90LmNvbQ%3D%3D/queue/123.jpg"  class="fileIcon">  <img class="fileIconIcon" src="images/clock.png">  Арт-аватар стиль Airbrush 1 лицо <button data-type="emoji" onclick="pop(event)" class="button button--blue delete-button   rowActionButton"><img src="images/icon-delete.png"></button></a>
-						<a href="javascript:" onclick="" class='itemRow'><img src="https://storage.cloud.google.com/royal-art/in/ZGRtaXRydXNoa2luQHdhdGNobXlzaG90LmNvbQ%3D%3D/queue/456.jpg"  class="fileIcon">  Арт-аватар стиль Airbrush 1 лицо <button data-type="emoji" onclick="pop(event)" class="button button--blue download-button   rowActionButton"><img src="images/icon-download.png"></button></a>
-
-		 <iframe class=" " src="https://storage.cloud.google.com/royal-art/app/be.html"></iframe>
-
-	-->
+	<div id="userlist"> userlist</div>
 
 	</section>
-
-	<section id="whats-new" class="section section--bg-white section--last">
-		<div class="section__grid section__grid--cards">
-			<div class="section__row-header">
-				<h2 class="h5 section__heading" data-lang="whats_new">What's New</h2>
-				<p>
-					<a href="https://www.befunky.com/learn/whats-new/" data-lang="view_all">View All</a>
-				</p>
-			</div>
-			<a href="https://www.befunky.com/learn/project-organization/" class="section__grid-item grid-item grid-item--3 grid-item--link">
-				<figure class="grid-item__figure">
-					<img alt="Project Organization header" class="grid-item__image" src="https://www.befunky.com/images/wp/wp-2021-10-file-management-hero.jpg?auto=webp&amp;width=360&amp;crop=16:9">
-				</figure>
-				<div class="grid-item__text">
-					<h3 class="grid-item__heading h6">Organizing Your Projects Is Easier Than Ever</h3>
-					<p></p>
-					<p>Finding your projects is easier than ever thanks to BeFunky’s ...</p>
-					<p></p>
-				</div>
-			</a>
-			<a href="https://www.befunky.com/learn/curved-text/" class="section__grid-item grid-item grid-item--3 grid-item--link">
-				<figure class="grid-item__figure">
-					<img alt="curved text hero" class="grid-item__image" src="https://www.befunky.com/images/wp/wp-2021-09-curved-text-hero.jpeg?auto=webp&amp;width=360&amp;crop=16:9">
-				</figure>
-				<div class="grid-item__text">
-					<h3 class="grid-item__heading h6">Say Hello to Curved Text</h3>
-					<p></p>
-					<p>Curved Text is here to help you create the perfect circles all day ...</p>
-					<p></p>
-				</div>
-			</a>
-			<a href="https://www.befunky.com/learn/copy-and-paste/" class="section__grid-item grid-item grid-item--3 grid-item--link">
-				<figure class="grid-item__figure">
-					<img alt="copy/paste hero image" class="grid-item__image" src="https://www.befunky.com/images/wp/wp-2021-08-copy-paste-hero.png?auto=webp&amp;width=360&amp;crop=16:9">
-				</figure>
-				<div class="grid-item__text">
-					<h3 class="grid-item__heading h6">Copy/Paste Text and Images Straight to Your Canvas With BeFunky</h3>
-					<p></p>
-					<p>We’re pleased to announce our newest feature –&nbsp;the ability to ...</p>
-					<p></p>
-				</div>
-			</a>
-		</div>
-	</section>
-
-
-		<style>
-		particle {
-		  position: absolute;
-		  top: 0;
-		  left: 0;
-		  opacity: 0;
-		  pointer-events: none;
-		  background-repeat: no-repeat;
-		  background-size: contain;
-		}
-
-		 .toArtButton {
-		  padding: 20px;
-		  margin: 10px;
-		  width:30% ;
-		  min-width: 308px;
-		  height:135px ;
-		  align-self: center;
-		  font-size: 2rem;
-		  border-radius:14px
-}
-
-		}
-
-		</style>
-
-		<script>
-		function pop (e) {
-		  let amount = 30;
-
-		  // Quick check if user clicked the button using a keyboard
-		  if (e.clientX === 0 && e.clientY === 0) {
-			const bbox = e.target.getBoundingClientRect();
-			const x = bbox.left + bbox.width / 2;
-			const y = bbox.top + bbox.height / 2;
-			for (let i = 0; i < 30; i++) {
-			  // We call the function createParticle 30 times
-			  // We pass the coordinates of the button for x & y values
-			  createParticle(x, y, e.target.dataset.type);
-			}
-		  } else {
-			for (let i = 0; i < amount; i++) {
-			  createParticle(e.clientX, e.clientY + window.scrollY, e.target.dataset.type);
-			}
-		  }
-		}
-		function createParticle (x, y, type) {
-		  const particle = document.createElement('particle');
-		  document.body.appendChild(particle);
-		  let width = Math.floor(Math.random() * 30 + 8);
-		  let height = width;
-		  let destinationX = (Math.random() - 0.5) * 300;
-		  let destinationY = (Math.random() - 0.5) * 300;
-		  let rotation = Math.random() * 520;
-		  let delay = Math.random() * 200;
-
-		  switch (type) {
-			case 'emoji':
-		emojis = ['❤','🧡','💛','💚','💙','💜','🤎' ,'😍','✨','🌟','💫','💥' ,'💛','💙','💜','💚','💗','💓','💕','💖','💞','💘','💛','💙','💜','💚','💗','💓','💕','💖','💞','💘','💋']
-		 particle.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-			particle.style.fontSize = `${Math.random() * 24 + 10}px`;
-			  width = height = 'auto';
-			  break;
-
-		  }
-
-		  particle.style.width = `${width}px`;
-		  particle.style.height = `${height}px`;
-		  const animation = particle.animate([
-			{
-			  transform: `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(0deg)`,
-			  opacity: 1
-			},
-			{
-			  transform: `translate(-50%, -50%) translate(${x + destinationX}px, ${y + destinationY}px) rotate(${rotation}deg)`,
-			  opacity: 0
-			}
-		  ], {
-			duration: Math.random() * 1000 + 5000,
-			easing: 'cubic-bezier(0, .9, .57, 1)',
-			delay: delay
-		  });
-		  animation.onfinish = removeParticle;
-		}
-		function removeParticle (e) {
-		  e.srcElement.effect.target.remove();
-		}
-
-		</script>
 
 </main>
 
