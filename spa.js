@@ -96,7 +96,7 @@ function spa_apiRequest(commandName, data, callback, blocking){
 
 	for(var i=0;i < spa_apiRequestQueue.length;i++) {
 		if (spa_apiRequestQueue[i][3] == true){ //is blocking
-			window.spa_apiRequestQueue.push([commandName, data, callback, blocking])
+			window.spa_apiRequestQueue.push([commandName, data, callback, blocking?true:false])
 			return true
 		}
 	}
@@ -271,24 +271,21 @@ function spa_receiveMessage(event)
 		return
 	 }
 */
-	 if (true){ //so far only logined message expected; todo expect different message and check here
-		 //setState('logined',[window.userToLogin, event.data])
-		 //ui_setLoginedInterface(window.userToLogin)
-		  console.log(event.data)
-		//console.log(event.data['authedUrl'])
-		//console.log(event.data['authedUrl'].split('?')[-1])
+	 if (event.data && event.data['user']){ //so far only logined message expected; todo expect different message and check here
+		 //console.log(event.data)
+		 //spa_storeCredentials(event.data)
+		 spa_init(event.data)
+	 }
+}
 
+function spa_storeCredentials(data){
 		 timeout=event.data['timeout']
 		 //=event.data[3]
 		 setCookie('requestUrl',event.data['requestUrl'], timeout)
 		 setCookie('requestPolicy',event.data['requestPolicy'], timeout)
-		 setCookie('responceUrl',event.data['responceUrl'],timeout)
-		 setCookie('loginedUser',window.userToLogin, timeout)
-
-		 spa_init(true)
-	 }
+		 //setCookie('responceUrl',event.data['responceUrl'],timeout)
+		 setCookie('loginedUser',event.data['user'], timeout)
 }
-
 function spa_isLogined(){
 	return  window.spa_loginedUser && validateEmail(window.spa_loginedUser)
 }
@@ -298,12 +295,12 @@ function spa_navigate(page){
 }
 
 function spa_signOut(){
-	if (window.prompt('Sign out?'))
+	if (window.confirm('Sign out?'))
 	{
 		window.spa_loginedUser = undefined;
 		eraseCookie('requestUrl')
 		eraseCookie('requestPolicy')
-		eraseCookie('responceUrl')
+		//eraseCookie('responceUrl')
 		eraseCookie('loginedUser')
 		spa_apiRequest('signOut',{},location.reload,true) //to set monitoring rate from frequent to normal
 
@@ -311,12 +308,14 @@ function spa_signOut(){
 }
 
 
-function spa_init(afterLogin){
-document.getElementById('getStartedButton').href='https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2Froyal-art%2Frequests%2FZGRtaXRydXNoa2luQHdhdGNobXlzaG90LmNvbQ%3D%3D%2Fauth&flowEntry=AccountChooser'
-	  document.getElementById('getStartedButton').target='_blank'
-  document.getElementById('getStartedButton').innerHTML='auth'
+function spa_init(data){
+
+//document.getElementById('getStartedButton').href='https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2Froyal-art%2Frequests%2FZGRtaXRydXNoa2luQHdhdGNobXlzaG90LmNvbQ%3D%3D%2Fauth&flowEntry=AccountChooser'
+//	  document.getElementById('getStartedButton').target='_blank'
+//  document.getElementById('getStartedButton').innerHTML='auth'
+
 	if (location.href.indexOf('http')<0){
-		return
+		return //local ui tests
 	}
 	//!todo check login cookies expire date and set timeout to periodically opdate them when idle
 
@@ -330,29 +329,33 @@ function httpGet(theUrl)
 }
 alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 */
-	dashboard = location.href.indexOf('dashboard.html')>-1
+	currentPageIsIndex = ! (location.href.indexOf('.html')>-1 && location.href.indexOf('index.html')<0)
 
-	//todo do before page content appears
-	userCandidate = getCookie('loginedUser');
-	if (validateEmail(userCandidate)){
-		window.spa_loginedUser = userCandidate;
-		window.spa_requestUrl = getCookie('requestUrl');
-		window.spa_requestPolicy = getCookie('requestPolicy');
-		window.spa_responceUrl = getCookie('responceUrl');
-		if(window.spa_requestUrl){
-			ui_setLoginedInterface(window.spa_loginedUser)
+	window.spa_loginedUser = getCookie('loginedUser');
+	window.spa_requestUrl = getCookie('requestUrl');
+
+	if (validateEmail(window.spa_loginedUser ) && window.spa_requestUrl ){
+		if (currentPageIsIndex){//  || afterLogin === true){
+			//spa_init will be called again on logned user page
+			return spa_navigate('dashboard.html')
 		}
-
-		  if (!dashboard  || afterLogin === true){
-			spa_navigate('dashboard.html')
-		 }else{
-			ui_setLoginedInterface(window.spa_loginedUser)
-		 }
+		callback = function(data){
+			//if(result.state=='success'){
+				spa_storeCredentials(data)
+				ui_setLoginedInterface(window.spa_loginedUser)
+			//}
+		}
+		stayLogged=true //stayLoggedCheckbox.was checked
+		if (data){
+			callback(data)
+		}else{
+			spa_apiRequest('spa_getSignedUrlToPutRequestFile', {'user':window.spa_loginedUser, 'stayLogged':stayLogged}, callback, true)
+		}
 
 	}else{
 		//tmp
 		//document.getElementById('main-content').innerHTML.indexOf('Sign in required to access this page')>-1
-		if (dashboard){
+		if (!currentPageIsIndex){
 			 ui_signInDialog(true)
 			 //window.spa_userAuthSuccessCallback = location.reload
 		}else{
