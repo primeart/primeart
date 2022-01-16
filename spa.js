@@ -6,6 +6,7 @@
 // https://vinta.ws/code/integrate-with-google-cloud-api-in-python.html
 //https://blog.koliseo.com/limit-the-size-of-uploaded-files-with-signed-urls-on-google-cloud-storage/
 
+window.authBucket = 'auth-alpaca'
 
 	function setCookie(name,value,seconds) {
 	var expires = "";
@@ -117,7 +118,7 @@ function spa_apiRequest(commandName, data, callback, blocking){
 		method='PUT'
 	}
 	httpRequest(window.spa_requestUrl, method, data, function(){setTimeout('spa_addResponceScript("'+spa_requestId+'")',100)})
-	console.log('spa_apiRequest :: success send put equest')
+	console.log('spa_apiRequest :: success placed put equest, awaiting result')
 }
 
 spa_responces ={}
@@ -213,7 +214,8 @@ function spa_authUser(userToLogin){
 	window.userToLogin = userToLogin
 	udir = btoa(userToLogin) // userToLogin.replace(/[^a-zA-Z0-9-]/img,'_')
 	const strWindowFeatures = 'toolbar=no, menubar=no, width=600, height=700';
-	loginWindow = window.open('https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2Froyal-art%2Frequests%2F'+udir+'%2Fauth&flowEntry=AccountChooser',  '_blank', strWindowFeatures);
+	//loginWindow = window.open('https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2Froyal-art%2Frequests%2F'+udir+'%2Fauth&flowEntry=AccountChooser',  '_blank', strWindowFeatures);
+	loginWindow = window.open('https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2F'+window.authBucket+'%2F'+udir+'&flowEntry=AccountChooser',  '_blank', strWindowFeatures);
 	//    ?pli=1&authuser=2
 	loginWindow.focus();
 
@@ -283,7 +285,7 @@ function spa_storeCredentials(data){
 		 //=event.data[3]
 		 setCookie('requestUrl',data['requestUrl'], timeout)
 		 setCookie('requestPolicy',data['requestPolicy'], timeout)
-		 //setCookie('responceUrl',event.data['responceUrl'],timeout)
+		 setCookie('responceUrl',event.data['responceUrl'],timeout)
 		 setCookie('loginedUser',data['user'], timeout)
 }
 function spa_isLogined(){
@@ -300,7 +302,7 @@ function spa_signOut(){
 		window.spa_loginedUser = undefined;
 		eraseCookie('requestUrl')
 		eraseCookie('requestPolicy')
-		//eraseCookie('responceUrl')
+		eraseCookie('responceUrl')
 		eraseCookie('loginedUser')
 		spa_apiRequest('signOut',{},location.reload,true) //to set monitoring rate from frequent to normal
 
@@ -333,6 +335,7 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 
 	window.spa_loginedUser = getCookie('loginedUser');
 	window.spa_requestUrl = getCookie('requestUrl');
+	window.spa_responceUrl = getCookie('responceUrl');
 
 	if (validateEmail(window.spa_loginedUser ) && window.spa_requestUrl ){
 		if (currentPageIsIndex){//  || afterLogin === true){
