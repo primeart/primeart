@@ -88,8 +88,8 @@ window.spa_apiRequestCallbacks={}
 window.spa_apiRequestQueue=[]
 
 function spa_apiRequest(commandName, data, callback, blocking){
-	if (!spa_isLogined()){
-		return  //already logined; malicious call
+	if (!window.spa_requestUrl){
+		return
 	}
 	console.log('spa_apiRequest :: apiCommand=', commandName)
 	//document.getElementById('load_screen_root').innerHTML += '<br /><br />spa_apiRequest:: apiCommand='+commandName
