@@ -146,6 +146,10 @@ function spa_addResponceScript(spa_requestId) {
 		setTimeout('spa_addResponceScript("'+spa_requestId+'")',3000)
 		this.parentNode.removeChild(this)
 	};
+	if (window.authuser==undefined){
+		console.log('window.authuser is undefined, cant send request')
+		return
+	}
 	script.src = window.spa_responceUrl+spa_requestId+'.js'+'?authuser='+window.authuser +'&nocache='+timeNow()   ;
 	script.async = true;
 	script.setAttribute("data-requestid", spa_requestId);
@@ -310,10 +314,31 @@ function spa_signOut(){
 }
 
 //<script src=https://storage.cloud.google.com/royal-art/app/photo-to-art.js></script>
+function spa_addAppScript(appname) {
+	var script = document.createElement("script")
+	script.type = "text/javascript";
+//    script.onload = function(){
+//    };
+	script.onerror = function(){
+		console.log("spa_appScript is not loaded "+appname+'_____'+window.authuser);
+		//spa_addResponceScript(this.getAttribute("data-requestid"))
+		//setTimeout('spa_addResponceScript("'+spa_requestId+'")',3000)
+		this.parentNode.removeChild(this)
+	};
+	script.src = 'https://storage.cloud.google.com/'+window.authBucket.replace('auth','cdn')+'/app/'+appname+'?pli=1&authuser='+window.authuser
+	console.log('adding script src '+script.src)
+	script.async = true;
+	//script.setAttribute("data-requestid", spa_requestId);
+	document.getElementsByTagName("head")[0].appendChild(script);
+}
+
 function spa_setAuthuser(udir, authid){
 	if (!window.authuser){
 		window.authuser=authid
-		window.appsToInit[0]();
+		spa_addAppScript('photo-to-art.js')
+
+
+
 	}
 }
 
@@ -383,11 +408,12 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 				spa_getAuthuser(data['udir'])
 			//}
 		}
+
 		stayLogged=true //stayLoggedCheckbox.was checked
 		if (data && data['user']){
 			callback(data)
 		}else{
-			spa_apiRequest('spa_getSignedUrlToPutRequestFile', {'user':window.spa_loginedUser, 'stayLogged':stayLogged}, callback, true)
+			//spa_apiRequest('spa_getSignedUrlToPutRequestFile', {'user':window.spa_loginedUser, 'stayLogged':stayLogged}, callback, true)
 		}
 
 	}else{
