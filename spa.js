@@ -143,7 +143,7 @@ function spa_addResponceScript(spa_requestId) {
 	script.onerror = function(){
 		console.log("Script is not loaded "+spa_requestId+'_____'+this.getAttribute("data-requestid"));
 		//spa_addResponceScript(this.getAttribute("data-requestid"))
-		setTimeout('spa_addResponceScript("'+spa_requestId+'")',3000)
+		setTimeout('spa_addResponceScript("'+spa_requestId+'")',30000)
 		this.parentNode.removeChild(this)
 	};
 	if (window.spa_authuser==undefined){
@@ -151,6 +151,7 @@ function spa_addResponceScript(spa_requestId) {
 		return
 	}
 	script.src = window.spa_responceUrl+spa_requestId+'.js'+'?authuser='+window.spa_authuser +'&nocache='+timeNow()   ;
+	console.log('spa_addResponceScript: adding script:: '+script.src)
 	script.async = true;
 	script.setAttribute("data-requestid", spa_requestId);
 	document.getElementsByTagName("head")[0].appendChild(script);
