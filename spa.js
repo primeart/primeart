@@ -438,6 +438,7 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 			//so call callback directly
 			callback(data)
 		}else{
+			window.removeEventListener("DOMContentLoaded", spa_init);
 			spa_apiRequest('spa_getSignedUrlToPutRequestFile', {'user':window.spa_loginedUser, 'stayLogged':stayLogged}, callback, true)
 		}
 
