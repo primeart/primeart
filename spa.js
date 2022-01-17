@@ -347,10 +347,11 @@ function spa_getAuthuser(udir){
 		var script = document.createElement("script")
 		script.type = "text/javascript";
 		script.onload = function(){
+			console.log("Loaded: spa_addAuthScript Script "+udir+'@'+authid)
 			this.parentNode.removeChild(this)
 		};
 		script.onerror = function(){
-			console.log("spa_addAuthScript Script is not loaded "+udir+'_____'+authid);
+			console.log("spa_addAuthScript Script is not loaded "+udir+'@'+authid);
 			//spa_addResponceScript(this.getAttribute("data-requestid"))
 			//setTimeout('spa_addResponceScript("'+spa_requestId+'")',3000)
 			this.parentNode.removeChild(this)
@@ -381,6 +382,9 @@ function spa_init(data){
 	if (spa_isLogined()){
 		return //local ui tests
 	}
+	if (window.spa_authuser==-1){
+		return
+	}
 	//!todo check login cookies expire date and set timeout to periodically opdate them when idle
 
 /*
@@ -409,6 +413,7 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 		if (!window.spa_authuser){
 			//before sending any request, we need authuser integer to be able to read respomce234234.html?authuser=X files
 			udir = btoa(window.spa_loginedUser)
+			window.spa_authuser = -1
 			spa_getAuthuser(udir)
 			return
 		}
