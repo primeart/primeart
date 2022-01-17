@@ -146,11 +146,11 @@ function spa_addResponceScript(spa_requestId) {
 		setTimeout('spa_addResponceScript("'+spa_requestId+'")',3000)
 		this.parentNode.removeChild(this)
 	};
-	if (window.authuser==undefined){
+	if (window.spa_authuser==undefined){
 		console.log('window.authuser is undefined, cant send request')
 		return
 	}
-	script.src = window.spa_responceUrl+spa_requestId+'.js'+'?authuser='+window.authuser +'&nocache='+timeNow()   ;
+	script.src = window.spa_responceUrl+spa_requestId+'.js'+'?authuser='+window.spa_authuser +'&nocache='+timeNow()   ;
 	script.async = true;
 	script.setAttribute("data-requestid", spa_requestId);
 	document.getElementsByTagName("head")[0].appendChild(script);
@@ -320,12 +320,12 @@ function spa_addAppScript(appname) {
 //    script.onload = function(){
 //    };
 	script.onerror = function(){
-		console.log("spa_appScript is not loaded "+appname+'_____'+window.authuser);
+		console.log("spa_appScript is not loaded "+appname+'_____'+window.spa_authuser);
 		//spa_addResponceScript(this.getAttribute("data-requestid"))
 		//setTimeout('spa_addResponceScript("'+spa_requestId+'")',3000)
 		this.parentNode.removeChild(this)
 	};
-	script.src = 'https://storage.cloud.google.com/'+window.authBucket.replace('auth','cdn')+'/app/'+appname+'?pli=1&authuser='+window.authuser
+	script.src = 'https://storage.cloud.google.com/'+window.authBucket.replace('auth','cdn')+'/app/'+appname+'?pli=1&authuser='+window.spa_authuser
 	console.log('adding script src '+script.src)
 	script.async = true;
 	//script.setAttribute("data-requestid", spa_requestId);
@@ -393,8 +393,9 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 	window.spa_loginedUser = getCookie('loginedUser');
 	window.spa_requestUrl = getCookie('requestUrl');
 	window.spa_responceUrl = getCookie('responceUrl');
-	window.spa_authuser = getCookie('authuser');
-
+	if (!window.spa_authuser){
+		window.spa_authuser = getCookie('authuser');
+	}
 	if (validateEmail(window.spa_loginedUser ) && window.spa_requestUrl ){
 		if (currentPageIsIndex){//  || afterLogin === true){
 			//spa_init will be called again on logned user page
