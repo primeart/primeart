@@ -286,13 +286,15 @@ function spa_receiveMessage(event)
 }
 
 function spa_storeCredentials(data){
-		 timeout=event.data['timeout']
+		 timeout=data['timeout']
 		 //=event.data[3]
 		 setCookie('requestUrl',data['requestUrl'], timeout)
 		 setCookie('requestPolicy',data['requestPolicy'], timeout)
 		 setCookie('responceUrl',event.data['responceUrl'],timeout)
 		 setCookie('loginedUser',data['user'], timeout)
+		 setCookie('authuser', window.spa_authuser, timeout)
 }
+
 function spa_isLogined(){
 	return  window.spa_userIsLogined //window.spa_loginedUser && validateEmail(window.spa_loginedUser)
 }
@@ -309,6 +311,7 @@ function spa_signOut(){
 		eraseCookie('requestPolicy')
 		eraseCookie('responceUrl')
 		eraseCookie('loginedUser')
+		eraseCookie('authuser')
 		spa_apiRequest('signOut',{},location.reload,true) //to set monitoring rate from frequent to normal
 
 	}
