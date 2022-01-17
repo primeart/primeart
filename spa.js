@@ -333,7 +333,7 @@ function spa_addAppScript(appname) {
 }
 
 function spa_setAuthuser(udir, authid){
-	if (!window.spa_authuser){
+	if (!window.spa_authuser || window.spa_authuser==-1){
 		window.spa_authuser=authid
 //todo authids[udir]=authid
 		spa_init() //now with authuser it will actually do something
@@ -341,7 +341,7 @@ function spa_setAuthuser(udir, authid){
 }
 
 function spa_getAuthuser(udir){
-	//return spa_setAuthuser(udir,1)
+	return spa_setAuthuser(udir,1)
 
 	function spa_addAuthScript(udir, authid) {
 		var script = document.createElement("script")
