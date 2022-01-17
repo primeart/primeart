@@ -215,7 +215,7 @@ function spa_authUser(userToLogin){
 	udir = btoa(userToLogin) // userToLogin.replace(/[^a-zA-Z0-9-]/img,'_')
 	const strWindowFeatures = 'toolbar=no, menubar=no, width=600, height=700';
 	//loginWindow = window.open('https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2Froyal-art%2Frequests%2F'+udir+'%2Fauth&flowEntry=AccountChooser',  '_blank', strWindowFeatures);
-	loginWindow = window.open('https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2F'+window.authBucket+'%2F'+udir+'&flowEntry=AccountChooser',  '_blank', strWindowFeatures);
+	loginWindow = window.open('https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2F'+window.authBucket+'%2F'+udir+'%2Fauth&flowEntry=AccountChooser',  '_blank', strWindowFeatures);
 	//    ?pli=1&authuser=2
 	loginWindow.focus();
 
@@ -309,6 +309,39 @@ function spa_signOut(){
 	}
 }
 
+//<script src=https://storage.cloud.google.com/royal-art/app/photo-to-art.js></script>
+function spa_setAuthuser(udir, authid){
+	if (!window.authuser){
+		window.authuser=authid
+		window.appsToInit[0]();
+	}
+}
+
+function spa_getAuthuser(udir){
+	return spa_setAuthuser(udir,3)
+
+	function spa_addAuthScript(udir, authid) {
+		var script = document.createElement("script")
+		script.type = "text/javascript";
+	//    script.onload = function(){
+	//    };
+		script.onerror = function(){
+			console.log("spa_addAuthScript Script is not loaded "+udir+'_____'+authid);
+			//spa_addResponceScript(this.getAttribute("data-requestid"))
+			//setTimeout('spa_addResponceScript("'+spa_requestId+'")',3000)
+			this.parentNode.removeChild(this)
+		};
+		script.src = 'https://storage.cloud.google.com/'+window.authBucket+'/'+udir+'/authuser_'+authid+'.js'
+		script.async = true;
+		//script.setAttribute("data-requestid", spa_requestId);
+		document.getElementsByTagName("head")[0].appendChild(script);
+	}
+	for (i=0;i<10;i++){
+		 spa_addAuthScript(udir, i)
+	}
+}
+
+
 
 function spa_init(data){
 
@@ -346,6 +379,7 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 			//if(result.state=='success'){
 				spa_storeCredentials(data)
 				ui_setLoginedInterface(window.spa_loginedUser)
+				spa_getAuthuser(data['udir'])
 			//}
 		}
 		stayLogged=true //stayLoggedCheckbox.was checked
