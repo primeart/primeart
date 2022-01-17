@@ -333,12 +333,10 @@ function spa_addAppScript(appname) {
 }
 
 function spa_setAuthuser(udir, authid){
-	if (!window.authuser){
-		window.authuser=authid
-		spa_addAppScript('photo-to-art.js')
-
-
-
+	if (!window.spa_authuser){
+		window.spa_authuser=authid
+//todo authids[udir]=authid
+		spa_init() //now with authuser it will actually do something
 	}
 }
 
@@ -368,6 +366,7 @@ function spa_getAuthuser(udir){
 
 window.spa_userIsLogined=false
 
+
 function spa_init(data){
 
 //document.getElementById('getStartedButton').href='https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2Froyal-art%2Frequests%2FZGRtaXRydXNoa2luQHdhdGNobXlzaG90LmNvbQ%3D%3D%2Fauth&flowEntry=AccountChooser'
@@ -394,23 +393,34 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 	window.spa_loginedUser = getCookie('loginedUser');
 	window.spa_requestUrl = getCookie('requestUrl');
 	window.spa_responceUrl = getCookie('responceUrl');
+	window.spa_authuser = getCookie('authuser');
 
 	if (validateEmail(window.spa_loginedUser ) && window.spa_requestUrl ){
 		if (currentPageIsIndex){//  || afterLogin === true){
 			//spa_init will be called again on logned user page
 			return spa_navigate('dashboard.html')
 		}
+		if (!window.spa_authuser){
+			//before sending any request, we need authuser integer to be able to read respomce234234.html?authuser=X files
+			udir = btoa(window.spa_loginedUser)
+			spa_getAuthuser(udir)
+			return
+		}
+
 		callback = function(data){
 			//if(result.state=='success'){
 				spa_storeCredentials(data)
 				window.spa_userIsLogined=true
 				ui_setLoginedInterface(window.spa_loginedUser)
-				spa_getAuthuser(data['udir'])
+
+				spa_addAppScript('photo-to-art.js')
 			//}
 		}
 
 		stayLogged=true //stayLoggedCheckbox.was checked
 		if (data && data['user']){
+			//if we here right after user logined throught google accountchooser, then no need to get updated signed url - it is brand new
+			//so call callback directly
 			callback(data)
 		}else{
 			spa_apiRequest('spa_getSignedUrlToPutRequestFile', {'user':window.spa_loginedUser, 'stayLogged':stayLogged}, callback, true)
