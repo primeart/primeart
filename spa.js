@@ -346,15 +346,16 @@ function spa_getAuthuser(udir){
 	function spa_addAuthScript(udir, authid) {
 		var script = document.createElement("script")
 		script.type = "text/javascript";
-	//    script.onload = function(){
-	//    };
+		script.onload = function(){
+			this.parentNode.removeChild(this)
+		};
 		script.onerror = function(){
 			console.log("spa_addAuthScript Script is not loaded "+udir+'_____'+authid);
 			//spa_addResponceScript(this.getAttribute("data-requestid"))
 			//setTimeout('spa_addResponceScript("'+spa_requestId+'")',3000)
 			this.parentNode.removeChild(this)
 		};
-		script.src = 'https://storage.cloud.google.com/'+window.authBucket+'/'+udir+'/authuser_'+authid+'.js'+'?pli=1&authuser='+window.spa_authuser
+		script.src = 'https://storage.cloud.google.com/'+window.authBucket+'/'+udir+'/authuser_'+authid+'.js'+'?pli=1&authuser='+authid
 
 		script.async = true;
 		//script.setAttribute("data-requestid", spa_requestId);
