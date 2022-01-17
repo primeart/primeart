@@ -290,7 +290,7 @@ function spa_storeCredentials(data){
 		 //=event.data[3]
 		 setCookie('requestUrl',data['requestUrl'], timeout)
 		 setCookie('requestPolicy',data['requestPolicy'], timeout)
-		 setCookie('responceUrl',event.data['responceUrl'],timeout)
+		 setCookie('responceUrl',data['responceUrl'],timeout)
 		 setCookie('loginedUser',data['user'], timeout)
 		 setCookie('authuser', window.spa_authuser, timeout)
 }
