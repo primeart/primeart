@@ -376,6 +376,9 @@ function spa_init(data){
 	if (location.href.indexOf('http')<0){
 		return //local ui tests
 	}
+	if (spa_isLogined()){
+		return //local ui tests
+	}
 	//!todo check login cookies expire date and set timeout to periodically opdate them when idle
 
 /*
