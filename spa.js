@@ -289,7 +289,7 @@ function spa_storeCredentials(data){
 		 setCookie('loginedUser',data['user'], timeout)
 }
 function spa_isLogined(){
-	return  window.spa_loginedUser && validateEmail(window.spa_loginedUser)
+	return  window.spa_userIsLogined //window.spa_loginedUser && validateEmail(window.spa_loginedUser)
 }
 
 function spa_navigate(page){
@@ -341,7 +341,7 @@ function spa_getAuthuser(udir){
 	}
 }
 
-
+window.spa_userIsLogined=false
 
 function spa_init(data){
 
@@ -378,6 +378,7 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 		callback = function(data){
 			//if(result.state=='success'){
 				spa_storeCredentials(data)
+				window.spa_userIsLogined=true
 				ui_setLoginedInterface(window.spa_loginedUser)
 				spa_getAuthuser(data['udir'])
 			//}
