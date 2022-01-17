@@ -372,7 +372,7 @@ function spa_getAuthuser(udir){
 }
 
 window.spa_userIsLogined=false
-
+window.DOMContentLoadedFired = false
 
 function spa_init(data){
 
@@ -386,7 +386,7 @@ function spa_init(data){
 	if (spa_isLogined()){
 		return //local ui tests
 	}
-	if (window.spa_authuser==-1){
+	if (window.spa_authuser==-1 || window.DOMContentLoadedFired){
 		return
 	}
 	//!todo check login cookies expire date and set timeout to periodically opdate them when idle
@@ -438,7 +438,8 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 			//so call callback directly
 			callback(data)
 		}else{
-			window.removeEventListener("DOMContentLoaded", spa_init);
+			//window.removeEventListener("DOMContentLoaded", spa_init);
+			window.DOMContentLoadedFired = true
 			spa_apiRequest('spa_getSignedUrlToPutRequestFile', {'user':window.spa_loginedUser, 'stayLogged':stayLogged}, callback, true)
 		}
 
