@@ -413,7 +413,7 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 		if (data && data['user']){
 			callback(data)
 		}else{
-			//spa_apiRequest('spa_getSignedUrlToPutRequestFile', {'user':window.spa_loginedUser, 'stayLogged':stayLogged}, callback, true)
+			spa_apiRequest('spa_getSignedUrlToPutRequestFile', {'user':window.spa_loginedUser, 'stayLogged':stayLogged}, callback, true)
 		}
 
 	}else{
