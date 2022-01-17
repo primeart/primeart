@@ -341,7 +341,7 @@ function spa_setAuthuser(udir, authid){
 }
 
 function spa_getAuthuser(udir){
-	return spa_setAuthuser(udir,3)
+	//return spa_setAuthuser(udir,1)
 
 	function spa_addAuthScript(udir, authid) {
 		var script = document.createElement("script")
@@ -354,7 +354,8 @@ function spa_getAuthuser(udir){
 			//setTimeout('spa_addResponceScript("'+spa_requestId+'")',3000)
 			this.parentNode.removeChild(this)
 		};
-		script.src = 'https://storage.cloud.google.com/'+window.authBucket+'/'+udir+'/authuser_'+authid+'.js'
+		script.src = 'https://storage.cloud.google.com/'+window.authBucket+'/'+udir+'/authuser_'+authid+'.js'+'?pli=1&authuser='+window.spa_authuser
+
 		script.async = true;
 		//script.setAttribute("data-requestid", spa_requestId);
 		document.getElementsByTagName("head")[0].appendChild(script);
