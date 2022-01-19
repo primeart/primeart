@@ -386,7 +386,7 @@ function spa_init(data){
 	if (spa_isLogined()){
 		return //local ui tests
 	}
-	if (window.spa_authuser==-1 || window.DOMContentLoadedFired){
+	if (window.spa_authuser==-1 ){
 		return
 	}
 	//!todo check login cookies expire date and set timeout to periodically opdate them when idle
@@ -439,8 +439,10 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 			callback(data)
 		}else{
 			//window.removeEventListener("DOMContentLoaded", spa_init);
-			window.DOMContentLoadedFired = true
-			spa_apiRequest('spa_getSignedUrlToPutRequestFile', {'user':window.spa_loginedUser, 'stayLogged':stayLogged}, callback, true)
+			if (!window.DOMContentLoadedFired){
+				spa_apiRequest('spa_getSignedUrlToPutRequestFile', {'user':window.spa_loginedUser, 'stayLogged':stayLogged}, callback, true)
+				window.DOMContentLoadedFired = true
+			}
 		}
 
 	}else{
