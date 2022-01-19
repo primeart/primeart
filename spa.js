@@ -118,7 +118,7 @@ function spa_apiRequest(commandName, data, callback, blocking){
 		method='PUT'
 	}
 	httpRequest(window.spa_requestUrl, method, data, function(){setTimeout('spa_addResponceScript("'+spa_requestId+'")',100)})
-	console.log('spa_apiRequest :: success placed put equest, awaiting result')
+	console.log('spa_apiRequest :: success placed put request '+spa_requestId+', awaiting result')
 }
 
 spa_responces ={}
@@ -143,7 +143,7 @@ function spa_addResponceScript(spa_requestId) {
 	script.onerror = function(){
 		console.log("Script is not loaded "+spa_requestId+'_____'+this.getAttribute("data-requestid"));
 		//spa_addResponceScript(this.getAttribute("data-requestid"))
-		setTimeout('spa_addResponceScript("'+spa_requestId+'")',3000)
+		setTimeout('spa_addResponceScript("'+spa_requestId+'")',13000)
 		this.parentNode.removeChild(this)
 	};
 	if (window.spa_authuser==undefined){
