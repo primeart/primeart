@@ -87,7 +87,9 @@ function timeNow(){
 window.spa_apiRequestCallbacks={}
 window.spa_apiRequestQueue=[]
 
-function spa_apiRequest(commandName, data, callback, blocking){
+//blocking == other commands will not be executed (and insteant sent to queue) until this command got responce; async otherwice
+//unique == only one command with this command name can be executing (awaiting result) at time; other calls for same command will be ignored until responce recieved
+function spa_apiRequest(commandName, data, callback, blocking, unique){
 	if (!window.spa_requestUrl){
 		return
 	}
@@ -95,16 +97,25 @@ function spa_apiRequest(commandName, data, callback, blocking){
 	//document.getElementById('load_screen_root').innerHTML += '<br /><br />spa_apiRequest:: apiCommand='+commandName
 	//ui_waiter(true)
 
+	if (unique){
+		for(var i=0;i < spa_apiRequestCallbacks.length;i++) {
+			if (spa_apiRequestCallbacks[i][0] == commandName){ //is blocking
+				console.log('command '+commandName+' rejected. it was declaread as unique, and this is repeating call while no responce recieved yet')
+				return true
+			}
+		}
+	}
+
 	for(var i=0;i < spa_apiRequestQueue.length;i++) {
 		if (spa_apiRequestQueue[i][3] == true){ //is blocking
-			window.spa_apiRequestQueue.push([commandName, data, callback, blocking?true:false])
+			window.spa_apiRequestQueue.push([commandName, data, callback, blocking?true:false, unique?true:false])
 			return true
 		}
 	}
 
 	spa_requestId = timeNow()
 
-	window.spa_apiRequestCallbacks[spa_requestId]=callback
+	window.spa_apiRequestCallbacks[spa_requestId]=[commandName, data, callback, blocking?true:false, unique?true:false]
 	window.spa_responceAwaitTries=0
 
 	if (!data.type){ //not a file
@@ -132,19 +143,20 @@ function spa_addResponceScript(spa_requestId) {
 		//spa_requestId = this
 		if (callback=window.spa_apiRequestCallbacks[spa_requestId]){
 				console.log("callback found, calling");
-				callback(spa_responces[spa_requestId].responceData)// !== false && ()
+				callback[2](spa_responces[spa_requestId].responceData, callback[1])// !== false && ()
 		}
 		if (window.spa_apiRequestQueue.length>0){
 			args = window.spa_apiRequestQueue[0]
 			delete window.spa_apiRequestQueue[0]
 			console.log('calling next request in queue')
-			spa_apiRequest(args[0],args[1],args[2])
+			spa_apiRequest(args[0],args[1],args[2],args[3],args[4])
 		}
 	};
 	script.onerror = function(){
 		console.log("Script is not loaded "+spa_requestId+'_____'+this.getAttribute("data-requestid"));
 		//spa_addResponceScript(this.getAttribute("data-requestid"))
-		setTimeout('spa_addResponceScript("'+spa_requestId+'")',window.retryInterval)
+		this.onload=function(){}
+		setTimeout('console.log("call spa_addResponceScript from load error");spa_addResponceScript("'+spa_requestId+'")',window.retryInterval)
 		this.parentNode.removeChild(this)
 	};
 	if (window.spa_authuser==undefined){
@@ -158,6 +170,7 @@ function spa_addResponceScript(spa_requestId) {
 	document.getElementsByTagName("head")[0].appendChild(script);
 }
 
+ /*
 function waitApiResponceAndCallback(){
 	console.log('waitApiResponceAndCallback should not be called')
 	return
@@ -170,7 +183,7 @@ function waitApiResponceAndCallback(){
 	console.log(window.spa_apiRequestCallbacks)
 
 
-	/*
+
 	httpRequest(window.spa_responceUrl, 'GET', {}, function(responce){
 			console.log('waitApiResponceAndCallback"s callback got called with responce:')
 			console.log(responce)
@@ -206,8 +219,8 @@ function waitApiResponceAndCallback(){
 			}
 
 	})
-	*/
-}
+
+}   */
 
 
  //actions
