@@ -99,13 +99,14 @@ function spa_apiRequest(commandName, data, callback, blocking, unique){
 	//document.getElementById('load_screen_root').innerHTML += '<br /><br />spa_apiRequest:: apiCommand='+commandName
 	//ui_waiter(true)
 
-	for(var i=0;i < spa_apiRequestCallbacks.length;i++) {
-		if (unique && spa_apiRequestCallbacks[i][0] == commandName){
+	for(rId in  spa_apiRequestCallbacks) {
+		spa_apiRequestCallback = spa_apiRequestCallbacks[rId]
+		if (unique && spa_apiRequestCallback[0] == commandName){
 			console.log('command '+commandName+' rejected. it was declaread as unique, and this is repeating call while no responce recieved yet')
 			return true
 		}
-		if (spa_apiRequestCallbacks[i][3] == true){
-			console.log('command "'+commandName+'" not executed but added to queue because we awaiting responce for blocking request "'+spa_apiRequestCallbacks[i][0] +'"')
+		if (spa_apiRequestCallback[3] == true){
+			console.log('command "'+commandName+'" not executed but added to queue because we awaiting responce for blocking request "'+spa_apiRequestCallback[0] +'"')
 			window.spa_apiRequestQueue.push([commandName, data, callback, blocking, unique])
 			return true
 		}
