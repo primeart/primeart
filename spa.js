@@ -71,7 +71,7 @@ function httpRequest(url, type, data, callback){
 
 function timeNow(){
 	var d = new Date();
-		return Math.floor( d   );
+		return Math.round( d.getTime() *1000  );    //d.getTime();
 	}
 
 
@@ -95,7 +95,7 @@ function spa_apiRequest(commandName, data, callback, blocking, unique){
 	}
 	if (blocking==undefined){blocking=true}
 	if (unique==undefined){unique=false}
-	console.log('spa_apiRequest :: apiCommand=', commandName)
+	console.log('spa_apiRequest :: apiCommand='+commandName+' spa_apiRequestCallbacks.length '+spa_apiRequestCallbacks.length)
 	//document.getElementById('load_screen_root').innerHTML += '<br /><br />spa_apiRequest:: apiCommand='+commandName
 	//ui_waiter(true)
 
@@ -110,7 +110,8 @@ function spa_apiRequest(commandName, data, callback, blocking, unique){
 			return true
 		}
 	}
-
+	console.log('no blocking requests found in callback queue')
+	console.log(spa_apiRequestCallbacks)
 
 //	for(var i=0;i < spa_apiRequestQueue.length;i++) {
 //		if (spa_apiRequestQueue[i][3] == true){ //is blocking
@@ -120,6 +121,12 @@ function spa_apiRequest(commandName, data, callback, blocking, unique){
 //	}
 
 	spa_requestId = timeNow()
+	if(window.spa_apiRequestCallbacks[spa_requestId]){
+		console.log('error: callback with same id found! ')
+		console.log('error: callback with same id found! ')
+		console.log('error: callback with same id found! ')
+		return false
+	}
 
 	window.spa_apiRequestCallbacks[spa_requestId]=[commandName, data, callback, blocking, unique]
 	window.spa_responceAwaitTries=0
@@ -135,7 +142,7 @@ function spa_apiRequest(commandName, data, callback, blocking, unique){
 		method='PUT'
 	}
 	httpRequest(window.spa_requestUrl, method, data, function(){setTimeout('spa_addResponceScript("'+spa_requestId+'")',100)})
-	console.log('spa_apiRequest :: success placed put request '+spa_requestId+', awaiting result')
+	console.log('spa_apiRequest :: success placed '+(blocking?'blocking':'nonblocking')+' put request '+spa_requestId+', awaiting result')
 }
 
 spa_responces ={}
