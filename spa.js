@@ -157,14 +157,13 @@ function spa_addResponceScript(spa_requestId) {
 		//spa_requestId = this
 		if (callback=window.spa_apiRequestCallbacks[spa_requestId]){
 				console.log("callback found, calling");
-				delete window.spa_apiRequestCallbacks[spa_requestId]
 				callback[2](spa_responces[spa_requestId].responceData, callback[1])// !== false && ()
+				delete window.spa_apiRequestCallbacks[spa_requestId]
 		}
 		if (window.spa_apiRequestQueue.length>0){
 			args = window.spa_apiRequestQueue[0]
-			delete window.spa_apiRequestQueue[0]
 			console.log('calling next request in queue')
-			spa_apiRequest(args[0],args[1],args[2],args[3],args[4])
+			spa_apiRequest(args[0],args[1],args[2],args[3],args[4], window.spa_apiRequestQueue.shift())
 		}
 	};
 	script.onerror = function(){
