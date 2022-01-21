@@ -71,7 +71,7 @@ function httpRequest(url, type, data, callback){
 
 function timeNow(){
 	var d = new Date();
-		return Math.round( d.getTime() *1000  );    //d.getTime();
+		return Math.round( d.now()   );    //d.getTime();
 	}
 
 
@@ -165,7 +165,7 @@ function spa_addResponceScript(spa_requestId) {
 			console.log('calling next request in queue')
 			spa_apiRequest(args[0],args[1],args[2],args[3],args[4], window.spa_apiRequestQueue.shift())
 		}
-	};
+	};                                                  s
 	script.onerror = function(){
 		console.log("Script is not loaded "+spa_requestId+'_____'+this.getAttribute("data-requestid"));
 		//spa_addResponceScript(this.getAttribute("data-requestid"))
@@ -437,43 +437,7 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 	if (!window.spa_authuser){
 		window.spa_authuser = getCookie('authuser');
 	}
-	if (validateEmail(window.spa_loginedUser ) && window.spa_requestUrl ){
-		if (currentPageIsIndex){//  || afterLogin === true){
-			//spa_init will be called again on logned user page
-			return spa_navigate('dashboard.html')
-		}
-		if (!window.spa_authuser){
-			//before sending any request, we need authuser integer to be able to read respomce234234.html?authuser=X files
-			udir = btoa(window.spa_loginedUser)
-			window.spa_authuser = -1
-			spa_getAuthuser(udir)
-			return
-		}
-
-		callback = function(data){
-			//if(result.state=='success'){
-				spa_storeCredentials(data)
-				window.spa_userIsLogined=true
-				ui_setLoginedInterface(window.spa_loginedUser)
-
-				spa_addAppScript('photo-to-art.js')
-			//}
-		}
-
-		stayLogged=true //stayLoggedCheckbox.was checked
-		if (data && data['user']){
-			//if we here right after user logined throught google accountchooser, then no need to get updated signed url - it is brand new
-			//so call callback directly
-			callback(data)
-		}else{
-			//window.removeEventListener("DOMContentLoaded", spa_init);
-			if (!window.DOMContentLoadedFired){
-				spa_apiRequest('spa_getSignedUrlToPutRequestFile', {'user':window.spa_loginedUser, 'stayLogged':stayLogged}, callback, true)
-				window.DOMContentLoadedFired = true
-			}
-		}
-
-	}else{
+	if (!(data && data['user']) && (!validateEmail(window.spa_loginedUser ) || !window.spa_requestUrl)){
 		//tmp
 		//document.getElementById('main-content').innerHTML.indexOf('Sign in required to access this page')>-1
 		if (!currentPageIsIndex){
@@ -482,5 +446,48 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 		}else{
 			ui_setLoginedInterface(false)
 		}
+		return
 	}
+
+	console.log('stored email validated')
+	if (currentPageIsIndex){//  || afterLogin === true){
+		//spa_init will be called again on logned user page
+		return spa_navigate('dashboard.html')
+	}
+
+	if (!window.spa_authuser){
+		//before sending any request, we need authuser integer to be able to read respomce234234.html?authuser=X files
+		udir = btoa(window.spa_loginedUser)
+		window.spa_authuser = -1
+		spa_getAuthuser(udir)
+		return
+	}
+
+	callback = function(data){
+		//if(result.state=='success'){
+			spa_storeCredentials(data)
+			window.spa_userIsLogined=true
+			ui_setLoginedInterface(window.spa_loginedUser)
+
+			spa_addAppScript('photo-to-art.js')
+		//}
+	}
+	if (window.spa_requestUrl ){
+		console.log('window.spa_requestUrl  from cookie, no request')
+		//data = {}
+	}
+	stayLogged=true //stayLoggedCheckbox.was checked
+	if (data && data['user']){
+		//if we here right after user logined throught google accountchooser, then no need to get updated signed url - it is brand new
+		//so call callback directly
+		callback(data)
+	}else{
+		//window.removeEventListener("DOMContentLoaded", spa_init);
+		if (!window.DOMContentLoadedFired){
+			spa_apiRequest('spa_getSignedUrlToPutRequestFile', {'user':window.spa_loginedUser, 'stayLogged':stayLogged}, callback, true)
+			window.DOMContentLoadedFired = true
+		}
+	}
+
+
 }

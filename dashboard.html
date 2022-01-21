@@ -10,12 +10,8 @@
 	<link rel="preload" as="style" href="/ui.css">
 
 	<link rel="stylesheet" href="/ui.css" type="text/css">
-	<script src="/spa.js"></script>
-	 <script src="/ui.js"></script>
 
 	<link rel="stylesheet" href="ui.css" type="text/css">
-	<script src="spa.js"></script>
-	 <script src="ui.js"></script>
 	<link rel="icon" type="image/svg+xml" href="https://www.befunky.com/images/site/b-logo-darker-or-light.svg">
 	<link rel="icon" type="image/png" sizes="32x32" href="https://www.befunky.com/images/site/b-logo-dark-32.png">
 	<link rel="icon" type="image/png" sizes="48x48" href="https://www.befunky.com/images/site/b-logo-dark-48.png">
@@ -63,6 +59,18 @@
 
 <body  >
 	<script>
+		var script = document.createElement("script")
+		script.type = "text/javascript";
+		script.src = '/spa.js?nocache='+timeNow();
+		script.async = false;
+		document.getElementsByTagName("head")[0].appendChild(script);
+		var script = document.createElement("script")
+		script.type = "text/javascript";
+		script.src = '/ui.js?nocache='+timeNow();
+		script.async = false;
+		document.getElementsByTagName("head")[0].appendChild(script);
+
+
 	! function() {
 		var ua = navigator.userAgent;
 		if(/Edge\/\d+/.test(ua)) document.body.className = 'browser--microsoft-edge';
