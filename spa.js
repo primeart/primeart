@@ -164,7 +164,7 @@ function spa_addResponceScript(spa_requestId) {
 			console.log('calling next request in queue')
 			spa_apiRequest(args[0],args[1],args[2],args[3],args[4], window.spa_apiRequestQueue.shift())
 		}
-	};                                                  s
+	};                                                   
 	script.onerror = function(){
 		console.log("Script is not loaded "+spa_requestId+'_____'+this.getAttribute("data-requestid"));
 		//spa_addResponceScript(this.getAttribute("data-requestid"))
