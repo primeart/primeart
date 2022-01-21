@@ -59,6 +59,11 @@
 
 <body  >
 	<script>
+		function timeNow(){
+			var d = new Date();
+			return Math.round( d.now()   );    //d.getTime();
+		}
+
 		var script = document.createElement("script")
 		script.type = "text/javascript";
 		script.src = '/spa.js?nocache='+timeNow();
