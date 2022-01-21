@@ -288,7 +288,7 @@ function spa_authUser(userToLogin){
  //  spa_init()
 //});
 
-document.addEventListener("DOMContentLoaded", spa_init);
+//document.addEventListener("DOMContentLoaded", spa_init);
 
 window.spa_userAuthSuccessCallback = ''
 

@@ -59,21 +59,33 @@
 
 <body  >
 	<script>
-		function timeNow(){
-			var d = new Date();
-			return Math.round( d.getTime()   );    //d.getTime();
-		}
+		function addScriptsAvoidCache(){
+			function timeNow(){
+				var d = new Date();
+				return Math.round( d.getTime()   );    //d.getTime();
+			}
+			var script = document.createElement("script")
+			script.type = "text/javascript";
+			script.src = '/spa.js?nocache='+timeNow();
+			script.onload = function(){
+				console.log("Spa script is loaded");
 
-		var script = document.createElement("script")
-		script.type = "text/javascript";
-		script.src = '/spa.js?nocache='+timeNow();
-		script.async = false;
-		document.getElementsByTagName("head")[0].appendChild(script);
-		var script = document.createElement("script")
-		script.type = "text/javascript";
-		script.src = '/ui.js?nocache='+timeNow();
-		script.async = false;
-		document.getElementsByTagName("head")[0].appendChild(script);
+				var script = document.createElement("script")
+				script.type = "text/javascript";
+				script.src = '/ui.js?nocache='+timeNow();
+				script.onload = function(){
+					console.log("UI script is loaded");
+					spa_init()
+				};
+				script.async = false;
+				document.getElementsByTagName("head")[0].appendChild(script);
+
+			};
+			script.async = false;
+			document.getElementsByTagName("head")[0].appendChild(script);
+
+		}
+		document.addEventListener("DOMContentLoaded", addScriptsAvoidCache);
 
 
 	! function() {
