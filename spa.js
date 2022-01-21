@@ -71,9 +71,8 @@ function httpRequest(url, type, data, callback){
 
 function timeNow(){
 	var d = new Date();
-		return Math.round( d.now()   );    //d.getTime();
-	}
-
+	return Math.round( d.getTime()   );    //d.getTime();
+}
 
 
 //function messageIframe(){
