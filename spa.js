@@ -134,6 +134,9 @@ function spa_apiRequest(commandName, data, callback, blocking, unique){
 	window.spa_apiRequestCallbacks[spa_requestId]=[commandName, data, callback, blocking, unique]
 	window.spa_responceAwaitTries=0
 
+	console.log('window.spa_apiRequestCallbacks on spa_apiRequest')
+	console.log(window.spa_apiRequestCallbacks)
+
 	if (!data.type){ //not a file
 		data = JSON.stringify({'commandName':commandName, 'requestId':spa_requestId, 'data':data})
 	}
@@ -152,12 +155,20 @@ function spa_apiRequest(commandName, data, callback, blocking, unique){
 window.retryInterval=1000 //ms
 
 function spa_responce(spa_requestId, responceData) {
+		console.log('window.spa_apiRequestCallbacks on spa_responce')
+		console.log(window.spa_apiRequestCallbacks)
 		if (callback=window.spa_apiRequestCallbacks[spa_requestId]){
 				console.log("callback found, calling");
 				callback[2](responceData, callback[1])// !== false && ()
 				delete window.spa_apiRequestCallbacks[spa_requestId]
+		}else{
+			console.log("callback not found");
 		}
-
+		if (window.spa_apiRequestQueue.length>0){
+			args = window.spa_apiRequestQueue[0]
+			console.log('calling next request in queue')
+			spa_apiRequest(args[0],args[1],args[2],args[3],args[4], window.spa_apiRequestQueue.shift())
+		}
 }
 
 function spa_addResponceScript(spa_requestId) {
@@ -170,11 +181,11 @@ function spa_addResponceScript(spa_requestId) {
 		//		callback[2](spa_responces[spa_requestId].responceData, callback[1])// !== false && ()
 		//		delete window.spa_apiRequestCallbacks[spa_requestId]
 		//}
-		if (window.spa_apiRequestQueue.length>0){
-			args = window.spa_apiRequestQueue[0]
-			console.log('calling next request in queue')
-			spa_apiRequest(args[0],args[1],args[2],args[3],args[4], window.spa_apiRequestQueue.shift())
-		}
+		//if (window.spa_apiRequestQueue.length>0){
+		//	args = window.spa_apiRequestQueue[0]
+		//	console.log('calling next request in queue')
+		//	spa_apiRequest(args[0],args[1],args[2],args[3],args[4], window.spa_apiRequestQueue.shift())
+		//}
 	};
 	script.onerror = function(){
 		console.log("Script is not loaded "+spa_requestId+'_____'+this.getAttribute("data-requestid"));
