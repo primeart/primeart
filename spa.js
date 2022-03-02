@@ -148,20 +148,28 @@ function spa_apiRequest(commandName, data, callback, blocking, unique){
 	console.log('spa_apiRequest :: success placed '+(blocking?'blocking':'nonblocking')+' put request '+spa_requestId+', awaiting result')
 }
 
-spa_responces ={}
+//spa_responces ={}
 window.retryInterval=1000 //ms
+
+function spa_responce(spa_requestId, responceData) {
+		if (callback=window.spa_apiRequestCallbacks[spa_requestId]){
+				console.log("callback found, calling");
+				callback[2](responceData, callback[1])// !== false && ()
+				delete window.spa_apiRequestCallbacks[spa_requestId]
+		}
+
+}
 
 function spa_addResponceScript(spa_requestId) {
 	var script = document.createElement("script")
 	script.type = "text/javascript";
 	script.onload = function(){
 		console.log("Script is loaded");
-		//spa_requestId = this
-		if (callback=window.spa_apiRequestCallbacks[spa_requestId]){
-				console.log("callback found, calling");
-				callback[2](spa_responces[spa_requestId].responceData, callback[1])// !== false && ()
-				delete window.spa_apiRequestCallbacks[spa_requestId]
-		}
+		//if (callback=window.spa_apiRequestCallbacks[spa_requestId]){
+		//		console.log("callback found, calling");
+		//		callback[2](spa_responces[spa_requestId].responceData, callback[1])// !== false && ()
+		//		delete window.spa_apiRequestCallbacks[spa_requestId]
+		//}
 		if (window.spa_apiRequestQueue.length>0){
 			args = window.spa_apiRequestQueue[0]
 			console.log('calling next request in queue')
