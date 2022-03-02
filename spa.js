@@ -154,12 +154,14 @@ function spa_apiRequest(commandName, data, callback, blocking, unique){
 //spa_responces ={}
 window.retryInterval=1000 //ms
 
-function spa_responce(spa_requestId, responceData) {
+function spa_responce(responceBody) {
+		spa_requestId = responceBody.requestId
+		spa_responceData = responceBody.responceData
 		console.log('window.spa_apiRequestCallbacks on spa_responce')
 		console.log(window.spa_apiRequestCallbacks)
 		if (callback=window.spa_apiRequestCallbacks[spa_requestId]){
 				console.log("callback found, calling");
-				callback[2](responceData, callback[1])// !== false && ()
+				callback[2](spa_responceData, callback[1])// !== false && ()
 				delete window.spa_apiRequestCallbacks[spa_requestId]
 		}else{
 			console.log("callback not found");
