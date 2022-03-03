@@ -156,17 +156,17 @@ function spa_apiRequest(commandName, data, callback, blocking, unique){
 window.retryInterval=1000 //ms
 
 function spa_responce(responceBody) {
-		spa_requestId = responceBody.requestId
-		spa_responceData = responceBody.responceData
-		console.log('window.spa_apiRequestCallbacks on spa_responce spa_requestId='+spa_requestId)
+		var responce_requestId = responceBody.requestId
+		var responce_responceData = responceBody.responceData
+		console.log('window.spa_apiRequestCallbacks on spa_responce spa_requestId='+responce_requestId)
 		console.log(window.spa_apiRequestCallbacks)
-		if (callback=window.spa_apiRequestCallbacks[spa_requestId]){
-				console.log("callback found, calling spa_requestId="+spa_requestId);
-				callback[2](spa_responceData, callback[1])// !== false && ()
-				console.log("callback called, deleting spa_requestId="+spa_requestId);
-				delete window.spa_apiRequestCallbacks[spa_requestId]
+		if (callback=window.spa_apiRequestCallbacks[responce_requestId]){
+				console.log("callback found, calling responce_requestId="+responce_requestId);
+				callback[2](responce_responceData , callback[1])// !== false && ()
+				console.log("callback called, deleting responce_requestId="+responce_requestId);
+				delete window.spa_apiRequestCallbacks[responce_requestId]
 		}else{
-			console.log("callback not found:"+spa_requestId);
+			console.log("callback not found:"+responce_requestId);
 		}
 		if (window.spa_apiRequestQueue.length>0){
 			args = window.spa_apiRequestQueue[0]
