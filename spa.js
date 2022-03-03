@@ -94,7 +94,8 @@ function spa_apiRequest(commandName, data, callback, blocking, unique){
 	}
 	if (blocking==undefined){blocking=true}
 	if (unique==undefined){unique=false}
-	console.log('spa_apiRequest :: apiCommand='+commandName+' spa_apiRequestCallbacks.length '+spa_apiRequestCallbacks.length)
+	console.log('spa_apiRequest :: apiCommand='+commandName+' spa_apiRequestCallbacks: ')
+	console.log(spa_apiRequestCallbacks)
 	//document.getElementById('load_screen_root').innerHTML += '<br /><br />spa_apiRequest:: apiCommand='+commandName
 	//ui_waiter(true)
 
@@ -157,14 +158,15 @@ window.retryInterval=1000 //ms
 function spa_responce(responceBody) {
 		spa_requestId = responceBody.requestId
 		spa_responceData = responceBody.responceData
-		console.log('window.spa_apiRequestCallbacks on spa_responce')
+		console.log('window.spa_apiRequestCallbacks on spa_responce spa_requestId='+spa_requestId)
 		console.log(window.spa_apiRequestCallbacks)
 		if (callback=window.spa_apiRequestCallbacks[spa_requestId]){
-				console.log("callback found, calling");
+				console.log("callback found, calling spa_requestId="+spa_requestId);
 				callback[2](spa_responceData, callback[1])// !== false && ()
+				console.log("callback called, deleting spa_requestId="+spa_requestId);
 				delete window.spa_apiRequestCallbacks[spa_requestId]
 		}else{
-			console.log("callback not found");
+			console.log("callback not found:"+spa_requestId);
 		}
 		if (window.spa_apiRequestQueue.length>0){
 			args = window.spa_apiRequestQueue[0]
