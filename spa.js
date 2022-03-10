@@ -401,7 +401,7 @@ function spa_setAuthuser(udir, authid){
 }
 
 function spa_getAuthuser(udir){
-	return spa_setAuthuser(udir,1)
+	//return spa_setAuthuser(udir,1)
 
 	function spa_addAuthScript(udir, authid) {
 		var script = document.createElement("script")
