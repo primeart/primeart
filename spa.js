@@ -494,7 +494,11 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 			window.spa_userIsLogined=true
 			ui_setLoginedInterface(window.spa_loginedUser)
 
-			spa_addAppScript('photo-to-art.js')
+			if ( location.href.indexOf('userboard.html')<0){
+				spa_addAppScript('photo-to-art.js')
+			}else{
+				spa_addAppScript('userboard.js')
+			}
 		//}
 	}
 	if (window.spa_requestUrl ){

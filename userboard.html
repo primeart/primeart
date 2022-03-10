@@ -1,7 +1,7 @@
-	 ﻿<html data-use-app-lang="false" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#" lang="en">
+	  ﻿<html data-use-app-lang="false" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#" lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Photo To Art | Go From Photo To Painting With BeFunky</title>
+	<title>Photo To Art | Go From Photo To Painting</title>
 	<meta name="description" content="Go from photo to cartoon or photo to painting with RroyalArt's photo to art effects. Turn photos into sketches, oil paintings, watercolor, and more!">
 	<meta name="application-name" content="RroyalArt">
 	<meta name="keywords" content="RroyalArt, RroyalArt.com, RroyalArt photo effects, RroyalArt photo editor, effects, editor, photo, photograph, picture, free, edit, editing, adjust, crop, online, online photo sharing, facebook, camera, digital, image, fix, photoshop, gimp, Photo Sharing, Share with Facebook, Share with Twitter, Share with Pinterest, share, Instant, Cartoonizer, Sketch, photo to art, text editor, online frames, overlays, Photo Effects, Photo Editor, facebook covers, facebook cover, covers, covers for facebook, facebook profile covers, first covers, fb covers, fb cover">
@@ -10,21 +10,17 @@
 	<link rel="preload" as="style" href="/ui.css">
 
 	<link rel="stylesheet" href="/ui.css" type="text/css">
-	<script src="/spa.js"></script>
-	 <script src="/ui.js"></script>
 
 	<link rel="stylesheet" href="ui.css" type="text/css">
-	<script src="spa.js"></script>
-	 <script src="ui.js"></script>
 	<link rel="icon" type="image/svg+xml" href="https://www.befunky.com/images/site/b-logo-darker-or-light.svg">
 	<link rel="icon" type="image/png" sizes="32x32" href="https://www.befunky.com/images/site/b-logo-dark-32.png">
 	<link rel="icon" type="image/png" sizes="48x48" href="https://www.befunky.com/images/site/b-logo-dark-48.png">
 	<link rel="apple-touch-icon" sizes="180x180" href="https://www.befunky.com/images/site/b-logo-dark-with-bg-180.png">
 	<meta http-equiv="origin-trial" content="AgL+2DHKvZKd+Ja//ZZxZBJPHnq09SH6K2WnPEMPowMKfc0ViL8n/Z9lDvzOPcK0DVWSLttkRIihIT6CB24u6gEAAABkeyJvcmlnaW4iOiJodHRwczovL2JlZnVua3kuY29tOjQ0MyIsImZlYXR1cmUiOiJEaWdpdGFsR29vZHMiLCJleHBpcnkiOjE2NDM1ODcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ==">
 	<meta http-equiv="origin-trial" content="AmSyhZ10T9ZZWVFp35uMEr56npzni3BFxG6kijHI23dTGbvzlNBfGiytelCALG/kbZvkrCTAci7bVZgfUOgoHgkAAABmeyJvcmlnaW4iOiJodHRwczovL2JlZnVua3kuY29tOjQ0MyIsImZlYXR1cmUiOiJEaWdpdGFsR29vZHNWMiIsImV4cGlyeSI6MTY0Nzk5MzU5OSwiaXNTdWJkb21haW4iOnRydWV9">
-	<link rel="manifest" href="https://www.befunky.com/manifest.json">
+	<link rel="manifest" href="/manifest.json">
 	<meta property="og:title" content="Photo To Art | Go From Photo To Painting">
-	<meta property="og:description" content="Go from photo to cartoon or photo to painting with BeFunky's photo to art effects. Turn photos into sketches, oil paintings, watercolor, and more!">
+	<meta property="og:description" content="Go from photo to cartoon or photo to painting with  's photo to art effects. Turn photos into sketches, oil paintings, watercolor, and more!">
 	<meta property="og:image" content="https://www.primeart.com/images/prismic/b6be06cd-47d9-42cf-abeb-45da36ddaff6_OG-photo-to-art.png?auto=webp&amp;format=jpg&amp;width=full">
 	<meta property="og:image:url" content="https://www.primeart.com/images/prismic/b6be06cd-47d9-42cf-abeb-45da36ddaff6_OG-photo-to-art.png?auto=webp&amp;format=jpg&amp;width=full">
 	<meta property="og:image:width" content="">
@@ -62,6 +58,35 @@
 
 
 <body  >
+	<script>
+		function addScriptsAvoidCache(){
+			function timeNow(){
+				var d = new Date();
+				return Math.round( d.getTime()   );    //d.getTime();
+			}
+			var script = document.createElement("script")
+			script.type = "text/javascript";
+			script.src = '/spa.js?nocache='+timeNow();
+			script.onload = function(){
+				console.log("Spa script is loaded");
+
+				var script = document.createElement("script")
+				script.type = "text/javascript";
+				script.src = '/ui.js?nocache='+timeNow();
+				script.onload = function(){
+					console.log("UI script is loaded");
+					spa_init()
+				};
+				script.async = false;
+				document.getElementsByTagName("head")[0].appendChild(script);
+
+			};
+			script.async = false;
+			document.getElementsByTagName("head")[0].appendChild(script);
+
+		}
+		document.addEventListener("DOMContentLoaded", addScriptsAvoidCache);
+	</script>
 	<script>
 	! function() {
 		var ua = navigator.userAgent;
@@ -135,7 +160,8 @@
 			</div>
 		</header>
 
-		<div class="site-nav-placeholder"></div>
+<div class="site-nav-placeholder"></div>
+
 
 
 
@@ -200,17 +226,17 @@
 	</div>
 
 
-	<section class="section section--bg-white"  id="dropZoneSection" style='display:none'>
+	<section class="section section--bg-white"  id="userlistSection" style='display:none'>
 		<div class="section__no-grid">
 			<div class="section__row-header">
-			   <h2 class="h5 section__heading" data-lang="get_started_heading">Step 1: Choose Source Photo:</h2>
+			   <h2 class="h5 section__heading" data-lang="get_started_heading">Your subscribers:</h2>
 
 			</div>
 		</div>
 
 
 
-	<div id="userlist"> userlist</div>
+	<div id="userlistContainer"> userlist</div>
 
 	</section>
 
@@ -233,7 +259,7 @@
 
 
 
-		<footer class="site-footer section">
+	<footer class="site-footer section">
 			<div class="centered-column-width">
 				<div class="site-footer__grid">
 					<div class="site-footer__icons">
@@ -426,7 +452,7 @@
 						<h2 data-lang="sign_in_modal_heading" class="centered-modal__heading centered-modal__heading--sm-margin h3">Welcome Back! Please Sign&nbsp;In</h2>
 						<div class="centered-modal__column">
 							<p class="centered-modal__sub-heading text-lg">
-								<string data-lang="sign_in_modal_sub_heading">New to RroyalArt?</string> <a id="sign_in_modal_create_account" data-lang="register_here" target="_blank" href="https://accounts.google.com/AccountChooser/signinchooser?continue=https%3A%2F%2Fstorage.cloud.google.com%2Froyal-art%2Frequests%2FZGRtaXRydXNoa2luQHdhdGNobXlzaG90LmNvbQ%3D%3D%2Fauth&flowEntry=AccountChooser">https://accounts.google.com/SignUp Register here</a> </p>
+								<string data-lang="sign_in_modal_sub_heading">New to RroyalArt?</string> <a id="sign_in_modal_create_account" data-lang="register_here" target="_blank" href="https://accounts.google.com/SignUp">Register here</a> </p>
 							<!--<p class="form-divider"><span data-lang="or_email">Or Email</span></p>-->
 							<form id="sign_in_form" action="javascript:;">
 								<div class="form-errors"></div>
