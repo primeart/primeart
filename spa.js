@@ -390,11 +390,14 @@ function spa_addAppScript(appname) {
 }
 
 function spa_setAuthuser(udir, authid){
+	console.log('called spa_setAuthuser udir, authid '+udir+authid)
 	if (!window.spa_authuser || window.spa_authuser==-1){
+		console.log('set (then init) window.spa_authuser = '+authid)
 		window.spa_authuser=authid
 //todo authids[udir]=authid
 		spa_init() //now with authuser it will actually do something
 	}
+	console.log('not set (no init) authid of '+authid)
 }
 
 function spa_getAuthuser(udir){
