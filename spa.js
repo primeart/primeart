@@ -485,7 +485,7 @@ alert(httpGet('https://storage.cloud.google.com/royal-art/u/adsf/auth'))
 
 	if (!window.spa_authuser){
 		//before sending any request, we need authuser integer to be able to read respomce234234.html?authuser=X files
-		udir = btoa(window.spa_loginedUser)
+		udir = data && data['udir'] || btoa(window.spa_loginedUser)
 		window.spa_authuser = -1
 		spa_getAuthuser(udir)
 		return
