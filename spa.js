@@ -365,7 +365,7 @@ function spa_signOut(){
 		eraseCookie('responceUrl')
 		eraseCookie('loginedUser')
 		eraseCookie('authuser')
-		spa_apiRequest('signOut',{},location.reload,true) //to set monitoring rate from frequent to normal
+		//spa_apiRequest('signOut',{},location.reload,true) //to set monitoring rate from frequent to normal
 
 	}
 }
