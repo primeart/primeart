@@ -6,7 +6,7 @@
 // https://vinta.ws/code/integrate-with-google-cloud-api-in-python.html
 //https://blog.koliseo.com/limit-the-size-of-uploaded-files-with-signed-urls-on-google-cloud-storage/
 
-window.authBucket = 'auth-alpaca2'
+window.authBucket = 'auth-alpaca3'
 
 	function setCookie(name,value,seconds) {
 	var expires = "";
